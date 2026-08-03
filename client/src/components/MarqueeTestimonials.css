@@ -1,0 +1,169 @@
+/* SECTION BASE */
+.marquee-testimonials-section {
+  padding: 100px 0;
+  background: #0b0f19;
+  color: white;
+  overflow: hidden;
+  position: relative;
+}
+
+/* HEADER */
+.marquee-header {
+  text-align: center;
+  margin-bottom: 60px;
+  animation: fadeUp 1s ease forwards;
+}
+
+.marquee-title {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.marquee-description {
+  color: #9ca3af;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* GRID */
+.marquee-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  height: 600px;
+  overflow: hidden;
+}
+
+/* COLUMN BASE */
+.marquee-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* TESTIMONIAL CARD */
+.testimonial-card {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 20px;
+  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 0.8s ease forwards;
+}
+
+/* HOVER EFFECT */
+.testimonial-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: #a78bfa;
+  box-shadow: 0 10px 40px rgba(167, 139, 250, 0.2);
+}
+
+/* AUTHOR */
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.author-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.author-details {
+  margin-left: 10px;
+}
+
+.author-name {
+  font-weight: 600;
+}
+
+.author-company {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* QUOTE ICON */
+.quote-icon {
+  margin-bottom: 10px;
+}
+
+/* TEXT */
+.testimonial-text {
+  font-size: 14px;
+  color: #d1d5db;
+  line-height: 1.6;
+}
+
+/* ========================= */
+/* 🚀 MARQUEE SCROLL EFFECT */
+/* ========================= */
+
+/* Column 1 */
+.animate-scroll-up-1 {
+  animation: scrollUp 20s linear infinite;
+}
+
+/* Column 2 (slower) */
+.animate-scroll-up-2 {
+  animation: scrollUp 26s linear infinite;
+}
+
+/* Column 3 (fastest) */
+.animate-scroll-up-3 {
+  animation: scrollUp 18s linear infinite;
+}
+
+/* KEYFRAMES */
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+/* ========================= */
+/* ✨ FADE IN ANIMATION */
+/* ========================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================= */
+/* 🌫️ FADE MASK EFFECT */
+/* ========================= */
+
+.marquee-fade-top,
+.marquee-fade-bottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.marquee-fade-top {
+  top: 0;
+  background: linear-gradient(to bottom, #0b0f19, transparent);
+}
+
+.marquee-fade-bottom {
+  bottom: 0;
+  background: linear-gradient(to top, #0b0f19, transparent);
+}

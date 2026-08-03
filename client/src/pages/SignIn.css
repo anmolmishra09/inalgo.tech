@@ -1,0 +1,234 @@
+/* Full Screen Container */
+.signin-page-fullscreen {
+  display: flex;
+  height: 700px;
+  width: 100%;
+  background: #ffffff;
+}
+
+/* Left Side - Image Container */
+.signin-image-container {
+  width: 100%;
+  display: none;
+}
+
+.signin-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Right Side - Form Container */
+.signin-form-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+
+.signin-form-centered {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Heading and Description */
+.signin-heading {
+  font-size: 2.25rem;
+  color: #111827;
+  font-weight: 500;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.signin-description {
+  font-size: 0.875rem;
+  color: rgba(107, 114, 128, 0.9);
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+/* Google Sign-In Button */
+.google-signin-btn {
+  width: 100%;
+  margin-top: 2rem;
+  background: rgba(107, 114, 128, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.google-signin-btn:hover {
+  background: rgba(107, 114, 128, 0.15);
+}
+
+/* Divider */
+.signin-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin: 1.25rem 0;
+}
+
+.signin-divider-line {
+  width: 100%;
+  height: 1px;
+  background: rgba(209, 213, 219, 0.9);
+}
+
+.signin-divider-text {
+  width: 100%;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  color: rgba(107, 114, 128, 0.9);
+  margin: 0;
+}
+
+/* Input Wrappers */
+.signin-input-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(209, 213, 219, 0.6);
+  height: 3rem;
+  border-radius: 9999px;
+  overflow: hidden;
+  padding-left: 1.5rem;
+  gap: 0.5rem;
+  transition: border-color 0.3s ease;
+}
+
+.signin-input-wrapper:focus-within {
+  border-color: #6366f1;
+}
+
+.signin-password-wrapper {
+  margin-top: 1.5rem;
+}
+
+.signin-email-input,
+.signin-password-input {
+  background: transparent;
+  color: rgba(107, 114, 128, 0.8);
+  outline: none;
+  font-size: 0.875rem;
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding-right: 1.5rem;
+}
+
+.signin-email-input::placeholder,
+.signin-password-input::placeholder {
+  color: rgba(107, 114, 128, 0.8);
+}
+
+/* Footer Options */
+.signin-footer-options {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+  color: rgba(107, 114, 128, 0.8);
+  position: relative;
+  z-index: 10;
+}
+
+.signin-remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.signin-checkbox {
+  height: 1.25rem;
+  width: 1.25rem;
+  cursor: pointer;
+  accent-color: #6366f1;
+}
+
+.signin-checkbox-label {
+  font-size: 0.875rem;
+  color: rgba(107, 114, 128, 0.8);
+  cursor: pointer;
+  user-select: none;
+}
+
+.signin-forgot-link {
+  font-size: 0.875rem;
+  text-decoration: underline;
+  color: rgba(107, 114, 128, 0.8);
+  transition: color 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.signin-forgot-link:hover {
+  color: #6366f1;
+}
+
+/* Submit Button */
+.signin-submit-btn {
+  margin-top: 2rem;
+  width: 100%;
+  height: 2.75rem;
+  border-radius: 9999px;
+  color: white;
+  background: #6366f1;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+}
+
+.signin-submit-btn:hover {
+  opacity: 0.9;
+}
+
+/* Sign Up Text */
+.signin-signup-text {
+  color: rgba(107, 114, 128, 0.9);
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+
+.signin-signup-link {
+  color: #818cf8;
+  transition: text-decoration 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.signin-signup-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .signin-image-container {
+    display: inline-block;
+  }
+
+  .signin-form-centered {
+    width: 384px;
+  }
+}

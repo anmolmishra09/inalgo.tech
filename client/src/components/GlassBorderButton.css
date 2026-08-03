@@ -1,0 +1,112 @@
+/* Glass Border Button with Rotating Animation */
+.glass-border-wrapper {
+  position: relative;
+  z-index: 0;
+  background: rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+  padding: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+.glass-border-wrapper:hover {
+  transform: scale(1.05);
+}
+
+.glass-border-wrapper:active {
+  transform: scale(1);
+}
+
+/* Rotating gradient border effect */
+.glass-border-wrapper::before {
+  content: '';
+  position: absolute;
+  z-index: -2;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  background-position: 100% 50%;
+  background-repeat: no-repeat;
+  background-size: 50% 30%;
+  filter: blur(6px);
+  background-image: linear-gradient(#ffffff);
+  animation: rotateBorder 4s linear infinite;
+}
+
+/* Button itself */
+.glass-border-button {
+  padding: 0.75rem 2rem;
+  font-size: 0.875rem;
+  color: white;
+  border-radius: 9px;
+  font-weight: 500;
+  background: rgba(17, 24, 39, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.glass-border-button:hover {
+  background: rgba(17, 24, 39, 0.9);
+}
+
+/* Variant: Purple */
+.glass-border-wrapper.purple {
+  background: rgba(139, 92, 246, 0.2);
+}
+
+.glass-border-wrapper.purple::before {
+  background-image: linear-gradient(90deg, #6366f1, #8b5cf6, #a78bfa, #c4b5fd);
+}
+
+.glass-border-wrapper.purple .glass-border-button {
+  background: rgba(99, 102, 241, 0.2);
+  color: #f3f4f6;
+}
+
+.glass-border-wrapper.purple .glass-border-button:hover {
+  background: rgba(99, 102, 241, 0.3);
+}
+
+/* Variant: Blue */
+.glass-border-wrapper.blue {
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.glass-border-wrapper.blue::before {
+  background-image: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd, #dbeafe);
+}
+
+.glass-border-wrapper.blue .glass-border-button {
+  background: rgba(59, 130, 246, 0.2);
+  color: #f3f4f6;
+}
+
+.glass-border-wrapper.blue .glass-border-button:hover {
+  background: rgba(59, 130, 246, 0.3);
+}
+
+/* Rotating animation */
+@keyframes rotateBorder {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .glass-border-button {
+    padding: 0.625rem 1.5rem;
+    font-size: 0.8125rem;
+  }
+}

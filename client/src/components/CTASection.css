@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* CTA Section with Gradient Background */
+.cta-gradient-section {
+  padding: 4rem 0;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #000000;
+}
+
+.cta-gradient-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.cta-gradient-content {
+  background: linear-gradient(to bottom, #301469, #000000);
+  border-radius: 1rem;
+  padding: 4rem 2.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.cta-badge {
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  border: 1px solid #54487B;
+  background: linear-gradient(to right, #A992F2, #DFAB9B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  font-weight: 500;
+  max-width: 42rem;
+  margin: 0 auto 1rem;
+}
+
+.cta-title-gradient {
+  background: linear-gradient(to right, #A992F2, #DFAB9B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.cta-description {
+  color: white;
+  font-size: 0.875rem;
+  margin: 0.5rem 0 1.5rem;
+  opacity: 0.9;
+}
+
+/* Glass Border Button in CTA Section */
+.cta-gradient-content .glass-border-wrapper {
+  margin-top: 1rem;
+}
+
+.cta-gradient-content .glass-border-button {
+  padding: 0.75rem 3rem;
+}
+
+.cta-gradient-content .glass-border-button a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.cta-gradient-button {
+  padding: 0.625rem 3rem;
+  margin-top: 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  border: 1px solid #54487B;
+  background: linear-gradient(to right, #A992F2, #DFAB9B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-gradient-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, #A992F2, #DFAB9B);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  border-radius: 9999px;
+}
+
+.cta-gradient-button:hover::before {
+  opacity: 0.1;
+}
+
+.cta-gradient-button:active {
+  transform: scale(0.95);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cta-gradient-content {
+    padding: 3rem 1.5rem;
+  }
+
+  .cta-title {
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+
+  .cta-badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 1.2rem;
+  }
+
+  .cta-gradient-button {
+    padding: 0.5rem 2rem;
+    font-size: 0.813rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-gradient-content {
+    padding: 2.5rem 1rem;
+  }
+
+  .cta-title {
+    font-size: 1.5rem;
+  }
+
+  .cta-description {
+    font-size: 0.813rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cta-gradient-section {
+    padding: 5rem 0;
+  }
+
+  .cta-title {
+    font-size: 3rem;
+    line-height: 3.75rem;
+  }
+}

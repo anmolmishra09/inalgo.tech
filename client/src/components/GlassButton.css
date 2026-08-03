@@ -1,0 +1,119 @@
+/* Glass Button with Animated Border */
+
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.glass-button-wrapper {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  overflow: hidden;
+  padding: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  isolation: isolate;
+}
+
+.glass-button-wrapper:hover {
+  transform: scale(1.05);
+}
+
+.glass-button-wrapper:active {
+  transform: scale(1);
+}
+
+.glass-button-wrapper::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: -50%;
+  top: -50%;
+  width: 1;
+  height: 100%;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 50% 50%;
+  filter: blur(10px);
+  background-image: conic-gradient(
+    from 0deg,
+    #2563eb,
+    #8b5cf6,
+    #ec4899,
+    #f59e0b,
+    #a78bfa,
+    #06b6d4,
+    #3b82f6,
+    #2563eb
+  );
+  animation: rotate 4s linear infinite;
+}
+
+.glass-button-inner {
+  padding: 0.75rem 2rem;
+  font-size: 0.875rem;
+  color: white;
+  border-radius: 9999px;
+  font-weight: 500;
+  background: #1f2937;
+  backdrop-filter: blur(10px);
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.glass-button-inner:hover {
+  background: rgba(31, 41, 55, 0.9);
+}
+
+/* Alternative color schemes */
+.glass-button-wrapper.purple::before {
+  background-image: conic-gradient(
+    from 0deg,
+    #7c3aed,
+    #a78bfa,
+    #c084fc,
+    #e879f9,
+    #f0abfc,
+    #7c3aed
+  );
+}
+
+.glass-button-wrapper.blue::before {
+  background-image: conic-gradient(
+    from 0deg,
+    #1e40af,
+    #3b82f6,
+    #60a5fa,
+    #93c5fd,
+    #1e40af
+  );
+}
+
+.glass-button-wrapper.green::before {
+  background-image: conic-gradient(
+    from 0deg,
+    #6366f1,
+    #8b5cf6,
+    #a78bfa,
+    #c4b5fd,
+    #6366f1
+  );
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .glass-button-inner {
+    padding: 0.625rem 1.5rem;
+    font-size: 0.813rem;
+  }
+}

@@ -1,0 +1,36 @@
+.scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
+    z-index: 9999;
+    transition: width 0.2s ease-out;
+    box-shadow: 0 2px 4px rgba(99, 102, 241, 0.3);
+}
+
+/* Optional: Add a shimmer effect */
+.scroll-progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}

@@ -1,0 +1,359 @@
+git remote -v/* Service Detail Page */
+.service-detail-page {
+  min-height: 100vh;
+  background: #000000;
+  padding-top: 80px;
+}
+
+/* Hero Section */
+.service-hero {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
+  padding: 3rem 0;
+  border-bottom: 1px solid #1f2937;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb a {
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+  color: #a78bfa;
+}
+
+.breadcrumb span:last-child {
+  color: #f3f4f6;
+}
+
+.service-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #f3f4f6;
+  margin: 0 0 1rem 0;
+  background: linear-gradient(135deg, #6366f1 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.service-subtitle {
+  font-size: 1.25rem;
+  color: #9ca3af;
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+/* Overview Section */
+.service-overview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  padding: 4rem 0;
+  align-items: center;
+}
+
+.overview-content h2 {
+  font-size: 2rem;
+  color: #f3f4f6;
+  margin: 0 0 1.5rem 0;
+}
+
+.overview-content p {
+  font-size: 1.125rem;
+  color: #9ca3af;
+  line-height: 1.8;
+}
+
+.overview-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-placeholder {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #374151;
+}
+
+.image-placeholder svg {
+  color: #8b5cf6;
+}
+
+/* Features Section */
+.service-features {
+  padding: 4rem 0;
+}
+
+.service-features h2 {
+  font-size: 2rem;
+  color: #f3f4f6;
+  text-align: center;
+  margin: 0 0 3rem 0;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  background: #131314;
+  border: 1px solid #374151;
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  border-color: #8b5cf6;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  font-size: 1.25rem;
+  color: #f3f4f6;
+  margin: 0 0 0.75rem 0;
+}
+
+.feature-card p {
+  font-size: 0.9375rem;
+  color: #9ca3af;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Technologies Section */
+.service-technologies {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.02) 100%);
+  border-radius: 20px;
+  margin: 2rem 0;
+}
+
+.service-technologies h2 {
+  font-size: 2rem;
+  color: #f3f4f6;
+  text-align: center;
+  margin: 0 0 3rem 0;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tech-item {
+  background: #131314;
+  border: 1px solid #374151;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.tech-item:hover {
+  border-color: #8b5cf6;
+  transform: translateY(-2px);
+}
+
+.tech-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f3f4f6;
+}
+
+/* Process Section */
+.service-process {
+  padding: 4rem 0;
+}
+
+.service-process h2 {
+  font-size: 2rem;
+  color: #f3f4f6;
+  text-align: center;
+  margin: 0 0 3rem 0;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.process-step {
+  position: relative;
+  padding: 2rem;
+  background: #131314;
+  border: 1px solid #374151;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.process-step:hover {
+  border-color: #8b5cf6;
+  transform: translateY(-4px);
+}
+
+.step-number {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #6366f1 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.process-step h3 {
+  font-size: 1.25rem;
+  color: #f3f4f6;
+  margin: 0 0 0.75rem 0;
+}
+
+.process-step p {
+  font-size: 0.9375rem;
+  color: #9ca3af;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* CTA Section */
+.service-cta {
+  padding: 5rem 0;
+  text-align: center;
+}
+
+.cta-content {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  border: 1px solid #374151;
+  border-radius: 20px;
+  padding: 4rem 2rem;
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  color: #f3f4f6;
+  margin: 0 0 1rem 0;
+}
+
+.cta-content p {
+  font-size: 1.125rem;
+  color: #9ca3af;
+  margin: 0 0 2rem 0;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, #5b21b6 0%, #7c3aed 50%, #8b5cf6 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #a78bfa;
+  border: 1px solid #8b5cf6;
+}
+
+.btn-secondary:hover {
+  background: rgba(139, 92, 246, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .service-title {
+    font-size: 2rem;
+  }
+
+  .service-subtitle {
+    font-size: 1rem;
+  }
+
+  .service-overview {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .image-placeholder {
+    width: 200px;
+    height: 200px;
+  }
+
+  .features-grid,
+  .tech-grid,
+  .process-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-content {
+    padding: 3rem 1.5rem;
+  }
+
+  .cta-content h2 {
+    font-size: 1.75rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,162 @@
+/* ================= SECTION ================= */
+
+.logo-marquee-section {
+  padding: 5rem 1.5rem;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle glow */
+.logo-marquee-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(99,102,241,0.12), transparent 60%);
+  pointer-events: none;
+}
+
+/* ================= HEADER ================= */
+
+.logo-marquee-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeUp 1s ease forwards;
+}
+
+.logo-marquee-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.logo-marquee-subtitle {
+  color: #9ca3af;
+}
+
+/* ================= WRAPPER ================= */
+
+.logo-marquee-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+/* gradient fade edges */
+.logo-marquee-fade-left,
+.logo-marquee-fade-right {
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logo-marquee-fade-left {
+  left: 0;
+  background: linear-gradient(to right, #000, transparent);
+}
+
+.logo-marquee-fade-right {
+  right: 0;
+  background: linear-gradient(to left, #000, transparent);
+}
+
+/* ================= TRACK ================= */
+
+.logo-marquee-track {
+  overflow: hidden;
+}
+
+/* ================= CONTENT ================= */
+
+.logo-marquee-content {
+  display: flex;
+  gap: 3rem;
+  width: max-content;
+
+  animation: marqueeScroll 35s linear infinite;
+}
+
+/* pause on hover */
+.logo-marquee-wrapper:hover .logo-marquee-content {
+  animation-play-state: paused;
+}
+
+/* ================= ITEM ================= */
+
+.logo-marquee-item {
+  flex: 0 0 auto;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+
+  transition: all 0.3s ease;
+}
+
+/* hover effect */
+.logo-marquee-item:hover {
+  transform: translateY(-5px) scale(1.05);
+  background: rgba(99,102,241,0.08);
+  border-color: rgba(99,102,241,0.4);
+  box-shadow: 0 10px 30px rgba(99,102,241,0.2);
+}
+
+/* ================= IMAGE ================= */
+
+.logo-marquee-image {
+  height: 40px;
+  width: auto;
+  filter: grayscale(100%) brightness(0.8);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.logo-marquee-item:hover .logo-marquee-image {
+  filter: grayscale(0%) brightness(1);
+  opacity: 1;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes marqueeScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ================= FADE IN ================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .logo-marquee-content {
+    gap: 2rem;
+    animation-duration: 25s;
+  }
+
+  .logo-marquee-image {
+    height: 30px;
+  }
+
+  .logo-marquee-fade-left,
+  .logo-marquee-fade-right {
+    width: 60px;
+  }
+}

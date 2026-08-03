@@ -1,0 +1,183 @@
+/* App Promotion Section */
+.app-promotion-section {
+  padding: 4rem 0;
+  background: #000000;
+}
+
+.app-promotion-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.app-promotion-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+  border: 1px solid #374151;
+  border-radius: 20px;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative gradient background */
+.app-promotion-content::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.app-promotion-text {
+  flex: 1;
+  max-width: 500px;
+}
+
+.app-promotion-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #f3f4f6;
+  margin: 0 0 1rem 0;
+  background: linear-gradient(135deg, #6366f1 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+.app-promotion-description {
+  font-size: 1.125rem;
+  color: #9ca3af;
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+  max-width: 400px;
+}
+
+/* Store Buttons */
+.app-store-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.store-button {
+  display: inline-block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.store-button:hover {
+  transform: translateY(-4px);
+}
+
+.store-button:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+.store-badge {
+  height: 50px;
+  width: auto;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.store-button:hover .store-badge {
+  filter: brightness(1.1) drop-shadow(0 4px 12px rgba(139, 92, 246, 0.3));
+}
+
+/* Image Section */
+.app-promotion-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  z-index: 1;
+}
+
+.promo-image {
+  max-width: 375px;
+  width: 100%;
+  height: auto;
+  display: block;
+  animation: floatImage 3s ease-in-out infinite;
+}
+
+/* Floating animation */
+@keyframes floatImage {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .app-promotion-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 2.5rem 2rem;
+  }
+
+  .app-promotion-text {
+    max-width: 100%;
+  }
+
+  .app-promotion-title {
+    font-size: 2rem;
+  }
+
+  .app-promotion-description {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .app-store-buttons {
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .promo-image {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-promotion-section {
+    padding: 3rem 0;
+  }
+
+  .app-promotion-content {
+    padding: 2rem 1.5rem;
+  }
+
+  .app-promotion-title {
+    font-size: 1.75rem;
+  }
+
+  .app-promotion-description {
+    font-size: 0.9375rem;
+  }
+
+  .store-badge {
+    height: 44px;
+  }
+
+  .app-store-buttons {
+    gap: 0.75rem;
+  }
+
+  .promo-image {
+    max-width: 250px;
+  }
+}

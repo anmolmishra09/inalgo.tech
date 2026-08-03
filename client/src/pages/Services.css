@@ -1,0 +1,393 @@
+/* ==========================================================================
+   Global & Container Layout
+   ========================================================================== */
+.services {
+  width: 100%;
+  min-height: 100vh;
+  color: #ffffff;
+  background-color: #0f172a;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  overflow-x: hidden;
+  padding-bottom: 3rem;
+  /* Smooth scrolling and tap highlight reset */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   Hero Section (Responsive Typography)
+   ========================================================================== */
+.services-hero {
+  padding: 8rem;
+  text-align: center;
+  background: radial-gradient(circle at top, rgba(59, 130, 246, 0.18), transparent 70%);
+}
+
+.services-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.025em;
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.services-hero .lead {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: #94a3b8;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Services Grid
+   ========================================================================== */
+.services-content {
+  padding: 2rem 0;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* ==========================================================================
+   Interactive Service Card
+   ========================================================================== */
+.service-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+  overflow: hidden;
+  will-change: transform;
+}
+
+@media (min-width: 768px) {
+  .service-card {
+    padding: 2rem;
+  }
+}
+
+/* Dynamic Top-Glow Effect on Hover/Focus */
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover & Active States (Mobile + Desktop friendly) */
+.service-card:hover,
+.service-card:focus-within {
+  transform: translateY(-6px);
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.5),
+              0 0 20px rgba(59, 130, 246, 0.15);
+}
+
+.service-card:hover::before,
+.service-card:focus-within::before {
+  opacity: 1;
+}
+
+.service-card:active {
+  transform: translateY(-2px);
+}
+
+/* Icon Container with Micro-interaction */
+.service-icon {
+  font-size: 2.25rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: 0.85rem;
+  margin-bottom: 1.25rem;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.08) rotate(-3deg);
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+/* Card Header */
+.service-card h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 0.5rem;
+}
+
+.service-card > p {
+  color: #94a3b8;
+  font-size: 0.925rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+/* Service Inner Sections */
+.service-section {
+  margin-bottom: 1.25rem;
+}
+
+.service-section h4 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+/* Included Features List */
+.service-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.service-features li {
+  font-size: 0.875rem;
+  color: #cbd5e1;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.4;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.service-card:hover .service-features li:hover {
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+/* Tech Stack Badges (Interactive Pill Tags) */
+.service-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tech-badge {
+  font-size: 0.75rem;
+  padding: 0.3rem 0.65rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.5rem;
+  color: #93c5fd;
+  font-weight: 500;
+  cursor: default;
+  transition: all 0.2s ease;
+}
+
+.tech-badge:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Project Details Grid (Adapts automatically to small screens) */
+.service-details {
+  /* display: grid; */
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  background: rgba(15, 23, 42, 0.6);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  margin-top: auto;
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: border-color 0.3s ease;
+}
+
+@media (min-width: 380px) {
+  .service-details {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+}
+
+.service-card:hover .service-details {
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0; /* Prevents text overflow */
+}
+
+.detail-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.detail-label {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  color: #64748b;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.detail-value {
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Touch-Friendly Action Button */
+.service-btn {
+  width: 100%;
+  min-height: 48px; /* Accessible mobile touch target */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.25 ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  outline: none;
+}
+
+.service-btn:hover {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+}
+
+.service-btn:focus-visible {
+  ring: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+.service-btn:active {
+  transform: scale(0.98);
+}
+
+.btn-icon {
+  font-size: 1.1rem;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-btn:hover .btn-icon {
+  transform: translateX(6px);
+}
+
+/* ==========================================================================
+   Bottom CTA Section
+   ========================================================================== */
+.cta-section {
+  padding: 3rem 0 2rem;
+}
+
+.cta-content {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  padding: 2.5rem 1.25rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 640px) {
+  .cta-content {
+    padding: 3.5rem 2rem;
+  }
+}
+
+.cta-content h2 {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 800;
+  margin: 0;
+}
+
+.cta-content p {
+  color: #94a3b8;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  max-width: 500px;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Accessibility: Reduced Motion
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .service-card,
+  .service-icon,
+  .tech-badge,
+  .service-btn,
+  .btn-icon,
+  .service-features li {
+    transition: none !important;
+    transform: none !important;
+  }
+}
