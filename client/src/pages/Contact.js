@@ -171,7 +171,6 @@ function Contact() {
               </div>
               
               <div className="social-connect">
-                <h3></h3>
                 <div className="social-links">
                   
                   {/* Telegram
