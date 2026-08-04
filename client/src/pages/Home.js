@@ -14,17 +14,16 @@ import AppPromotion from '../components/AppPromotion';
 import TeamIntro from '../components/TeamIntro';
 import MarqueeTestimonials from '../components/MarqueeTestimonials';
 import LogoMarquee from '../components/LogoMarquee';
-import demoVideo from "../images/download.mp4";
+import demoVideo from '../images/download.mp4';
 
-// Hover-to-Play Video Component
+// Hover-to-Play Video Section Component
 const VideoSection = () => {
   const videoRef = useRef(null);
 
   const handleMouseEnter = () => {
     if (videoRef.current) {
       videoRef.current.play().catch((err) => {
-        // Autoplay policy fallback
-        console.log("Video play prevented: ", err);
+        console.warn("Autoplay deferred by browser policy:", err);
       });
     }
   };
@@ -39,10 +38,14 @@ const VideoSection = () => {
     <section className="video-section">
       <div className="container">
         <div className="section-header text-center">
-          <span className="section-tag font-mono">INTERACTIVE DEMO</span>
-          <h2 className="section-title">See Our Autonomous Agents in Action</h2>
+          <span className="section-tag">
+            ⚡ Real-Time Runtime Engine
+          </span>
+          <h2 className="section-title">
+            See Autonomous Agents Execute in Action
+          </h2>
           <p className="section-subtitle">
-            Hover over the video preview below to launch real-time agent execution.
+            Hover over the execution viewport below to preview real-time multi-step tool calls and agent reasoning chains.
           </p>
         </div>
 
@@ -52,31 +55,34 @@ const VideoSection = () => {
           onMouseLeave={handleMouseLeave}
         >
           <video
-  ref={videoRef}
-  className="hover-video"
-  loop
-  playsInline
-  preload="metadata"
-  poster="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80"
->
-  <source src={demoVideo} type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-          <div className="video-overlay">
-            <span className="play-badge">Hover to Preview Demo</span>
-          </div>
+            ref={videoRef}
+            className="hover-video"
+            loop
+            playsInline
+            preload="metadata"
+            poster="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80"
+          >
+            <source src={demoVideo} type="video/mp4" />
+            Your browser does not support interactive video playback.
+          </video>
+
+          {/* <div className="video-overlay">
+            <span className="play-badge">
+              ⚡ Hover to Preview Real-Time Demo
+            </span>
+          </div> */}
         </div>
       </div>
     </section>
   );
 };
 
-// AI Startup Data Configurations
+// Capabilities Configuration Data
 const EXPERTISE_AREAS = [
   {
     id: 'llm-genai',
-    title: 'Generative AI & LLMs',
-    description: 'Custom fine-tuning, prompt engineering, and local/cloud deployment of large language models tailored to proprietary business data.',
+    title: 'Enterprise LLMs & Fine-Tuning',
+    description: 'Custom fine-tuning, domain-adapted models, and private cloud deployment with strict enterprise data privacy controls.',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2a10 10 0 1 0 10 10H12V2z" />
@@ -87,8 +93,8 @@ const EXPERTISE_AREAS = [
   },
   {
     id: 'autonomous-agents',
-    title: 'Autonomous AI Agents',
-    description: 'Multi-agent orchestration systems capable of executing multi-step complex workflows, decision-making, and tool utilization.',
+    title: 'Autonomous Multi-Agent Networks',
+    description: 'Self-correcting multi-agent orchestrations built for complex workflows, tool utilization, and autonomous decisions.',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 8V4H8" />
@@ -102,8 +108,8 @@ const EXPERTISE_AREAS = [
   },
   {
     id: 'multimodal-avatars',
-    title: 'Multimodal & Real-Time Avatars',
-    description: 'Integrating lip-sync engines, real-time speech synthesis (TTS/STT), and digital human avatars into interactive web applications.',
+    title: 'Multimodal Avatars & Voice AI',
+    description: 'Ultra-low latency streaming voice, real-time lip-sync rendering engines, and interactive digital human personas.',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z" />
@@ -114,8 +120,8 @@ const EXPERTISE_AREAS = [
   },
   {
     id: 'mlops-infrastructure',
-    title: 'MLOps & Scalable AI Pipelines',
-    description: 'Production-ready model monitoring, low-latency inference servers, vector databases (RAG), and secure enterprise integration.',
+    title: 'Enterprise MLOps & RAG Engine',
+    description: 'Low-latency GPU cluster scaling, vector indexing pipelines, model monitoring, and secure enterprise webhooks.',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <ellipse cx="12" cy="5" rx="9" ry="3" />
@@ -126,8 +132,8 @@ const EXPERTISE_AREAS = [
   },
   {
     id: 'computer-vision',
-    title: 'Computer Vision & Visual Intelligence',
-    description: 'Real-time video processing, automated visual inspection, image generation, and object detection systems.',
+    title: 'Computer Vision Intelligence',
+    description: 'Real-time spatial video inspection, object detection, edge deployment models, and automated visual analytics.',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
@@ -137,8 +143,8 @@ const EXPERTISE_AREAS = [
   },
   {
     id: 'predictive-analytics',
-    title: 'Predictive & Neural Analytics',
-    description: 'Transforming raw enterprise data into actionable predictive insights with custom deep learning architectures.',
+    title: 'Predictive Neural Analytics',
+    description: 'Transforming operational enterprise data into actionable foresight with custom deep learning neural architectures.',
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
@@ -147,53 +153,60 @@ const EXPERTISE_AREAS = [
   },
 ];
 
+// SaaS Process Steps
 const PROCESS_STEPS = [
   {
     number: '01',
     title: 'AI Discovery & Strategy',
-    description: 'We analyze your business workflows to identify high-ROI opportunities for artificial intelligence and automation.',
+    description: 'Analyzing operational workflows to isolate high-value targets for autonomous agent integration.',
   },
   {
     number: '02',
     title: 'Data & Model Architecture',
-    description: 'Designing RAG architectures, selecting foundational models, and preparing clean training or fine-tuning datasets.',
+    description: 'Configuring secure RAG vector indexes, choosing model backbones, and cleaning fine-tuning datasets.',
   },
   {
     number: '03',
-    title: 'Prototype & Agent Training',
-    description: 'Building custom AI agents, fine-tuning neural networks, and creating rapid proof-of-concept prototypes.',
+    title: 'Agent Building & Training',
+    description: 'Developing custom multi-agent chains, defining tool execution rules, and evaluating logic flows.',
   },
   {
     number: '04',
     title: 'Full-Stack Integration',
-    description: 'Seamlessly embedding AI models, APIs, real-time webhooks, and intuitive frontend UI components.',
+    description: 'Connecting low-latency APIs, webhooks, streaming UI interfaces, and enterprise single-sign-on controls.',
   },
   {
     number: '05',
-    title: 'Testing & Safety Alignment',
-    description: 'Rigorous safety evaluations, latency optimization, hallucination reduction, and edge-case testing.',
+    title: 'Safety Guardrails & Alignment',
+    description: 'Performing adversarial red-teaming, latency optimization, and automated hallucination suppression.',
   },
   {
     number: '06',
-    title: 'Deployment & MLOps Scaling',
-    description: 'Deploying to high-performance GPU clusters with continuous monitoring, telemetry, and automated model updates.',
+    title: 'Production MLOps Scaling',
+    description: 'Deploying across GPU clusters with continuous telemetry, performance tracking, and automated updates.',
   },
 ];
 
 function Home() {
   return (
-    <div className="home">
+    <div className="home-page">
       {/* Hero Section */}
-      <section className="hero">
+      <section className="hero-section">
+        <div className="hero-glow glow-1"></div>
+        <div className="hero-glow glow-2"></div>
+
         <div className="container">
-          <div className="hero-content">
-            <span className="hero-badge">AI-Powered Enterprise Solutions</span>
+          <div className="hero-content text-center">
+            <span className="hero-badge">
+              ✨ Autonomous AI Workforce • V2.0 Engine
+            </span>
+
             <h1 className="hero-title">
-              Think It. Type It. <span className="hero-highlight-orange">Launch It.</span>
+              Automate Complex Workflows with <span className="hero-highlight">Intelligent AI Agents</span>
             </h1>
 
             <p className="hero-subtitle">
-              Empower your enterprise with autonomous AI agents, fine-tuned models, and intelligent workflows to <span className="hero-highlight-underline">stay ahead</span> in the next-generation economy.
+              Transform manual enterprise tasks into high-speed autonomous operations. Build, test, and deploy production-ready AI agents in record time with zero infra setup.
             </p>
 
             <div className="hero-buttons">
@@ -204,14 +217,14 @@ function Home() {
                   rel="noopener noreferrer" 
                   style={{ textDecoration: 'none', color: 'inherit' }}
                 >
-                  Try AI Demo
+                  Start Free Trial ⚡
                 </a>
               </GlassBorderButton>
 
               <a href="#expertise" className="btn-secondary">
-                <span>Explore Tech Stack</span>
-                <svg className="btn-arrow" width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1.25.5 4.75 4l-3.5 3.5" stroke="currentColor" strokeOpacity=".4" strokeLinecap="round" strokeLinejoin="round" />
+                <span>Book Interactive Demo</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </a>
             </div>
@@ -226,14 +239,14 @@ function Home() {
       {/* Hover-to-Play Video Section */}
       <VideoSection />
 
-      {/* Our Expertise Section */}
+      {/* Core Capabilities */}
       <section id="expertise" className="expertise-section">
         <div className="container">
           <div className="section-header text-center">
-            <span className="section-tag font-mono">OUR CORE CAPABILITIES</span>
-            <h2 className="section-title">Artificial Intelligence Expertise</h2>
+            <span className="section-tag">OUR CORE CAPABILITIES</span>
+            <h2 className="section-title">Engineered for Enterprise Performance</h2>
             <p className="section-subtitle">
-              From LLM fine-tuning to real-time multimodal digital avatars, we build production-grade AI systems designed to transform business models.
+              From low-latency agent orchestrations to multimodal voice avatars, we build high-performance AI systems.
             </p>
           </div>
 
@@ -249,20 +262,20 @@ function Home() {
         </div>
       </section>
 
-      {/* Portfolio / AI Showcase */}
+      {/* Portfolio Showcase */}
       <div id="portfolio">
         <Portfolio />
       </div>
 
-      {/* Target Clients Section */}
+      {/* Target Clients */}
       <TargetClients />
 
-      {/* AI Development Process */}
+      {/* Integration Process */}
       <section className="process-section">
         <div className="container">
           <div className="section-header text-center">
             <h2 className="section-title">Our AI Integration Process</h2>
-            <p className="section-subtitle">How We Transform Raw Ideas Into Autonomous Intelligence</p>
+            <p className="section-subtitle">From Conceptual Blueprint to Production Autonomous Execution</p>
           </div>
 
           <div className="process-timeline">
@@ -279,17 +292,17 @@ function Home() {
         </div>
       </section>
 
-      {/* Social Proof & Testimonials */}
+      {/* Testimonials */}
       <section className="testimonials-section">
         <div className="container">
-          <h2 className="section-title text-center">Trusted by AI Pioneers & Leaders</h2>
-          <p className="section-subtitle text-center">Hear how Inalgo’s AI platforms deliver measurable ROI</p>
+          <h2 className="section-title text-center">Trusted by Leading AI Engineers</h2>
+          <p className="section-subtitle text-center">See how tech leaders deliver measurable ROI using Inalgo AI</p>
           
           <div className="testimonials-grid">
             <div className="testimonial-card">
               <div className="testimonial-stars">★★★★★</div>
               <p className="testimonial-text">
-                "Inalgo built our real-time AI agent pipeline in weeks. Their expertise in low-latency model hosting and custom agent logic set a new standard for our platform."
+                "Inalgo built our real-time multi-agent execution pipeline in weeks. Their expertise in low-latency hosting and agent logic set a new benchmark for us."
               </p>
               <div className="testimonial-author">
                 <div className="author-info">
@@ -302,7 +315,7 @@ function Home() {
             <div className="testimonial-card">
               <div className="testimonial-stars">★★★★★</div>
               <p className="testimonial-text">
-                "The multimodal digital avatar integration exceeded our expectations. The lip-sync and audio responsiveness are seamless and highly scalable."
+                "The multimodal digital avatar integration exceeded our expectations. The streaming lip-sync and audio responsiveness are seamless and highly scalable."
               </p>
               <div className="testimonial-author">
                 <div className="author-info">
@@ -315,7 +328,7 @@ function Home() {
             <div className="testimonial-card">
               <div className="testimonial-stars">★★★★★</div>
               <p className="testimonial-text">
-                "Inalgo helped us transition from generic OpenAI wrappers to full enterprise RAG infrastructure. Highly competent AI engineering team!"
+                "Transitioning from basic OpenAI API wrappers to Inalgo's enterprise RAG infrastructure cut our retrieval latency in half while boosting accuracy."
               </p>
               <div className="testimonial-author">
                 <div className="author-info">
@@ -328,39 +341,39 @@ function Home() {
         </div>
       </section>
 
-      {/* FAQ & Subscriptions */}
+      {/* FAQ & Newsletter */}
       <FAQ />
       <Newsletter />
 
-      {/* Mobile App Promotion */}
+      {/* App Promotion */}
       <AppPromotion 
-        title="Deploy AI Agents Anywhere"
-        description="Monitor agent workflows, model inference metrics, and real-time execution logs straight from your mobile app."
+        title="Deploy & Track AI Fleet Anywhere"
+        description="Monitor multi-agent runs, model latency metrics, and real-time execution logs directly from your mobile telemetry interface."
         buttonText="Get Early Access"
         buttonLink="/contact"
         googlePlayUrl="#"
         appStoreUrl="#"
       />
 
-      {/* Team Introduction */}
+      {/* Team Intro */}
       <TeamIntro 
         title="Meet the AI Engineers Shaping Tomorrow"
-        description="Our team brings together computer vision experts, machine learning researchers, and full-stack developers dedicated to building responsible AI."
-        buttonText="Join Our AI Team"
+        description="Our team brings together machine learning researchers, systems engineers, and product designers dedicated to responsible AI development."
+        buttonText="Join Our Team"
         buttonLink="/contact"
       />
 
-      {/* Continuous Marquees */}
+      {/* Marquees */}
       <MarqueeTestimonials />
       <LogoMarquee />
 
-      {/* Final Call to Action */}
+      {/* Final Call To Action */}
       <CTASection 
         badge="Next-Gen AI Systems"
-        title="Ready to Scale Your Startup with AI?"
-        titleGradient="Transform Your Business with Inalgo AI"
-        description="Schedule a technical consultation with our AI architects today and launch custom AI models in record time."
-        buttonText="Schedule AI Consultation"
+        title="Ready to Automate Core Operations?"
+        titleGradient="Transform Your Business with Inalgo AI Architecture"
+        description="Schedule a technical deep-dive with our AI architects today and launch custom agent networks in record time."
+        buttonText="Schedule Technical Consultation"
         buttonLink="/contact"
       />
     </div>

@@ -1,100 +1,348 @@
+/* ==========================================================================
+   Image Gallery Section - Full Image Visible in Idle State
+   ========================================================================== */
+
 .image-gallery-section {
-  padding: 5rem 1rem;
-  background-color: #000000;
+  padding: clamp(2.5rem, 5vw, 4rem) 1rem;
+  background-color: #0b0f19;
+  background: radial-gradient(ellipse at 50% 0%, rgba(168, 85, 247, 0.15), transparent 70%), #0b0f19;
 }
 
 .gallery-title {
-  font-size: 1.875rem;
-  font-weight: 600;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 700;
   color: #ffffff;
   text-align: center;
   margin: 0 auto;
 }
 
 .gallery-description {
-  font-size: 0.875rem;
-  color: #64748b;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  color: #9ca3af;
   text-align: center;
   margin: 0.5rem auto 0;
-  max-width: 32rem;
+  max-width: 34rem;
 }
 
+/* Gallery Container */
 .image-gallery {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  height: 400px;
+  gap: 0.875rem;
+  height: 360px; /* Optimal height for showing full images */
   width: 100%;
-  max-width: 64rem;
+  max-width: 72rem;
   margin: 2.5rem auto 0;
 }
 
+/* Gallery Item / Card */
 .gallery-item {
   position: relative;
-  flex-grow: 1;
-  width: 14rem;
-  height: 400px;
-  border-radius: 0.5rem;
+  flex: 1 1 0%;
+  min-width: 0;
+  height: 100%;
+  border-radius: 1rem;
   overflow: hidden;
-  transition: all 0.5s ease;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-color: #111827; /* Dark card canvas */
+  transition: flex 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+              border-color 0.3s ease, 
+              box-shadow 0.3s ease;
   cursor: pointer;
 }
 
+/* Card Active Hover State */
 .gallery-item:hover {
-  width: 100%;
+  flex: 3.5 1 0%; /* Smoothly expands card */
+  border-color: rgba(168, 85, 247, 0.7);
+  box-shadow: 0 16px 36px rgba(168, 85, 247, 0.25);
 }
 
+/* Full Image Sizing (Bina Crop Hue) */
 .gallery-image {
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  /* Image ko crop hone se bachane aur full dikhane ke liye */
+  object-fit: cover; 
   object-position: center;
+  filter: brightness(0.85); /* Slightly darker in idle for premium SaaS look */
+  transition: transform 0.5s ease, filter 0.4s ease;
 }
 
-/* Responsive Design */
-@media (max-width: 1023px) {
-  .image-gallery {
-    height: 300px;
-    gap: 0.375rem;
-  }
-
-  .gallery-item {
-    height: 300px;
-    width: 10rem;
-  }
-
-  .gallery-title {
-    font-size: 1.5rem;
-  }
+.gallery-item:hover .gallery-image {
+  transform: scale(1.05);
+  filter: brightness(1); /* Hover hone par full bright */
 }
+
+/* Subtle Idle Overlay (Bina cursor ke clean look) */
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    180deg, 
+    transparent 40%, 
+    rgba(11, 15, 25, 0.85) 85%,
+    rgba(11, 15, 25, 0.98) 100%
+  );
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  
+  /* Idle state mein text clear aur formatted rakhein */
+  opacity: 0.9;
+  transition: opacity 0.35s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  width: 100%;
+}
+
+/* Category Badge */
+.gallery-badge {
+  display: inline-block;
+  font-size: 0.675rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.375rem;
+  white-space: nowrap;
+}
+
+/* Title (Full visible or truncated cleanly) */
+.item-title {
+  font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0.1rem 0;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* SaaS Action Button */
+.gallery-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.775rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 0.5rem;
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+  margin-top: 0.2rem;
+}
+
+.gallery-btn:hover {
+  background: #a855f7;
+  border-color: #c084fc;
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.6);
+}
+
+/* ==========================================================================
+   Responsive Layout (Mobile Devices)
+   ========================================================================== */
 
 @media (max-width: 767px) {
-  .image-gallery-section {
-    padding: 3rem 0.5rem;
-  }
-
   .image-gallery {
     flex-direction: column;
     height: auto;
-    gap: 0.5rem;
+    gap: 1rem;
   }
 
   .gallery-item {
     width: 100%;
-    height: 200px;
+    height: 240px; /* High visibility height on mobile screens */
+    flex: none;
   }
 
   .gallery-item:hover {
-    width: 100%;
-    height: 300px;
+    height: 280px;
+    flex: none;
   }
+}
 
-  .gallery-title {
-    font-size: 1.5rem;
-  }
+/* ==========================================================================
+   Modern SaaS Action Button (Glassmorphism & Neon Glow)
+   ========================================================================== */
 
-  .gallery-description {
-    font-size: 0.875rem;
-    padding: 0 1rem;
-  }
+.gallery-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 0.5rem 1.15rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  
+  /* Glassmorphism Background */
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid rgba(192, 132, 252, 0.35);
+  border-radius: 9999px; /* Pill Shape */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  
+  /* Smooth Transformations */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 
+              inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Subtle Shimmer Effect on Idle */
+.gallery-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+/* Hover State - Glow & Lift */
+.gallery-btn:hover {
+  background: rgba(168, 85, 247, 0.85);
+  border-color: #d8b4fe;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.6),
+              0 6px 16px rgba(11, 15, 25, 0.4);
+}
+
+.gallery-btn:hover::before {
+  left: 100%; /* Shimmer sweeps across button */
+}
+
+/* Click Active State */
+.gallery-btn:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+}
+
+/* Arrow Icon Motion */
+.gallery-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.gallery-btn:hover svg {
+  transform: translateX(3px); /* Arrow slides right on hover */
+}
+
+/* ==========================================================================
+   View Project Button - High Visibility SaaS Style
+   ========================================================================== */
+
+.gallery-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.25rem;
+  font-size: 0.825rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  
+  /* Primary Button Colors: Crisp White Text over Vibrant Gradient */
+  color: #ffffff;
+  background: linear-gradient(135deg, #7e22ce 0%, #a855f7 100%);
+  border: 1px solid rgba(216, 180, 254, 0.5);
+  border-radius: 9999px; /* Modern Pill Design */
+  
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  
+  /* Glassmorphism & Shadow Depth */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 14px rgba(126, 34, 206, 0.4), 
+              inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dynamic Shimmer Light Sweep on Hover */
+.gallery-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+/* Hover State: Vibrant Neon Lift */
+.gallery-btn:hover {
+  background: linear-gradient(135deg, #9333ea 0%, #c084fc 100%);
+  border-color: #f0abfc;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px rgba(168, 85, 247, 0.75),
+              0 6px 18px rgba(11, 15, 25, 0.5);
+}
+
+.gallery-btn:hover::before {
+  left: 100%; /* Sweeps highlight across button */
+}
+
+/* Active Click Bounce Effect */
+.gallery-btn:active {
+  transform: translateY(0) scale(0.96);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.5);
+}
+
+/* Integrated Arrow SVG Color & Motion */
+.gallery-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke: #ffffff;
+  transition: transform 0.3s ease;
+}
+
+.gallery-btn:hover svg {
+  transform: translateX(4px); /* Slides arrow right on hover */
 }
