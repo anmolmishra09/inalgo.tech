@@ -1,15 +1,14 @@
 .scroll-progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
-    z-index: 9999;
-    transition: width 0.2s ease-out;
-    box-shadow: 0 2px 4px rgba(99, 102, 241, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  z-index: 9999;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
 }
-
-/* Optional: Add a shimmer effect */
+/* Shimmer effect optimized for light backgrounds */
 .scroll-progress-bar::after {
     content: '';
     position: absolute;
@@ -20,7 +19,7 @@
     background: linear-gradient(
         90deg,
         transparent,
-        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.5),
         transparent
     );
     animation: shimmer 2s infinite;

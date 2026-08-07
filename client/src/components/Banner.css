@@ -1,4 +1,4 @@
-/* Promotional Banner */
+/* Promotional Banner - White Theme */
 .promo-banner {
   display: flex;
   align-items: center;
@@ -7,16 +7,19 @@
   padding: 0.375rem 0;
   font-weight: 500;
   font-size: 0.875rem;
-  color: white;
+  color: #0f172a;
   text-align: center;
-  background-color: #7668ff;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
   text-decoration: none;
   position: relative;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
 }
 
 .promo-banner:hover {
-  background-color: #6556e8;
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
 }
 
 .banner-content {
@@ -31,17 +34,19 @@
 }
 
 .promo-banner:hover .banner-content {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(15, 23, 42, 0.04);
 }
 
 .banner-content p {
   margin: 0;
   line-height: 1.5;
+  color: #334155;
 }
 
 .banner-arrow {
   margin-top: 1px;
   flex-shrink: 0;
+  color: #4f46e5;
   transition: transform 0.3s ease;
 }
 
@@ -56,17 +61,18 @@
   transform: translateY(-50%);
   background: transparent;
   border: none;
-  color: white;
+  color: #64748b;
   font-size: 1.5rem;
   line-height: 1;
   cursor: pointer;
   padding: 0.25rem 0.5rem;
   opacity: 0.7;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, color 0.3s ease;
 }
 
 .banner-close:hover {
   opacity: 1;
+  color: #0f172a;
 }
 
 /* Responsive */

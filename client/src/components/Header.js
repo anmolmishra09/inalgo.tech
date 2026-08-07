@@ -12,9 +12,9 @@ function Header() {
   };
 
   const closeMenu = () => {
-    setMenuOpen(false);
-  };
-
+  setMenuOpen(false);
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+};
   const isActive = (path) => {
     return location.pathname === path ? 'active' : '';
   };

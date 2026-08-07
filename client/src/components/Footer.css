@@ -1,18 +1,21 @@
 /* Footer Wrapper */
 .footer-wrapper {
-  background-color: #000000;
+  background-color: #f8fafc;
   padding: 5rem 1rem 0;
 }
 
 .footer {
-  background-color: #131314;
+  background-color: #ffffff;
   width: 100%;
   max-width: 1350px;
   margin: 0 auto;
-  color: #ffffff;
+  color: #0f172a;
   padding: 2rem 1rem 0;
   border-radius: 1.5rem 1.5rem 0 0;
   overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-bottom: none;
+  box-shadow: 0 -4px 20px rgba(15, 23, 42, 0.03);
 }
 
 /* Footer Grid */
@@ -39,7 +42,7 @@
 .footer-description {
   font-size: 0.875rem;
   line-height: 1.71;
-  color: #d4d4d8;
+  color: #475569;
   max-width: 24rem;
   margin: 0;
 }
@@ -51,12 +54,12 @@
 }
 
 .social-icon {
-  color: #ffffff;
+  color: #475569;
   transition: color 0.3s ease;
 }
 
 .social-icon:hover {
-  color: #a1a1aa;
+  color: #0f172a;
 }
 
 .social-icon svg {
@@ -77,10 +80,10 @@
 }
 
 .footer-heading {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.875rem;
   margin-bottom: 1rem;
-  color: #ffffff;
+  color: #0f172a;
 }
 
 .footer-list {
@@ -100,22 +103,23 @@
 }
 
 .footer-list a {
-  color: #d4d4d8;
+  color: #475569;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-list a:hover {
-  color: #a1a1aa;
+  color: #0f172a;
 }
 
 .hiring-badge {
   font-size: 0.6875rem;
   padding: 0.125rem 0.5rem;
   border-radius: 9999px;
-  background-color: rgba(6, 78, 59, 0.4);
-  border: 1px solid #86efac;
-  color: #86efac;
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #16a34a;
+  font-weight: 500;
 }
 
 /* Copyright */
@@ -123,14 +127,14 @@
   max-width: 80rem;
   margin: 3rem auto 0;
   padding-top: 1rem;
-  border-top: 1px solid #404040;
+  border-top: 1px solid #e2e8f0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .footer-copyright p {
-  color: #a1a1aa;
+  color: #64748b;
   font-size: 0.875rem;
   margin: 0;
 }
@@ -153,6 +157,7 @@
   background-color: #22c55e;
   border-radius: 9999px;
   filter: blur(170px);
+  opacity: 0.15;
   pointer-events: none;
 }
 
@@ -162,7 +167,7 @@
   font-weight: 800;
   line-height: 0.7;
   color: transparent;
-  -webkit-text-stroke: 1px #0d542b;
+  -webkit-text-stroke: 1px #cbd5e1;
   font-size: clamp(3rem, 15vw, 15rem);
   margin: 1.5rem 0 0;
 }

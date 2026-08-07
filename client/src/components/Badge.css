@@ -1,28 +1,31 @@
-/* Info Badge Component */
+/* Info Badge Component - White Theme */
 .info-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  border: 1px solid #c7d2fe;
+  border: 1px solid #e2e8f0;
   border-radius: 9999px;
   padding: 0.25rem;
   padding-right: 0.75rem;
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--primary-color);
-  background-color: #eef2ff;
+  color: #0f172a;
+  background-color: #ffffff;
   text-decoration: none;
   transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
 }
 
 .info-badge:hover {
-  background-color: #e0e7ff;
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
   transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(15, 23, 42, 0.08);
 }
 
 .badge-label {
-  background-color: var(--primary-color);
-  color: white;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: #ffffff;
   font-size: 0.75rem;
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
@@ -35,6 +38,7 @@
   align-items: center;
   gap: 0.25rem;
   margin: 0;
+  color: #475569;
 }
 
 .badge-arrow {
@@ -42,10 +46,12 @@
   height: 12px;
   margin-top: 2px;
   transition: transform 0.3s ease;
+  color: #64748b;
 }
 
 .info-badge:hover .badge-arrow {
   transform: translateX(2px);
+  color: #0f172a;
 }
 
 /* Responsive */

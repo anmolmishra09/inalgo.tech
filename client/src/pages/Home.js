@@ -60,7 +60,7 @@ const VideoSection = () => {
             loop
             playsInline
             preload="metadata"
-            poster="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80"
+            poster=""
           >
             <source src={demoVideo} type="video/mp4" />
             Your browser does not support interactive video playback.
@@ -239,7 +239,7 @@ function Home() {
       {/* Hover-to-Play Video Section */}
       <VideoSection />
 
-      {/* Core Capabilities */}
+      {/* Core Capabiliti zes */}
       <section id="expertise" className="expertise-section">
         <div className="container">
           <div className="section-header text-center">

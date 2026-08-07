@@ -1,4 +1,4 @@
-/* Glass Button with Animated Border */
+/* Glass Button with Animated Border - White Theme */
 
 @keyframes rotate {
   100% {
@@ -16,13 +16,15 @@
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-decoration: none;
   isolation: isolate;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
 }
 
 .glass-button-wrapper:hover {
   transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.18);
 }
 
 .glass-button-wrapper:active {
@@ -35,22 +37,19 @@
   z-index: -1;
   left: -50%;
   top: -50%;
-  width: 1;
-  height: 100%;
+  width: 200%;
+  height: 200%;
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: 50% 50%;
-  filter: blur(10px);
+  filter: blur(8px);
   background-image: conic-gradient(
     from 0deg,
-    #2563eb,
+    #6366f1,
     #8b5cf6,
     #ec4899,
-    #f59e0b,
-    #a78bfa,
-    #06b6d4,
     #3b82f6,
-    #2563eb
+    #6366f1
   );
   animation: rotate 4s linear infinite;
 }
@@ -58,10 +57,10 @@
 .glass-button-inner {
   padding: 0.75rem 2rem;
   font-size: 0.875rem;
-  color: white;
+  color: #0f172a;
   border-radius: 9999px;
-  font-weight: 500;
-  background: #1f2937;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(10px);
   border: none;
   cursor: pointer;
@@ -72,7 +71,8 @@
 }
 
 .glass-button-inner:hover {
-  background: rgba(31, 41, 55, 0.9);
+  background: #ffffff;
+  color: #4f46e5;
 }
 
 /* Alternative color schemes */
@@ -83,7 +83,6 @@
     #a78bfa,
     #c084fc,
     #e879f9,
-    #f0abfc,
     #7c3aed
   );
 }
@@ -91,22 +90,22 @@
 .glass-button-wrapper.blue::before {
   background-image: conic-gradient(
     from 0deg,
-    #1e40af,
+    #2563eb,
     #3b82f6,
     #60a5fa,
     #93c5fd,
-    #1e40af
+    #2563eb
   );
 }
 
 .glass-button-wrapper.green::before {
   background-image: conic-gradient(
     from 0deg,
-    #6366f1,
-    #8b5cf6,
-    #a78bfa,
-    #c4b5fd,
-    #6366f1
+    #059669,
+    #10b981,
+    #34d399,
+    #6ee7b7,
+    #059669
   );
 }
 

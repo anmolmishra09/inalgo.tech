@@ -1,19 +1,22 @@
 .partners-page {
   min-height: 100vh;
-  background: #000000;
-  color: #fff;
+  background: #f8fafc;
+  color: #0f172a;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .hero {
   padding: 6rem 0 4rem;
   text-align: center;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
 }
 
 .hero h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: #fff;
+  color: #ffffff;
+  font-weight: 800;
+  letter-spacing: -0.025em;
 }
 
 .hero .lead {
@@ -33,12 +36,13 @@
 
 .partners-intro h2 {
   font-size: 2rem;
-  color: #8b5cf6;
+  color: #0f172a;
+  font-weight: 700;
   margin-bottom: 1rem;
 }
 
 .partners-intro p {
-  color: #d1d5db;
+  color: #475569;
   font-size: 1.1rem;
   line-height: 1.6;
 }
@@ -51,16 +55,18 @@
 }
 
 .partner-card {
-  background: rgba(31, 41, 55, 0.5);
-  border: 1px solid rgba(75, 85, 99, 0.3);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 1rem;
   padding: 2rem;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
 }
 
 .partner-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(139, 92, 246, 0.5);
+  border-color: #cbd5e1;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.1);
 }
 
 .partner-logo {
@@ -70,35 +76,39 @@
 
 .partner-badge {
   display: inline-block;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  color: #fff;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: #ffffff;
   padding: 0.25rem 0.75rem;
   border-radius: 1rem;
   font-size: 0.85rem;
+  font-weight: 600;
   margin-bottom: 1rem;
 }
 
 .partner-card h3 {
-  color: #8b5cf6;
+  color: #0f172a;
   font-size: 1.5rem;
+  font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
 .partner-category {
-  color: #9ca3af;
+  color: #64748b;
   font-size: 0.9rem;
+  font-weight: 500;
   margin-bottom: 1rem;
 }
 
 .partner-description {
-  color: #d1d5db;
+  color: #475569;
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }
 
 .partner-services h4 {
-  color: #f3f4f6;
+  color: #0f172a;
   font-size: 1rem;
+  font-weight: 600;
   margin-bottom: 0.75rem;
 }
 
@@ -109,47 +119,52 @@
 }
 
 .service-tag {
-  background: rgba(139, 92, 246, 0.2);
-  color: #a78bfa;
+  background: #f1f5f9;
+  color: #4f46e5;
   padding: 0.4rem 0.8rem;
   border-radius: 0.5rem;
   font-size: 0.85rem;
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  font-weight: 500;
+  border: 1px solid #e2e8f0;
 }
 
 .partner-cta {
   text-align: center;
   padding: 3rem 2rem;
-  background: rgba(139, 92, 246, 0.1);
+  background: #ffffff;
   border-radius: 1rem;
-  border: 1px solid rgba(139, 92, 246, 0.2);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
 }
 
 .partner-cta h2 {
   font-size: 2rem;
-  color: #8b5cf6;
+  color: #0f172a;
+  font-weight: 700;
   margin-bottom: 1rem;
 }
 
 .partner-cta p {
-  color: #d1d5db;
+  color: #475569;
   font-size: 1.1rem;
   margin-bottom: 2rem;
 }
 
 .cta-button {
   display: inline-block;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  color: #fff;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: #ffffff;
   padding: 1rem 2rem;
   border-radius: 2rem;
   text-decoration: none;
   font-weight: 600;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
 }
 
 .cta-button:hover {
   transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
 }
 
 @media (min-width: 768px) {
