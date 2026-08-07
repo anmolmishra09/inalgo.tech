@@ -34,8 +34,8 @@ function Contact() {
     // 2. URL-encode the message payload
     const encodedMessage = encodeURIComponent(whatsappMessage);
 
-    // 3. Target WhatsApp Number (+91 8787222066)
-    const phoneNumber = '918787222966';
+    // 3. Target WhatsApp Number (+91 9026395833)
+    const phoneNumber = '+91 9026395833';
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
     // 4. Open WhatsApp in a new tab
@@ -111,8 +111,8 @@ function Contact() {
                   </div>
                   <div className="info-details">
                     <span className="info-label">WhatsApp Business</span>
-                    <h3 className="info-handle">+91 8787222066</h3>
-                    <a href="https://wa.me/918787222066" target="_blank" rel="noopener noreferrer" className="info-link">
+                    <h3 className="info-handle">+91 9026395833</h3>
+                    <a href="https://wa.me/919026395833" target="_blank" rel="noopener noreferrer" className="info-link">
                       <span>Chat Directly</span>
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
