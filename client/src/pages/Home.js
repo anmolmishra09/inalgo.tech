@@ -377,7 +377,7 @@ function Home() {
       <div className="floating-widgets">
         {/* WhatsApp Icon */}
         <a 
-          href="https://wa.me/8787222966" 
+          href="https://wa.me/+91 8787222966" 
           target="_blank" 
           rel="noopener noreferrer" 
           className="floating-btn whatsapp-btn"
@@ -392,7 +392,7 @@ function Home() {
 <button 
   className="floating-btn agent-btn"
   aria-label="Open AI Assistant"
-  onClick={() => alert("AI Agent Clicked!")}
+  onClick={() => window.location.href = "/agent"}
 >
   <img 
     src={ageniImg} 
