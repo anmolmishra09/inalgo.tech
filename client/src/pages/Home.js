@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Home.css';
 
 // Component Imports
@@ -17,6 +17,14 @@ import LogoMarquee from '../components/LogoMarquee';
 import demoVideo from '../images/download.mp4';
 import ageniImg from '../images/ageni.jpg';
 
+// Dynamic headline features array
+const ROTATING_FEATURES = [
+  "Intelligent AI Agents",
+  "Autonomous Workflows",
+  "Enterprise RAG Engines",
+  "Multimodal AI Avatars",
+  "Zero-Infra Scaling"
+];
 
 // Hover-to-Play Video Section Component
 const VideoSection = () => {
@@ -184,6 +192,22 @@ const PROCESS_STEPS = [
 ];
 
 function Home() {
+  const [featureIndex, setFeatureIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setFade(false); // Begin fade out
+
+      setTimeout(() => {
+        setFeatureIndex((prevIndex) => (prevIndex + 1) % ROTATING_FEATURES.length);
+        setFade(true); // Fade back in with next text
+      }, 300);
+    }, 3000); // Rotates every 3 seconds
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="home-page">
       {/* Hero Section */}
@@ -198,7 +222,17 @@ function Home() {
             </span>
 
             <h1 className="hero-title">
-              Automate Complex Workflows with <span className="hero-highlight">Intelligent AI Agents</span>
+              Automate Complex Workflows with{" "}
+              <span 
+                className="hero-highlight"
+                style={{
+                  opacity: fade ? 1 : 0,
+                  transition: 'opacity 0.3s ease-in-out',
+                  display: 'inline-block'
+                }}
+              >
+                {ROTATING_FEATURES[featureIndex]}
+              </span>
             </h1>
 
             <p className="hero-subtitle">
@@ -377,7 +411,7 @@ function Home() {
       <div className="floating-widgets">
         {/* WhatsApp Icon */}
         <a 
-          href="https://wa.me/+91 8787222966" 
+          href="https://wa.me/+918787222966" 
           target="_blank" 
           rel="noopener noreferrer" 
           className="floating-btn whatsapp-btn"
@@ -389,18 +423,18 @@ function Home() {
         </a>
 
         {/* AI Agent / Support Icon */}
-<button 
-  className="floating-btn agent-btn"
-  aria-label="Open AI Assistant"
-  onClick={() => window.location.href = "/agent"}
->
-  <img 
-    src={ageniImg} 
-    alt="AI Assistant" 
-    className="agent-img"
-  />
-  <span className="agent-indicator"></span>
-</button>
+        <button 
+          className="floating-btn agent-btn"
+          aria-label="Open AI Assistant"
+          onClick={() => window.location.href = "/agent"}
+        >
+          <img 
+            src={ageniImg} 
+            alt="AI Assistant" 
+            className="agent-img"
+          />
+          <span className="agent-indicator"></span>
+        </button>
       </div>
     </div>
   );
