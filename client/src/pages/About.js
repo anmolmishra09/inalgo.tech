@@ -29,11 +29,16 @@ function About() {
         <div className="container">
           <div className="video-content-wrapper">
             <div className="video-card" onClick={openVideo}>
-              <img 
+              <video
                 className="video-image"
-                src="https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?q=80&w=451&h=451&auto=format&fit=crop"
-                alt="What we do" 
-              />
+                src="../images/inof.mp4"
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                Your browser does not support the video tag.
+              </video>
               <div className="play-button">
                 <svg width="15" height="18" viewBox="0 0 15 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -361,15 +366,15 @@ function About() {
               </svg>
             </button>
             <div className="video-wrapper">
-              <iframe
+              <video
                 width="100%"
                 height="100%"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-                title="Inalgo Introduction"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+                src="../images/inof.mp4"
+                controls
+                autoPlay
+              >
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>
