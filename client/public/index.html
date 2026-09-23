@@ -1,15 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
     <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Inalgo - Modern Full Stack Multi-Device Website" />
+
+    <meta
+      name="description"
+      content="Inalgo - Modern Full Stack Multi-Device Website"
+    />
+
     <title>Inalgo | Build Faster with AI</title>
-<link rel="icon" type="image/png" href="/logo.png" />
-</head>
+
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        min-height: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #ffffff;
+        color: #111111;
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+
+      #root {
+        width: 100%;
+        min-height: 100vh;
+      }
+
+      /* Perfect Circular Logo */
+      .logo {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Mobile */
+      @media (max-width: 768px) {
+        .logo {
+          width: 60px;
+          height: 60px;
+        }
+      }
+    </style>
+  </head>
+
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+
     <div id="root"></div>
+
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

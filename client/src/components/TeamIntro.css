@@ -1,8 +1,22 @@
-/* ================= TEAM INTRO SECTION ================= */
+/* =========================================================
+   TEAM INTRO SECTION
+========================================================= */
 
 .team-intro-section {
   padding: 5rem 1rem;
-  background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.08) 0%, #f8fafc 70%);
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(139, 92, 246, 0.12),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 80% 90%,
+      rgba(99, 102, 241, 0.1),
+      transparent 35%
+    ),
+    #f8fafc;
+
   position: relative;
   overflow: hidden;
 }
@@ -12,157 +26,1009 @@
   margin: 0 auto;
 }
 
-/* ================= CARD CONTAINER ================= */
+/* =========================================================
+   MAIN CARD
+========================================================= */
 
 .team-intro-card {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(139, 92, 246, 0.2);
   border-radius: 28px;
-  padding: 4rem 3rem 0 3rem;
+
+  padding: 4rem 3rem;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 3.5rem;
+
+  gap: 4rem;
+
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.04);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
 
-  opacity: 0;
-  transform: translateY(25px);
+  box-shadow:
+    0 10px 30px -5px rgba(15, 23, 42, 0.05),
+    0 0 0 1px rgba(139, 92, 246, 0.02);
+
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+
   animation: fadeUp 0.8s ease forwards;
 }
 
-/* Interactive Card Hover */
 .team-intro-card:hover {
   transform: translateY(-6px);
+
   border-color: rgba(139, 92, 246, 0.4);
-  box-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.18);
+
+  box-shadow:
+    0 25px 50px -15px rgba(139, 92, 246, 0.2),
+    0 10px 30px rgba(15, 23, 42, 0.05);
 }
 
-/* Animated Ambient Glow Shapes */
+/* =========================================================
+   AMBIENT GLOW
+========================================================= */
+
 .team-intro-card::before {
   content: "";
+
   position: absolute;
-  top: -40%;
-  left: -10%;
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
+
+  width: 500px;
+  height: 500px;
+
+  top: -280px;
+  left: -150px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(99, 102, 241, 0.15),
+      transparent 70%
+    );
+
   border-radius: 50%;
+
   pointer-events: none;
+
   animation: floatGlow 8s ease-in-out infinite alternate;
 }
 
 .team-intro-card::after {
   content: "";
+
   position: absolute;
-  bottom: -30%;
-  right: -10%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(167, 139, 250, 0.12) 0%, transparent 70%);
+
+  width: 450px;
+  height: 450px;
+
+  right: -200px;
+  bottom: -250px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(167, 139, 250, 0.16),
+      transparent 70%
+    );
+
   border-radius: 50%;
+
   pointer-events: none;
+
   animation: floatGlow 10s ease-in-out infinite alternate-reverse;
 }
 
-/* ================= CONTENT SECTION ================= */
+/* =========================================================
+   CONTENT
+========================================================= */
 
 .team-intro-content {
   flex: 1;
-  max-width: 550px;
+  max-width: 560px;
+
   position: relative;
-  z-index: 2;
+  z-index: 5;
+}
+
+.team-intro-badge {
+  display: inline-flex;
+
+  align-items: center;
+  gap: 8px;
+
+  padding: 7px 14px;
+
+  border-radius: 50px;
+
+  background: rgba(139, 92, 246, 0.08);
+
+  border: 1px solid rgba(139, 92, 246, 0.15);
+
+  color: #6d28d9;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  margin-bottom: 1.4rem;
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #8b5cf6;
+
+  box-shadow:
+    0 0 0 4px rgba(139, 92, 246, 0.12);
+
+  animation: pulseDot 2s infinite;
 }
 
 .team-intro-title {
-  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-size: clamp(2.25rem, 4vw, 3.2rem);
+
   font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  margin: 0 0 1.25rem 0;
-  background: linear-gradient(135deg, #0f172a 20%, #6d28d9 60%, #8b5cf6 100%);
+
+  letter-spacing: -0.035em;
+
+  line-height: 1.15;
+
+  margin: 0 0 1.25rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0f172a 15%,
+      #6d28d9 60%,
+      #8b5cf6 100%
+    );
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
   background-clip: text;
 }
 
 .team-intro-description {
   font-size: 1.05rem;
-  color: #334155;
-  line-height: 1.7;
-  margin: 0 0 2.25rem 0;
-  max-width: 480px;
-  font-weight: 400;
+
+  color: #475569;
+
+  line-height: 1.75;
+
+  margin: 0 0 2.2rem;
+
+  max-width: 500px;
 }
 
-/* ================= BUTTON ================= */
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.team-intro-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+}
 
 .team-intro-button {
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  color: #ffffff;
-  padding: 0.95rem 2.25rem;
+
+  gap: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #8b5cf6
+    );
+
+  color: #fff;
+
+  padding: 0.95rem 1.7rem;
+
   border-radius: 50px;
+
   font-size: 0.95rem;
+
   font-weight: 600;
+
   text-decoration: none;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 6px 20px -2px rgba(99, 102, 241, 0.35);
-  cursor: pointer;
-  position: relative;
-  z-index: 2;
+
+  box-shadow:
+    0 8px 22px rgba(99, 102, 241, 0.28);
+
+  transition: all 0.3s ease;
 }
 
 .team-intro-button:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 12px 28px -4px rgba(139, 92, 246, 0.45);
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 14px 30px rgba(139, 92, 246, 0.35);
 }
 
-.team-intro-button:active {
-  transform: translateY(-1px) scale(0.98);
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+.button-arrow {
+  font-size: 1.1rem;
+
+  transition: transform 0.3s ease;
 }
 
-/* ================= IMAGE SECTION ================= */
+.team-intro-button:hover .button-arrow {
+  transform: translateX(4px);
+}
+
+/* Secondary Scan Button */
+
+.scan-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  background: #ffffff;
+
+  color: #6d28d9;
+
+  border: 1px solid rgba(139, 92, 246, 0.25);
+
+  padding: 0.9rem 1.45rem;
+
+  border-radius: 50px;
+
+  font-size: 0.9rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.scan-button:hover {
+  background: rgba(139, 92, 246, 0.07);
+
+  border-color: rgba(139, 92, 246, 0.5);
+
+  transform: translateY(-3px);
+}
+
+.scan-button span {
+  font-size: 1rem;
+
+  transition: transform 0.3s ease;
+}
+
+.scan-button:hover span {
+  transform: translate(2px, -2px);
+}
+
+/* =========================================================
+   QR SECTION
+========================================================= */
 
 .team-intro-image {
-  flex: 1;
+  flex: 0 0 440px;
+
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+
+  align-items: center;
+  justify-content: center;
+
   position: relative;
+
+  z-index: 5;
+}
+
+/* =========================================================
+   QR PAYMENT CARD
+========================================================= */
+
+.qr-payment-card {
+  width: 350px;
+
+  min-height: 500px;
+
+  padding: 28px 25px 22px;
+
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #090909 0%,
+      #111111 55%,
+      #090909 100%
+    );
+
+  border: 1px solid rgba(168, 85, 247, 0.3);
+
+  position: relative;
+
+  overflow: hidden;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: flex-start;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 20px 50px rgba(15, 23, 42, 0.22),
+    0 0 50px rgba(139, 92, 246, 0.1);
+
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.5s ease,
+    border-color 0.5s ease;
+}
+
+.qr-payment-card:hover {
+  transform:
+    translateY(-10px)
+    rotateX(2deg);
+
+  border-color: rgba(168, 85, 247, 0.65);
+
+  box-shadow:
+    0 30px 70px rgba(15, 23, 42, 0.3),
+    0 0 70px rgba(139, 92, 246, 0.2);
+}
+
+/* =========================================================
+   QR CARD BACKGROUND
+========================================================= */
+
+.qr-payment-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 280px;
+  height: 280px;
+
+  top: -120px;
+  right: -100px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(168, 85, 247, 0.3),
+      transparent 70%
+    );
+
+  border-radius: 50%;
+
+  animation: qrAmbientGlow 6s ease-in-out infinite alternate;
+}
+
+.qr-payment-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 250px;
+  height: 250px;
+
+  bottom: -120px;
+  left: -100px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(99, 102, 241, 0.22),
+      transparent 70%
+    );
+
+  border-radius: 50%;
+
+  animation: qrAmbientGlow 7s ease-in-out infinite alternate-reverse;
+}
+
+/* =========================================================
+   PHONEPE HEADER
+========================================================= */
+
+.phonepe-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  position: relative;
+
+  z-index: 3;
+}
+
+.phonepe-logo {
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      #7e22ce,
+      #4c1d95
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  box-shadow:
+    0 8px 25px rgba(126, 34, 206, 0.4);
+
+  color: #fff;
+}
+
+.phonepe-logo span {
+  font-size: 1.7rem;
+
+  font-weight: 800;
+}
+
+.phonepe-name {
+  color: #ffffff;
+
+  font-size: 1.45rem;
+
+  font-weight: 700;
+
+  letter-spacing: -0.02em;
+}
+
+.phonepe-accepted {
+  margin-top: 20px;
+
+  color: #c084fc;
+
+  font-size: 1rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.04em;
+
+  position: relative;
+
+  z-index: 3;
+}
+
+.scan-text {
+  color: #e5e7eb;
+
+  font-size: 0.9rem;
+
+  margin: 10px 0 18px;
+
+  position: relative;
+
+  z-index: 3;
+}
+
+/* =========================================================
+   QR WRAPPER
+========================================================= */
+
+.qr-wrapper {
+  width: 245px;
+  height: 245px;
+
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 3px;
+}
+
+.qr-glow {
+  position: absolute;
+
+  inset: -25px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(168, 85, 247, 0.25),
+      transparent 65%
+    );
+
+  animation:
+    qrPulse 3s ease-in-out infinite;
+}
+
+.qr-image-container {
+  width: 225px;
+  height: 225px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  padding: 7px;
+
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.8),
+    0 15px 40px rgba(0, 0, 0, 0.4);
+
   z-index: 2;
-  margin: 0 -3rem -1px -1rem;
 }
 
-.team-image {
+.qr-image {
   width: 100%;
-  max-width: 500px;
-  height: auto;
+  height: 100%;
+
+  object-fit: cover;
+
   display: block;
-  border-radius: 0 28px 28px 0;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
-  filter: drop-shadow(0 10px 20px rgba(15, 23, 42, 0.05));
+
+  border-radius: 6px;
+
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
 }
 
-.team-intro-card:hover .team-image {
-  transform: scale(1.04) translateY(-2px);
-  filter: drop-shadow(0 15px 30px rgba(139, 92, 246, 0.15));
+.qr-payment-card:hover .qr-image {
+  transform: scale(1.025);
 }
 
-/* ================= KEYFRAMES ================= */
+/* =========================================================
+   ANIMATED SCANNER
+========================================================= */
+
+.qr-scanner-line {
+  position: absolute;
+
+  left: 7px;
+  right: 7px;
+
+  height: 3px;
+
+  top: 8px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #a855f7,
+      #ffffff,
+      #a855f7,
+      transparent
+    );
+
+  box-shadow:
+    0 0 10px #a855f7,
+    0 0 20px rgba(168, 85, 247, 0.7);
+
+  z-index: 5;
+
+  animation: scanQR 2.8s ease-in-out infinite;
+}
+
+.qr-center-glow {
+  position: absolute;
+
+  width: 45px;
+  height: 45px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(168, 85, 247, 0.18),
+      transparent 70%
+    );
+
+  pointer-events: none;
+
+  z-index: 4;
+
+  animation: centerPulse 2s ease-in-out infinite;
+}
+
+/* =========================================================
+   QR CORNERS
+========================================================= */
+
+.qr-corner {
+  position: absolute;
+
+  width: 28px;
+  height: 28px;
+
+  z-index: 6;
+
+  border-color: #c084fc;
+
+  border-style: solid;
+
+  filter:
+    drop-shadow(0 0 5px rgba(192, 132, 252, 0.6));
+}
+
+.qr-corner-tl {
+  left: 0;
+  top: 0;
+
+  border-width: 3px 0 0 3px;
+
+  border-radius: 8px 0 0 0;
+}
+
+.qr-corner-tr {
+  right: 0;
+  top: 0;
+
+  border-width: 3px 3px 0 0;
+
+  border-radius: 0 8px 0 0;
+}
+
+.qr-corner-bl {
+  left: 0;
+  bottom: 0;
+
+  border-width: 0 0 3px 3px;
+
+  border-radius: 0 0 0 8px;
+}
+
+.qr-corner-br {
+  right: 0;
+  bottom: 0;
+
+  border-width: 0 3px 3px 0;
+
+  border-radius: 0 0 8px 0;
+}
+
+/* =========================================================
+   OWNER
+========================================================= */
+
+.qr-owner {
+  margin-top: 16px;
+
+  color: #ffffff;
+
+  font-size: 1rem;
+
+  font-weight: 700;
+
+  position: relative;
+
+  z-index: 3;
+}
+
+.qr-interaction {
+  margin-top: 9px;
+
+  color: #a78bfa;
+
+  font-size: 0.72rem;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  opacity: 0.8;
+
+  position: relative;
+
+  z-index: 3;
+
+  transition: opacity 0.3s ease;
+}
+
+.qr-payment-card:hover .qr-interaction {
+  opacity: 1;
+}
+
+.interaction-icon {
+  font-size: 1rem;
+
+  animation: handPulse 1.8s ease-in-out infinite;
+}
+
+/* =========================================================
+   FLOATING PARTICLES
+========================================================= */
+
+.qr-particle {
+  position: absolute;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #a855f7;
+
+  box-shadow:
+    0 0 12px rgba(168, 85, 247, 0.9);
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+.particle-one {
+  top: 90px;
+  left: 25px;
+
+  animation: particleFloat 4s ease-in-out infinite;
+}
+
+.particle-two {
+  top: 190px;
+  right: 22px;
+
+  animation: particleFloat 5s ease-in-out infinite 1s;
+}
+
+.particle-three {
+  bottom: 90px;
+  left: 35px;
+
+  animation: particleFloat 4.5s ease-in-out infinite 0.5s;
+}
+
+.particle-four {
+  bottom: 145px;
+  right: 32px;
+
+  animation: particleFloat 6s ease-in-out infinite 1.5s;
+}
+
+/* =========================================================
+   QR MODAL
+========================================================= */
+
+.qr-modal-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  background:
+    rgba(2, 6, 23, 0.78);
+
+  backdrop-filter: blur(12px);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  z-index: 9999;
+
+  animation: modalFadeIn 0.25s ease;
+}
+
+.qr-modal {
+  width: min(420px, 100%);
+
+  background:
+    linear-gradient(
+      145deg,
+      #111111,
+      #080808
+    );
+
+  border: 1px solid rgba(168, 85, 247, 0.35);
+
+  border-radius: 28px;
+
+  padding: 30px;
+
+  position: relative;
+
+  text-align: center;
+
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.5),
+    0 0 60px rgba(139, 92, 246, 0.12);
+
+  animation: modalScale 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.qr-modal-close {
+  position: absolute;
+
+  top: 15px;
+  right: 15px;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: rgba(255, 255, 255, 0.06);
+
+  color: #ffffff;
+
+  font-size: 1.5rem;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.qr-modal-close:hover {
+  background: rgba(168, 85, 247, 0.2);
+
+  transform: rotate(90deg);
+}
+
+.qr-modal-header {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 20px;
+}
+
+.modal-logo {
+  width: 42px;
+  height: 42px;
+}
+
+.qr-modal-header h3 {
+  color: #ffffff;
+
+  margin: 0;
+
+  font-size: 1.3rem;
+}
+
+.qr-modal-header p {
+  color: #a78bfa;
+
+  margin: 2px 0 0;
+
+  font-size: 0.8rem;
+}
+
+.qr-modal-image-wrapper {
+  background: #ffffff;
+
+  padding: 10px;
+
+  border-radius: 16px;
+
+  width: min(300px, 100%);
+
+  margin: 0 auto;
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.qr-modal-image {
+  width: 100%;
+
+  display: block;
+
+  border-radius: 8px;
+}
+
+.qr-modal h4 {
+  color: #ffffff;
+
+  font-size: 1.1rem;
+
+  margin: 18px 0 6px;
+}
+
+.qr-modal-description {
+  color: #94a3b8;
+
+  font-size: 0.85rem;
+
+  line-height: 1.6;
+
+  margin: 0 auto 20px;
+
+  max-width: 300px;
+}
+
+.qr-modal-done {
+  border: none;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #8b5cf6
+    );
+
+  color: #ffffff;
+
+  padding: 10px 30px;
+
+  border-radius: 50px;
+
+  font-size: 0.9rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.qr-modal-done:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(139, 92, 246, 0.3);
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
 
 @keyframes fadeUp {
   from {
     opacity: 0;
     transform: translateY(25px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -170,27 +1036,164 @@
 }
 
 @keyframes floatGlow {
-  0% {
+  from {
     transform: scale(1) translateY(0);
-    opacity: 0.7;
+    opacity: 0.6;
   }
-  100% {
+
+  to {
     transform: scale(1.15) translateY(15px);
     opacity: 1;
   }
 }
 
-/* ================= RESPONSIVE DESIGN ================= */
+@keyframes qrAmbientGlow {
+  from {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+
+  to {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes qrPulse {
+  0%,
+  100% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 0.9;
+  }
+}
+
+@keyframes scanQR {
+  0% {
+    top: 8px;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  50% {
+    top: calc(100% - 11px);
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 8px;
+    opacity: 0;
+  }
+}
+
+@keyframes centerPulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+    opacity: 0.8;
+  }
+}
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 3px rgba(139, 92, 246, 0.1);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 7px rgba(139, 92, 246, 0.04);
+  }
+}
+
+@keyframes handPulse {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(4px);
+  }
+}
+
+@keyframes particleFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translateY(-18px) scale(1.4);
+
+    opacity: 1;
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalScale {
+  from {
+    opacity: 0;
+
+    transform:
+      scale(0.9)
+      translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      scale(1)
+      translateY(0);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
 @media (max-width: 968px) {
+
   .team-intro-section {
     padding: 4rem 1rem;
   }
 
   .team-intro-card {
     flex-direction: column;
-    padding: 3rem 2rem 0 2rem;
-    gap: 2.5rem;
+
+    padding: 3rem 2rem;
+
+    gap: 3rem;
+
     text-align: center;
   }
 
@@ -199,51 +1202,118 @@
   }
 
   .team-intro-description {
-    max-width: 100%;
+    max-width: 600px;
+
     margin-left: auto;
     margin-right: auto;
   }
 
-  .team-intro-image {
-    width: 100%;
+  .team-intro-actions {
     justify-content: center;
-    margin: 0 -2rem -1px -2rem;
   }
 
-  .team-image {
-    max-width: 100%;
-    border-radius: 0 0 28px 28px;
+  .team-intro-image {
+    flex: none;
+
+    width: 100%;
+  }
+
+  .qr-payment-card {
+    width: min(350px, 100%);
   }
 }
 
+/* =========================================================
+   MOBILE
+========================================================= */
+
 @media (max-width: 640px) {
+
   .team-intro-section {
     padding: 3rem 0.75rem;
   }
 
   .team-intro-card {
-    border-radius: 20px;
-    padding: 2.25rem 1.25rem 0 1.25rem;
+    border-radius: 22px;
+
+    padding: 2.5rem 1.25rem;
   }
 
   .team-intro-title {
-    font-size: 1.85rem;
+    font-size: 1.9rem;
   }
 
   .team-intro-description {
     font-size: 0.95rem;
   }
 
-  .team-intro-button {
-    padding: 0.85rem 1.85rem;
-    font-size: 0.875rem;
+  .team-intro-actions {
+    flex-direction: column;
+
+    width: 100%;
   }
 
-  .team-intro-image {
-    margin: 0 -1.25rem -1px -1.25rem;
+  .team-intro-button,
+  .scan-button {
+    width: 100%;
   }
 
-  .team-image {
-    border-radius: 0 0 20px 20px;
+  .qr-payment-card {
+    width: 100%;
+
+    max-width: 340px;
+
+    min-height: 470px;
+
+    padding:
+      25px
+      20px
+      20px;
+  }
+
+  .qr-wrapper {
+    width: 225px;
+    height: 225px;
+  }
+
+  .qr-image-container {
+    width: 205px;
+    height: 205px;
+  }
+
+  .phonepe-name {
+    font-size: 1.3rem;
+  }
+
+  .phonepe-accepted {
+    font-size: 0.9rem;
+  }
+
+  .scan-text {
+    font-size: 0.82rem;
+  }
+
+  .qr-modal {
+    padding: 25px 18px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .team-intro-card,
+  .qr-payment-card,
+  .qr-image,
+  .qr-scanner-line,
+  .qr-glow,
+  .qr-particle,
+  .badge-dot,
+  .qr-center-glow {
+    animation: none !important;
+
+    transition: none !important;
   }
 }

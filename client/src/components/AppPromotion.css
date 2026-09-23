@@ -2,7 +2,7 @@
 
 .app-promotion-section {
   padding: 5rem 0;
-  background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.08) 0%, #f8fafc 70%);
+  background: #ffffff;
   position: relative;
   overflow: hidden;
 }

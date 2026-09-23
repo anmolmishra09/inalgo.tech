@@ -202,6 +202,22 @@ function TargetClients() {
                   <p>Using latest technologies (React, AI, Cloud) - not outdated agency templates.</p>
                 </div>
               </div>
+
+            <div className="benefit-item">
+  <div className="benefit-icon">🚀</div>
+  <div className="benefit-text">
+    <strong>Fast & Reliable Delivery</strong>
+    <p>Agile development with clear milestones ensures your project moves forward without unnecessary delays.</p>
+  </div>
+</div>
+
+<div className="benefit-item">
+  <div className="benefit-icon">🔒</div>
+  <div className="benefit-text">
+    <strong>Secure & Scalable Solutions</strong>
+    <p>Built with security, performance, and scalability in mind so your product is ready to grow with your business.</p>
+  </div>
+</div>
               <div className="benefit-item">
                 <div className="benefit-icon">🤝</div>
                 <div className="benefit-text">

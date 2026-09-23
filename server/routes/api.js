@@ -85,4 +85,15 @@ router.get('/health', (req, res) => {
   });
 });
 
+// Agent endpoint
+router.post('/agent/ask', (req, res) => {
+  const { question } = req.body;
+  if (!question || question.trim() === '') {
+    return res.status(400).json({ answer: 'Please provide a question.' });
+  }
+  // Placeholder answer - in a real app, this would call an AI service
+  const answer = `Thank you for your question: "${question}". This is a placeholder response from the Inalgo AI Agent.`;
+  res.json({ answer });
+});
+
 module.exports = router;

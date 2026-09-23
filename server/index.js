@@ -37,15 +37,33 @@ app.use((req, res) => {
 // Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({
+  res.status(err.status || 500).json({
     error: 'Internal Server Error',
     message: process.env.NODE_ENV === 'development' ? err.message : 'Something went wrong'
   });
 });
 
-// Start server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+// Start server on port 5001 (or from .env)
+const PORT = Number(process.env.PORT) || 5001;
+
+const server = app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);
-  console.log(`📡 API available at http://localhost:${PORT}/api`);
+});
+
+// Catch port errors gracefully
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`❌ Port ${PORT} is already in use. Please free the port or change it.`);
+  } else {
+    console.error('❌ Server startup error:', err.message);
+  }
+  process.exit(1);
+});
+
+// Clean shutdown when stopping nodemon / terminal
+process.on('SIGINT', () => {
+  server.close(() => {
+    console.log('\nServer closed cleanly.');
+    process.exit(0);
+  });
 });

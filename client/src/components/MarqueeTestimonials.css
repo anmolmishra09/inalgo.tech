@@ -4,11 +4,12 @@
 
 .marquee-testimonials-section {
   padding: 100px 0;
-  background: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.06) 0%, #f8fafc 70%);
+  background: #ffffff;
   color: #0f172a;
   overflow: hidden;
   position: relative;
 }
+A
 
 /* Header Section */
 .marquee-header {
