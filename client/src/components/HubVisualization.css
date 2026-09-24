@@ -310,7 +310,7 @@
 }
 
 .info-header {
-  display: flex;
+  /* display: flex; */
   align-items: center;
   gap: 1rem;
   margin-bottom: 0.85rem;

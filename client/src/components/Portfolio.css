@@ -153,21 +153,41 @@
 .portfolio-card {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
-  border-radius: 1.5rem;
-  padding: 2rem;
+  border-radius: clamp(1rem, 2vw, 1.5rem);
+  padding: clamp(1.25rem, 4vw, 2rem);
+
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Mobile me elements ko vertically aur horizontally balanced rakhne ke liye */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1rem; /* Children ke bich equal spacing ke liye */
+
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+
   position: relative;
   overflow: hidden;
+
   box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
   cursor: pointer;
+
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    box-shadow 0.4s ease;
 }
 
-/* Top Accent Line Highlight */
+/* =========================================
+   TOP ACCENT
+   ========================================= */
+
 .portfolio-card::before {
   content: "";
   position: absolute;
@@ -175,7 +195,13 @@
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, #6d28d9 0%, #a855f7 100%);
+
+  background: linear-gradient(
+    90deg,
+    #6d28d9 0%,
+    #a855f7 100%
+  );
+
   opacity: 0;
   transition: opacity 0.35s ease;
 }
@@ -184,135 +210,539 @@
   opacity: 1;
 }
 
-/* Card Hover Elevation */
+/* =========================================
+   RESPONSIVE MEDIA QUERY (Phones ke liye)
+   ========================================= */
+@media (max-width: 640px) {
+  .portfolio-card {
+    /* Agar phone me text left-align chahiye ho to text-align: left kar sakte hain */
+    text-align: center;
+    align-items: center;
+    padding: 1.25rem 1rem;
+    margin-inline: auto; /* Card ko screen ke center me rakhne ke liye */
+  }
+
+  /* Card ke andar ke text, images aur buttons full width me auto fit hone ke liye */
+  .portfolio-card > * {
+    max-width: 100%;
+    word-break: break-word; /* Bada text screen se bahar na bhage */
+  }
+}
+
+
+/* =========================================
+   DESKTOP HOVER
+   ========================================= */
+
 .portfolio-card:hover {
   border-color: var(--border-hover);
-  transform: translateY(-8px) scale(1.015);
+  transform: translateY(-6px);
   box-shadow: 0 20px 40px -10px rgba(124, 58, 237, 0.22);
 }
 
-/* Card Header Section */
+
+/* =========================================
+   CARD HEADER
+   ========================================= */
+
 .portfolio-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.25rem;
+
+  width: 100%;
+  min-width: 0;
+
+  gap: 0.75rem;
+  margin-bottom: clamp(0.9rem, 2vw, 1.25rem);
 }
 
+
+/* =========================================
+   ICON
+   ========================================= */
+
 .portfolio-icon-wrapper {
-  width: 48px;
-  height: 48px;
+  width: clamp(40px, 5vw, 48px);
+  height: clamp(40px, 5vw, 48px);
+
+  min-width: 40px;
+  flex: 0 0 auto;
+
   background: rgba(124, 58, 237, 0.08);
   border: 1px solid rgba(124, 58, 237, 0.2);
   border-radius: 0.85rem;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.35rem;
+
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
   color: var(--accent-purple);
+
   transition: all 0.35s ease;
 }
 
 .portfolio-card:hover .portfolio-icon-wrapper {
   background: var(--accent-purple);
-  color: #ffffff;
+  color: #fff;
   transform: rotate(6deg) scale(1.08);
   box-shadow: 0 6px 16px rgba(124, 58, 237, 0.3);
 }
 
+
+/* =========================================
+   BADGES
+   ========================================= */
+
 .badge-group {
   display: flex;
-  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-end;
+
+  flex-wrap: wrap;
+  gap: 0.4rem;
+
+  min-width: 0;
+  max-width: 100%;
 }
 
-.portfolio-metric {
-  font-size: 0.725rem;
+
+/* =========================================
+   COMMON BADGE
+   ========================================= */
+
+.portfolio-metric,
+.portfolio-status {
+  font-size: clamp(0.65rem, 1.5vw, 0.725rem);
   font-weight: 700;
+
+  padding: 0.25rem clamp(0.45rem, 1.5vw, 0.6rem);
+
+  border-radius: 0.4rem;
+
+  white-space: nowrap;
+
+  transition: transform 0.3s ease;
+}
+
+
+/* =========================================
+   METRIC
+   ========================================= */
+
+.portfolio-metric {
   color: #059669;
   background: rgba(5, 150, 105, 0.08);
   border: 1px solid rgba(5, 150, 105, 0.2);
-  padding: 0.25rem 0.6rem;
-  border-radius: 0.4rem;
-  transition: transform 0.3s ease;
 }
 
+
+/* =========================================
+   STATUS
+   ========================================= */
+
 .portfolio-status {
-  font-size: 0.725rem;
-  font-weight: 700;
   color: var(--badge-text);
   background: var(--badge-bg);
   border: 1px solid var(--badge-border);
-  padding: 0.25rem 0.6rem;
-  border-radius: 0.4rem;
-  transition: transform 0.3s ease;
 }
+
 
 .portfolio-card:hover .portfolio-metric,
 .portfolio-card:hover .portfolio-status {
   transform: scale(1.05);
 }
 
-/* Card Body Content */
+
+/* =========================================
+   CARD BODY
+   ========================================= */
+
 .portfolio-category {
-  font-size: 0.75rem;
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
   font-weight: 700;
+
   color: var(--accent-purple);
+
   text-transform: uppercase;
   letter-spacing: 0.06em;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
+
 .portfolio-title {
-  font-size: 1.4rem;
+  font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+  line-height: 1.25;
   font-weight: 700;
+
   margin: 0.3rem 0;
+
   color: #0f172a;
+
   transition: color 0.3s ease;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
+
 
 .portfolio-card:hover .portfolio-title {
   color: var(--accent-purple-dark);
 }
 
+
 .portfolio-subtitle-text {
-  font-size: 0.875rem;
+  font-size: clamp(0.8rem, 1.8vw, 0.875rem);
+  line-height: 1.45;
+
   color: #334155;
   font-weight: 600;
-  margin: 0 0 0.75rem 0;
+
+  margin: 0 0 0.75rem;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
+
 
 .portfolio-description {
-  font-size: 0.9rem;
-  color: var(--text-muted);
+  font-size: clamp(0.8rem, 1.8vw, 0.9rem);
   line-height: 1.6;
-  margin-bottom: 1.25rem;
+
+  color: var(--text-muted);
+
+  margin-bottom: clamp(1rem, 2vw, 1.25rem);
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
-/* Tech Tags */
+
+/* =========================================
+   TECH TAGS
+   ========================================= */
+
 .portfolio-tech {
-  margin-bottom: 1.25rem;
+  width: 100%;
+  max-width: 100%;
+
+  margin-bottom: clamp(1rem, 2vw, 1.25rem);
 }
 
 .tech-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.4rem;
+
+  width: 100%;
+  max-width: 100%;
 }
 
+
 .tech-tag {
-  font-size: 0.725rem;
+  font-size: clamp(0.65rem, 1.5vw, 0.725rem);
+  line-height: 1.3;
   font-weight: 600;
+
   color: #334155;
   background: #f1f5f9;
   border: 1px solid #e2e8f0;
-  padding: 0.25rem 0.65rem;
+
+  padding: 0.25rem clamp(0.45rem, 1.5vw, 0.65rem);
+
   border-radius: 0.4rem;
+
   transition: all 0.3s ease;
+
+  max-width: 100%;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
+
 
 .portfolio-card:hover .tech-tag {
   border-color: rgba(124, 58, 237, 0.3);
   background: rgba(124, 58, 237, 0.05);
 }
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 768px) {
+  .portfolio-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 1.25rem;
+    border-radius: 1.15rem;
+  }
+
+  .portfolio-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .portfolio-card-header {
+    gap: 0.6rem;
+  }
+
+  .portfolio-icon-wrapper {
+    border-radius: 0.7rem;
+  }
+
+  .portfolio-description {
+    line-height: 1.55;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 480px) {
+  .portfolio-card {
+    width: 100%;
+    max-width: 100%;
+
+    padding: 1rem;
+    border-radius: 1rem;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /*
+   * Important:
+   * Header ko fixed horizontal space dene ke bajay
+   * flexible rakha gaya hai.
+   */
+  .portfolio-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    width: 100%;
+    gap: 0.6rem;
+
+    margin-bottom: 1rem;
+  }
+
+
+  .portfolio-icon-wrapper {
+    width: 42px;
+    height: 42px;
+
+    min-width: 42px;
+
+    font-size: 1.1rem;
+  }
+
+
+  .badge-group {
+    flex: 1 1 auto;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    flex-wrap: wrap;
+
+    gap: 0.3rem;
+
+    min-width: 0;
+  }
+
+
+  .portfolio-metric,
+  .portfolio-status {
+    font-size: 0.625rem;
+
+    padding: 0.22rem 0.4rem;
+
+    max-width: 100%;
+  }
+
+
+  .portfolio-title {
+    font-size: 1.15rem;
+    line-height: 1.3;
+  }
+
+
+  .portfolio-subtitle-text {
+    font-size: 0.8rem;
+    line-height: 1.45;
+  }
+
+
+  .portfolio-description {
+    font-size: 0.8rem;
+    line-height: 1.55;
+
+    margin-bottom: 1rem;
+  }
+
+
+  .portfolio-category {
+    font-size: 0.65rem;
+  }
+
+
+  .tech-tags {
+    gap: 0.35rem;
+  }
+
+
+  .tech-tag {
+    font-size: 0.625rem;
+    padding: 0.22rem 0.45rem;
+  }
+
+
+  .portfolio-card:hover {
+    transform: translateY(-2px);
+  }
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+   ========================================= */
+
+@media (max-width: 360px) {
+  .portfolio-card {
+    padding: 0.85rem;
+  }
+
+
+  /*
+   * Very small screens par icon + badges
+   * same row mein force nahi honge.
+   */
+  .portfolio-card-header {
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 0.65rem;
+  }
+
+
+  .badge-group {
+    width: 100%;
+
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+
+  .portfolio-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+
+
+  .portfolio-title {
+    font-size: 1.05rem;
+  }
+
+
+  .portfolio-description {
+    font-size: 0.775rem;
+  }
+}
+
+
+/* =========================================
+   TOUCH DEVICES
+   ========================================= */
+
+@media (hover: none) {
+  .portfolio-card:hover {
+    transform: none;
+
+    box-shadow:
+      0 4px 20px -2px rgba(15, 23, 42, 0.04);
+  }
+
+
+  .portfolio-card:hover::before {
+    opacity: 0;
+  }
+
+
+  .portfolio-card:hover .portfolio-icon-wrapper {
+    background: rgba(124, 58, 237, 0.08);
+    color: var(--accent-purple);
+
+    transform: none;
+
+    box-shadow: none;
+  }
+
+
+  .portfolio-card:hover .portfolio-title {
+    color: #0f172a;
+  }
+
+
+  .portfolio-card:hover .tech-tag {
+    border-color: #e2e8f0;
+    background: #f1f5f9;
+  }
+
+
+  .portfolio-card:hover .portfolio-metric,
+  .portfolio-card:hover .portfolio-status {
+    transform: none;
+  }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-card,
+  .portfolio-card::before,
+  .portfolio-icon-wrapper,
+  .portfolio-title,
+  .portfolio-metric,
+  .portfolio-status,
+  .tech-tag {
+    transition: none !important;
+  }
+
+
+  .portfolio-card:hover,
+  .portfolio-card:hover .portfolio-icon-wrapper {
+    transform: none;
+  }
+}
+
+
+/* =========================================
+   EXTRA SAFETY FOR MOBILE CONTAINERS
+   ========================================= */
+
+@media (max-width: 480px) {
+  .portfolio-card,
+  .portfolio-card * {
+    box-sizing: border-box;
+  }
+
+  .portfolio-card img,
+  .portfolio-card svg {
+    max-width: 100%;
+  }
+}
+
 
 /* Collapsible Details Container */
 .interactive-details-container {
