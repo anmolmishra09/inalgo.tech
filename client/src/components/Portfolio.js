@@ -28,6 +28,25 @@ function Portfolio() {
       github: 'https://github.com/example/analytics-suite'
     },
     {
+  id: 3,
+  title: 'Bus Wala (बस वाला)',
+  subtitle: 'Immersive Lofi Highway Bus Journey & Radio Experience',
+  description: 'An interactive, nostalgic nocturnal journey along Indian highways (NH-39: Jhansi – Sonbhadra). Features an integrated vintage retro cassette/radio player, ambient highway video feeds, real-time passenger counter, and intuitive hotkey navigation.',
+  image: '🚌',
+  category: 'Interactive Web Experience',
+  statusBadge: 'Live Experience',
+  metric: '200+ Live Aboard',
+  tech: ['Next.js', 'React', 'TypeScript', 'TailwindCSS', 'Web Audio API'],
+  features: [
+    'Retro Cassette & Nostalgic Radio Player (Playback, Queue, Seek)',
+    'Dynamic Ambient Looping Highway Visuals (NH-39 Theme)',
+    'Real-time Live Passenger Presence Tracker',
+    'Interactive Keyboard Hotkeys (Space: Play, H: Horn, T: Ticket, Q: Queue)'
+  ],
+  liveDemo: 'https://buswalain.vercel.app/',
+  github: 'https://github.com/anmolmishra09/bus_wala'
+},
+    {
       id: 2,
       title: 'Neural Workflow Automation',
       subtitle: 'AI-driven business process copilot',
@@ -64,7 +83,176 @@ function Portfolio() {
       ],
       liveDemo: 'https://demo.example.com/commerce',
       github: 'https://github.com/example/global-storefront'
-    }
+    },
+    {
+  id: 4,
+  title: 'Telecom Customer Churn & Retention Modeling',
+  subtitle: 'End-to-End Churn Prediction, Risk Scoring & Revenue Exposure Pipeline',
+  description: 'Production-ready customer retention analytics workflow analyzing 7,000 subscriber records for TeleNova Communications. Combines data profiling, statistical hypothesis testing, ML churn classification (ROC-AUC: 0.794), and SQL window aggregations to pinpoint churn drivers and quantify $134K/month in revenue exposure.',
+  image: '📊',
+  category: 'Machine Learning & Analytics',
+  statusBadge: 'Completed Project',
+  metric: '0.794 ROC-AUC | $134K Exposure',
+  tech: [
+    'Python',
+    'Pandas',
+    'Scikit-learn',
+    'PostgreSQL',
+    'SciPy',
+    'Seaborn',
+    'Jupyter'
+  ],
+  features: [
+    'Rigorous Statistical Testing (Chi-Square, Mann-Whitney U, Odds Ratios, Cramér\'s V)',
+    'Dual-Model Churn Classification (Logistic Regression baseline & Random Forest)',
+    'Customer Risk Stratification & 4-Quadrant Value-Risk Matrix Mapping',
+    'Advanced SQL Analytics with CTEs, Window Functions, and Ranking Partitions',
+    'Financial Risk Modeling with $134,370+ Monthly Revenue Exposure Estimation'
+  ],
+  liveDemo: 'https://github.com/anmolmishra09/telecom-customer-churn-retention/blob/main/reports/executive_summary.md',
+  github: 'https://github.com/anmolmishra09/telecom-customer-churn-retention'
+},
+{
+  id: 5,
+  title: 'NovaCart Commerce Analytics',
+  subtitle: 'E-Commerce Sales & Profitability Business Intelligence Suite',
+  description: 'Enterprise-grade end-to-end data analytics system examining $81.3M+ in revenue across 105K+ order line items. Identifies margin leaks, uncovers critical discount break-even thresholds, models customer lifetime value, and delivers interactive 5-page Power BI dashboards that unlocked $1.96M–$2.74M in quantified annual profit opportunities.',
+  image: '📈',
+  category: 'Data Analytics & BI',
+  statusBadge: 'Completed Project',
+  metric: '$81.4M Analyzed | +$2.7M Profit Impact',
+  tech: [
+    'Python',
+    'PostgreSQL',
+    'Power BI',
+    'DAX',
+    'Pandas',
+    'SQLAlchemy',
+    'Seaborn'
+  ],
+  features: [
+    'Complete Star Schema Architecture (Customer/Product Dimensions & Order/Return Facts)',
+    'Advanced SQL Analytics utilizing Recursive CTEs, Window Aggregations (LAG/LEAD/NTILE), and Ranking',
+    'Interactive 5-Page Power BI Dashboard Suite with 50+ Custom DAX Measures',
+    'Discount & Margin Sensitivity Analysis pinpointing negative profit margin thresholds',
+    'Automated Data Quality & Pipeline Cleansing handling synthetic edge cases and referential integrity'
+  ],
+  liveDemo: 'https://github.com/anmolmishra09/novacart-commerce/blob/main/reports/business_insights.md',
+  github: 'https://github.com/anmolmishra09/novacart-commerce'
+},
+{
+  id: 6,
+  title: 'Veltrix ML Recommendation Platform',
+  subtitle: 'Two-Stage Event-Driven Recommendation & Ranking Engine',
+  description: 'Production-grade enterprise ML recommendation system featuring a two-stage candidate generation and learning-to-rank pipeline. Integrates Kafka event streaming, Feast feature store, MLflow registry, Airflow DAG orchestration, and sub-second real-time inference via FastAPI and Redis.',
+  image: '🤖',
+  category: 'MLOps & Recommendation Systems',
+  statusBadge: 'Production Ready',
+  metric: 'Two-Stage Ranking | Real-Time Inference',
+  tech: [
+    'FastAPI',
+    'PyTorch',
+    'XGBoost',
+    'LightGBM',
+    'Apache Kafka',
+    'Apache Airflow',
+    'Apache Spark',
+    'Feast',
+    'MLflow',
+    'PostgreSQL',
+    'Redis',
+    'Docker'
+  ],
+  features: [
+    'Two-Stage Funnel: Multi-strategy candidate generation (Collaborative, Content, Popularity, Embeddings) paired with XGBoost/LightGBM/Neural rankers',
+    'Event-Driven Streaming: High-throughput interaction ingestion via Apache Kafka and real-time inference caching with Redis',
+    'Centralized Feature Store: Feast integration for consistent, zero-skew online/offline feature serving',
+    'Full MLOps Lifecycle: MLflow experiment tracking/registry, automated Airflow retraining DAGs, and Evidently data drift monitoring',
+    'Comprehensive Telemetry: End-to-end tracing and observability with Prometheus, Grafana, and OpenTelemetry'
+  ],
+  liveDemo: 'https://github.com/anmolmishra09/veltrix-recommendation-engine#architecture',
+  github: 'https://github.com/anmolmishra09/veltrix-recommendation-engine'
+},
+{
+  id: 7,
+  title: 'DiwaliGlow Storefront',
+  subtitle: 'Luxury D2C E-Commerce & Artisanal Candle Experience',
+  description: 'High-performance, standalone Direct-to-Consumer storefront built with zero external framework dependencies. Delivers sub-millisecond in-browser catalog filtering, a full-lifecycle client-side cart and wishlist engine with persistent storage, accessible modal focus-trapping, and comprehensive JSON-LD e-commerce structured data.',
+  image: '🪔',
+  category: 'Vanilla Web Performance',
+  statusBadge: 'Live Experience',
+  metric: 'Zero Frameworks | 100% Client-Side',
+  tech: [
+    'HTML5 Semantic',
+    'CSS3 Variables & Grid',
+    'Vanilla JavaScript (ES6+)',
+    'LocalStorage API',
+    'JSON-LD Schema',
+    'Open Graph'
+  ],
+  features: [
+    'Zero-Dependency Architecture: Native JavaScript, modern CSS Grid/Flexbox, and semantic HTML without runtime overhead',
+    'Instant Client-Side Filtering: Multi-vector real-time catalog search, category selectors, and price range sliders',
+    'Persistent State Management: Full cart and wishlist lifecycle synchronized via the localStorage API',
+    'Accessible Micro-Interactions: Modal Quick Views with ESC key focus traps, hover image swaps, and reduced-motion compliance',
+    'Rich E-Commerce SEO: Complete JSON-LD Store and Product schemas with Open Graph metadata'
+  ],
+  liveDemo: 'https://diwaliglowstore.vercel.app/',
+  github: 'https://github.com/anmolmishra09/diwaliglow.store'
+},
+{
+  id: 8,
+  title: 'Lotus AI',
+  subtitle: 'Modern AI-Powered Productivity & Intelligence Platform',
+  description: 'Clean, modern SaaS web application crafted with a responsive glassmorphism aesthetic. Delivers fast client-side routing, prompt-driven AI workflows, contextual interactions, and fluid micro-animations optimized across desktop and mobile viewports.',
+  image: '🪷',
+  category: 'AI & SaaS Platform',
+  statusBadge: 'Live Experience',
+  metric: 'Sub-second UX | Cloud Hosted',
+  tech: [
+    'Next.js',
+    'React',
+    'TypeScript',
+    'TailwindCSS',
+    'Vercel'
+  ],
+  features: [
+    'Conversational & Prompt Workspace: Intuitive prompt interactions with clean markdown/code streaming displays',
+    'Modern Glassmorphic UI: Responsive dark/light themed layouts with refined typography and smooth transitions',
+    'Instant Route Navigation: Fast page rendering and asset prefetching powered by Next.js and Vercel edge deployment',
+    'Adaptive Mobile-First Design: Tailored touch targets and ergonomic layout shifts for handheld devices'
+  ],
+  liveDemo: 'https://lotusain.vercel.app/',
+  github: 'https://github.com/anmolmishra09/lotus-ai' // replace with your exact repo link if different
+},
+{
+  id: 9,
+  title: 'WanderMind',
+  subtitle: 'Intelligent Trip Planner & Itinerary Generation Engine',
+  description: 'Full-stack AI-driven travel planning platform that synthesizes destination data, user preferences, budget constraints, and duration into personalized multi-day travel itineraries. Features Google OAuth authentication, secure user session management, automated trip persistence, and responsive UI components.',
+  image: '✈️',
+  category: 'Full-Stack & Generative AI',
+  statusBadge: 'Live Experience',
+  metric: 'Instant AI Itineraries | Full-Stack',
+  tech: [
+    'React',
+    'Vite',
+    'Gemini AI API',
+    'Firebase',
+    'TailwindCSS',
+    'Node.js',
+    'Express.js',
+    'JWT'
+  ],
+  features: [
+    'Generative Travel Engine: Instant multi-day itineraries customized by budget, companion type, and location using Gemini AI',
+    'Interactive Trip Dashboard: Save, review, and manage generated travel plans with dedicated route breakdowns',
+    'Secure User Management: Authenticated user sessions and protected trip histories via JWT and OAuth integration',
+    'Dynamic Destination Discovery: Curated destination cards, visual media integration, and responsive travel layout components'
+  ],
+  liveDemo: 'https://wandermindaiin.vercel.app/',
+  github: 'https://github.com/anmolmishra09/WanderMind'
+}
   ];
 
   // Filter projects based on selected SaaS category tab
