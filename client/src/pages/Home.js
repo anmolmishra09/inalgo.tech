@@ -213,23 +213,22 @@ const VideoSection = () => {
         </div>
 
         <div
-          className="video-container reveal"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <video
-            ref={videoRef}
-            className="hover-video"
-            loop
-            muted
-            playsInline
-            preload="metadata"
-          >
-            <source src={demoVideo} type="video/mp4" />
-            Your browser does not support interactive video playback.
-          </video>
-        </div>
-      </div>
+  className="video-container reveal"
+  onMouseEnter={handleMouseEnter}
+  onMouseLeave={handleMouseLeave}
+>
+  <video
+    ref={videoRef}
+    className="hover-video"
+    loop
+    playsInline
+    preload="metadata"
+  >
+    <source src={demoVideo} type="video/mp4" />
+    Your browser does not support interactive video playback.
+  </video>
+</div>
+</div>
     </section>
   );
 };
