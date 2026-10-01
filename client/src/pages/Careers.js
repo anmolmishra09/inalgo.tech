@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Careers.css';
 import GlassButton from '../components/GlassButton';
+import SEO from '../components/SEO';
 
 function Careers() {
   const [showModal, setShowModal] = useState(false);
@@ -290,7 +291,25 @@ function Careers() {
   ];
 
   return (
-    <div className="careers">
+    <>
+      <SEO
+        title="Careers | Inalgo"
+        description="Join the Inalgo team! We're hiring for Full Stack Developers, React Native Developers, UI/UX Designers, DevOps Engineers, Data Scientists, and more. Competitive salary, remote work options, and career growth opportunities."
+        canonicalUrl="https://inalgo.tech/careers"
+        openGraph={{
+          url: "https://inalgo.tech/careers",
+          title: "Careers | Inalgo",
+          description: "Join the Inalgo team! We're hiring for Full Stack Developers, React Native Developers, UI/UX Designers, DevOps Engineers, Data Scientists, and more. Competitive salary, remote work options, and career growth opportunities.",
+          image: "https://inalgo.tech/logo.png"
+        }}
+        twitter={{
+          url: "https://inalgo.tech/careers",
+          title: "Careers | Inalgo",
+          description: "Join the Inalgo team! We're hiring for Full Stack Developers, React Native Developers, UI/UX Designers, DevOps Engineers, Data Scientists, and more. Competitive salary, remote work options, and career growth opportunities.",
+          image: "https://inalgo.tech/logo.png"
+        }}
+      />
+      <div className="careers">
       <section className="careers-hero">
         <div className="container">
           <h1>Join Our Team</h1>
@@ -507,7 +526,8 @@ function Careers() {
         </div>
       )}
     </div>
-  );
+    </>
+    );
 }
 
 export default Careers;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import SEO from "../components/SEO";
 import "./Agent.css";
 import ageniImg from "../images/ageni.jpg";
 
@@ -177,134 +178,242 @@ function Agent() {
     }
   };
 
-  if (!isVisible) return null;
+    if (!isVisible) return null;
 
   return (
-    <div className="agent-fullscreen">
-      <div className="bg-glow-orb"></div>
+    <>
+      <SEO
+        title="Aura Agent | Inalgo AI Assistant"
+        description="Meet Aura Agent, Inalgo's AI-powered assistant. Get help with market analysis, email drafting, metric analysis, algorithmic trading explanations, and more. Powered by Inalgo's autonomous AI infrastructure."
+        canonicalUrl="https://inalgo.tech/agent"
+        openGraph={{
+          url: "https://inalgo.tech/agent",
+          title: "Aura Agent | Inalgo AI Assistant",
+          description:
+            "Meet Aura Agent, Inalgo's AI-powered assistant. Get help with market analysis, email drafting, metric analysis, algorithmic trading explanations, and more. Powered by Inalgo's autonomous AI infrastructure.",
+          image: "https://inalgo.tech/logo.png",
+        }}
+        twitter={{
+          url: "https://inalgo.tech/agent",
+          title: "Aura Agent | Inalgo AI Assistant",
+          description:
+            "Meet Aura Agent, Inalgo's AI-powered assistant. Get help with market analysis, email drafting, metric analysis, algorithmic trading explanations, and more. Powered by Inalgo's autonomous AI infrastructure.",
+          image: "https://inalgo.tech/logo.png",
+        }}
+      />
 
-      <div className="agent-wrapper">
-        <div className="agent-card">
-          {/* Header */}
-          <header className="agent-header">
-            <div className="agent-branding">
-              <div className="avatar-wrapper">
-                <img src={ageniImg} alt="AI Avatar" className="agent-avatar" />
-                <span className={`status-indicator ${isTyping ? "busy" : "online"}`}></span>
-              </div>
-              <div className="agent-details">
-                <div className="title-row">
-                  <h1 className="agent-title">Aura Agent</h1>
-                  <span className="version-pill">v2.0</span>
+      <div className="agent-fullscreen">
+        <div className="bg-glow-orb"></div>
+
+        <div className="agent-wrapper">
+          <div className="agent-card">
+
+            {/* Header */}
+            <header className="agent-header">
+              <div className="agent-branding">
+                <div className="avatar-wrapper">
+                  <img
+                    src={ageniImg}
+                    alt="AI Avatar"
+                    className="agent-avatar"
+                  />
+
+                  <span
+                    className={`status-indicator ${
+                      isTyping ? "busy" : "online"
+                    }`}
+                  ></span>
                 </div>
-                <p className="status-label">{isTyping ? "Generating answer..." : "Ready to assist"}</p>
+
+                <div className="agent-details">
+                  <div className="title-row">
+                    <h1 className="agent-title">Aura Agent</h1>
+                    <span className="version-pill">v2.0</span>
+                  </div>
+
+                  <p className="status-label">
+                    {isTyping ? "Generating answer..." : "Ready to assist"}
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div className="agent-actions">
-              <button onClick={handleClearHistory} className="icon-btn" title="Clear Conversation" aria-label="Clear conversation">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2M10 11v6M14 11v6" />
-                </svg>
-              </button>
-              <button onClick={() => setIsVisible(false)} className="icon-btn close-btn" title="Close Panel" aria-label="Close panel">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M18 6L6 18M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-          </header>
+              <div className="agent-actions">
+                <button
+                  onClick={handleClearHistory}
+                  className="icon-btn"
+                  title="Clear Conversation"
+                  aria-label="Clear conversation"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2M10 11v6M14 11v6" />
+                  </svg>
+                </button>
 
-          {/* Chat Stream */}
-          <main className="chat-container">
-            {messages.map((msg) => (
-              <div key={msg.id} className={`chat-row ${msg.sender === "user" ? "user-row" : "ai-row"}`}>
-                <div className={`chat-bubble ${msg.sender === "user" ? "user-bubble" : "ai-bubble"} ${msg.isError ? "error-bubble" : ""}`}>
-                  <div className="bubble-text">{msg.text}</div>
+                <button
+                  onClick={() => setIsVisible(false)}
+                  className="icon-btn close-btn"
+                  title="Close Panel"
+                  aria-label="Close panel"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M18 6L6 18M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </header>
 
-                  <div className="bubble-footer">
-                    <span className="timestamp">{msg.timestamp}</span>
-                    <div className="bubble-actions">
-                      {msg.isError && msg.failedPrompt && (
-                        <button className="retry-btn" onClick={() => handleRetry(msg.failedPrompt)}>
-                          Retry
+            {/* Chat Stream */}
+            <main className="chat-container">
+              {messages.map((msg) => (
+                <div
+                  key={msg.id}
+                  className={`chat-row ${
+                    msg.sender === "user" ? "user-row" : "ai-row"
+                  }`}
+                >
+                  <div
+                    className={`chat-bubble ${
+                      msg.sender === "user"
+                        ? "user-bubble"
+                        : "ai-bubble"
+                    } ${msg.isError ? "error-bubble" : ""}`}
+                  >
+                    <div className="bubble-text">{msg.text}</div>
+
+                    <div className="bubble-footer">
+                      <span className="timestamp">{msg.timestamp}</span>
+
+                      <div className="bubble-actions">
+                        {msg.isError && msg.failedPrompt && (
+                          <button
+                            className="retry-btn"
+                            onClick={() =>
+                              handleRetry(msg.failedPrompt)
+                            }
+                          >
+                            Retry
+                          </button>
+                        )}
+
+                        <button
+                          className="action-pill"
+                          onClick={() =>
+                            handleCopyText(msg.id, msg.text)
+                          }
+                        >
+                          {copiedId === msg.id ? "✓ Copied" : "Copy"}
                         </button>
-                      )}
-                      <button className="action-pill" onClick={() => handleCopyText(msg.id, msg.text)}>
-                        {copiedId === msg.id ? "✓ Copied" : "Copy"}
-                      </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
 
-            {isTyping && (
-              <div className="chat-row ai-row">
-                <div className="chat-bubble ai-bubble typing-bubble">
-                  <span className="wave-dot"></span>
-                  <span className="wave-dot"></span>
-                  <span className="wave-dot"></span>
+              {isTyping && (
+                <div className="chat-row ai-row">
+                  <div className="chat-bubble ai-bubble typing-bubble">
+                    <span className="wave-dot"></span>
+                    <span className="wave-dot"></span>
+                    <span className="wave-dot"></span>
+                  </div>
                 </div>
+              )}
+
+              <div ref={chatEndRef} />
+            </main>
+
+            {/* Interactive Suggestions */}
+            {messages.length < 3 && (
+              <div className="suggestions-rail">
+                {SUGGESTED_PROMPTS.map((prompt, idx) => (
+                  <button
+                    key={idx}
+                    className="suggestion-chip"
+                    onClick={() => handleSendMessage(prompt)}
+                  >
+                    {prompt}
+                  </button>
+                ))}
               </div>
             )}
-            <div ref={chatEndRef} />
-          </main>
 
-          {/* Interactive Suggestions */}
-          {messages.length < 3 && (
-            <div className="suggestions-rail">
-              {SUGGESTED_PROMPTS.map((prompt, idx) => (
-                <button key={idx} className="suggestion-chip" onClick={() => handleSendMessage(prompt)}>
-                  {prompt}
-                </button>
-              ))}
-            </div>
-          )}
+            {/* Input Dock */}
+            <footer className="dock-container">
+              <form
+                className="dock-form"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleSendMessage();
+                }}
+              >
+                <textarea
+                  ref={textareaRef}
+                  className="dock-input"
+                  placeholder="Ask anything... (Shift+Enter for linebreak)"
+                  rows={1}
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                />
 
-          {/* Input Dock */}
-          <footer className="dock-container">
-            <form className="dock-form" onSubmit={(e) => { e.preventDefault(); handleSendMessage(); }}>
-              <textarea
-                ref={textareaRef}
-                className="dock-input"
-                placeholder="Ask anything... (Shift+Enter for linebreak)"
-                rows={1}
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleKeyDown}
-              />
+                <div className="dock-controls">
+                  <button
+                    type="button"
+                    className={`mic-action-btn ${
+                      isListening ? "listening" : ""
+                    }`}
+                    onClick={handleMicToggle}
+                    title={
+                      isListening
+                        ? "Listening... click to cancel"
+                        : "Voice message"
+                    }
+                    disabled={isTyping}
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                      <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" />
+                    </svg>
+                  </button>
 
-              <div className="dock-controls">
-                <button
-                  type="button"
-                  className={`mic-action-btn ${isListening ? "listening" : ""}`}
-                  onClick={handleMicToggle}
-                  title={isListening ? "Listening... click to cancel" : "Voice message"}
-                  disabled={isTyping}
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-                    <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/>
-                  </svg>
-                </button>
+                  <button
+                    type="submit"
+                    className="send-action-btn"
+                    disabled={!input.trim() || isTyping}
+                    title="Send query"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                    >
+                      <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                    </svg>
+                  </button>
+                </div>
+              </form>
+            </footer>
 
-                <button
-                  type="submit"
-                  className="send-action-btn"
-                  disabled={!input.trim() || isTyping}
-                  title="Send query"
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
-                  </svg>
-                </button>
-              </div>
-            </form>
-          </footer>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

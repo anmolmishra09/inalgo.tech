@@ -8,41 +8,48 @@ import defaultQrImage from "../images/phonepe-qr.png";
 const DEFAULT_ENGINEERING_MEMBERS = [
   {
     id: 1,
-    name: "Sarah Lin",
-    role: "VP of AI & Systems",
-    bio: "Distributed neural models and high-throughput inference engines.",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80",
-    accentColor: "#6366f1", // Indigo
-    github: "#",
-    linkedin: "#",
+    name: "Andrew Ng",
+    role: "AI & Machine Learning Leader",
+    bio: "AI education, machine learning systems, and applied artificial intelligence.",
+    image:
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&auto=format&fit=crop&q=85",
+    accentColor: "#6366f1",
+    github: "https://github.com/andrewyng",
+    linkedin: "https://www.linkedin.com/in/andrewyng/",
   },
+
   {
     id: 2,
-    name: "David K.",
-    role: "Principal Cloud Architect",
-    bio: "Multi-region Kubernetes clusters and bare-metal edge nodes.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80",
-    accentColor: "#06b6d4", // Cyan
+    name: "Jeff Dean",
+    role: "AI Systems & Infrastructure",
+    bio: "Large-scale computing, distributed systems, and AI infrastructure engineering.",
+    image:
+      "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=400&auto=format&fit=crop&q=85",
+    accentColor: "#06b6d4",
     github: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/jeff-dean/",
   },
+
   {
     id: 3,
-    name: "Elena Rostova",
-    role: "Lead ML Engineer",
-    bio: "Agentic workflows, model quantization, and real-time streaming.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80",
-    accentColor: "#10b981", // Emerald
+    name: "Fei-Fei Li",
+    role: "AI Research & Computer Vision",
+    bio: "Computer vision, human-centered AI, and artificial intelligence research.",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=85",
+    accentColor: "#10b981",
     github: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/fei-fei-li-4548a04/",
   },
+
   {
     id: 4,
-    name: "Marcus Chen",
-    role: "Staff Infrastructure Dev",
-    bio: "Zero-trust security mesh, sub-millisecond query pipelines.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80",
-    accentColor: "#a855f7", // Purple
+    name: "Yann LeCun",
+    role: "AI Research Scientist",
+    bio: "Deep learning, neural networks, computer vision, and AI research.",
+    image:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=85",
+    accentColor: "#a855f7",
     github: "#",
     linkedin: "#",
   },

@@ -1,9 +1,29 @@
 import React from 'react';
 import './PrivacyPolicy.css';
+// SEO Component
+import SEO from '../components/SEO';
 
 function PrivacyPolicy() {
   return (
-    <div className="privacy-policy">
+    <>
+      <SEO
+        title="Privacy Policy | Inalgo"
+        description="Inalgo's Privacy Policy outlines how we collect, use, disclose, and safeguard your personal information when you visit our website or use our services. Learn about your privacy rights and our data protection practices."
+        canonicalUrl="https://inalgo.tech/privacy-policy"
+        openGraph={{
+          url: "https://inalgo.tech/privacy-policy",
+          title: "Privacy Policy | Inalgo",
+          description: "Inalgo's Privacy Policy outlines how we collect, use, disclose, and safeguard your personal information when you visit our website or use our services. Learn about your privacy rights and our data protection practices.",
+          image: "https://inalgo.tech/logo.png"
+        }}
+        twitter={{
+          url: "https://inalgo.tech/privacy-policy",
+          title: "Privacy Policy | Inalgo",
+          description: "Inalgo's Privacy Policy outlines how we collect, use, disclose, and safeguard your personal information when you visit our website or use our services. Learn about your privacy rights and our data protection practices.",
+          image: "https://inalgo.tech/logo.png"
+        }}
+      />
+      <div className="privacy-policy">
       <section className="privacy-hero">
         <div className="container">
           <h1>Privacy Policy</h1>
@@ -197,7 +217,8 @@ function PrivacyPolicy() {
         </div>
       </section>
     </div>
-  );
+        </>
+    );
 }
 
 export default PrivacyPolicy;

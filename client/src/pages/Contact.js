@@ -1,60 +1,191 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import './Contact.css';
 import Toast from '../components/Toast';
+// SEO Component
+import SEO from '../components/SEO';
+
+const CONTACT = {
+  email: 'inaialgo@gmail.com',
+  whatsapp: '919026395833',
+  phone: '+91 8787222966',
+  linkedin: 'https://www.linkedin.com/company/in-algo09/',
+  github: 'https://github.com/anmolmishra09',
+  location: 'Bengaluru, Karnataka, India',
+};
+
+const inquiryTypes = [
+  'AI / ML Solution',
+  'Web / Product Development',
+  'Enterprise Automation',
+  'RAG / Knowledge Platform',
+  'Partnership',
+  'General Inquiry',
+];
+
+const budgetOptions = [
+  'Under ₹1 Lakh',
+  '₹1–5 Lakh',
+  '₹5–10 Lakh',
+  '₹10 Lakh+',
+  'Not decided yet',
+];
+
+const timelineOptions = [
+  'ASAP',
+  'Within 1 month',
+  '1–3 months',
+  '3–6 months',
+  'Flexible',
+];
 
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    company: '',
+    inquiryType: '',
+    budget: '',
+    timeline: '',
     subject: '',
-    message: ''
+    message: '',
   });
-  const [status, setStatus] = useState('');
+
+  const [status, setStatus] = useState('idle');
   const [showToast, setShowToast] = useState(false);
+  const [activeContact, setActiveContact] = useState(null);
+
+  const completion = useMemo(() => {
+    const fields = ['name', 'email', 'inquiryType', 'subject', 'message'];
+    const completed = fields.filter((field) => formData[field].trim()).length;
+    return Math.round((completed / fields.length) * 100);
+  }, [formData]);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData((current) => ({ ...current, [name]: value }));
+    if (status !== 'idle') setStatus('idle');
+  };
+
+  const openWhatsApp = (message) => {
+    const url = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setStatus('sending');
 
-    // 1. Build the formatted text for WhatsApp
-    const whatsappMessage = 
-      `*New Contact Form Submission*\n\n` +
+    const whatsappMessage =
+      `*New Inalgo Client Inquiry*\n\n` +
       `*Name:* ${formData.name}\n` +
       `*Email:* ${formData.email}\n` +
-      `*Subject:* ${formData.subject}\n` +
-      `*Message:* ${formData.message}`;
+      `*Company:* ${formData.company || 'Not provided'}\n` +
+      `*Inquiry:* ${formData.inquiryType || 'General Inquiry'}\n` +
+      `*Budget:* ${formData.budget || 'Not specified'}\n` +
+      `*Timeline:* ${formData.timeline || 'Not specified'}\n` +
+      `*Subject:* ${formData.subject}\n\n` +
+      `*Project Details:*\n${formData.message}`;
 
-    // 2. URL-encode the message payload
-    const encodedMessage = encodeURIComponent(whatsappMessage);
-
-    // 3. Target WhatsApp Number (+91 9026395833)
-    const phoneNumber = '+91 9026395833';
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
-    // 4. Open WhatsApp in a new tab
-    window.open(whatsappUrl, '_blank');
-
-    // 5. Update UI feedback & reset form
+    openWhatsApp(whatsappMessage);
     setStatus('success');
     setShowToast(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
+
+    setFormData({
+      name: '',
+      email: '',
+      company: '',
+      inquiryType: '',
+      budget: '',
+      timeline: '',
+      subject: '',
+      message: '',
+    });
+  };
+
+  const handleQuickContact = (type) => {
+    setActiveContact(type);
+
+    if (type === 'email') {
+      window.location.href =
+        `mailto:${CONTACT.email}?subject=${encodeURIComponent('Project Inquiry - Inalgo')}`;
+      return;
+    }
+
+    if (type === 'whatsapp') {
+      openWhatsApp(
+        'Hi Inalgo, I would like to discuss a project. Please let me know a convenient time to connect.'
+      );
+      return;
+    }
+
+    if (type === 'linkedin') {
+      window.open(CONTACT.linkedin, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
+    if (type === 'github') {
+      window.open(CONTACT.github, '_blank', 'noopener,noreferrer');
+    }
   };
 
   return (
-    <div className="contact">
-      {/* Toast Notification */}
+    <>
+      <SEO
+        title="Contact | Inalgo"
+        description="Get in touch with Inalgo to discuss your project. We offer AI/ML solutions, web/product development, enterprise automation, and more. Contact us via email, WhatsApp, or schedule a consultation."
+        canonicalUrl="https://inalgo.tech/contact"
+        openGraph={{
+          url: "https://inalgo.tech/contact",
+          title: "Contact | Inalgo",
+          description: "Get in touch with Inalgo to discuss your project. We offer AI/ML solutions, web/product development, enterprise automation, and more. Contact us via email, WhatsApp, or schedule a consultation.",
+          image: "https://inalgo.tech/logo.png"
+        }}
+        twitter={{
+          url: "https://inalgo.tech/contact",
+          title: "Contact | Inalgo",
+          description: "Get in touch with Inalgo to discuss your project. We offer AI/ML solutions, web/product development, enterprise automation, and more. Contact us via email, WhatsApp, or schedule a consultation.",
+          image: "https://inalgo.tech/logo.png"
+        }}
+        schemaOrg={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "name": "Contact | Inalgo",
+          "description": "Get in touch with Inalgo to discuss your project. We offer AI/ML solutions, web/product development, enterprise automation, and more. Contact us via email, WhatsApp, or schedule a consultation.",
+          "url": "https://inalgo.tech/contact",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://inalgo.tech/contact?s={search_term_string}",
+            "query-input": "required name=search_term_string"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bengaluru",
+            "addressRegion": "Karnataka",
+            "addressCountry": "IN",
+            "postalCode": "560001"
+          },
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "telephone": "+91-8787222966",
+              "contactType": "Customer Service",
+              "availableLanguage": ["English", "Hindi"]
+            },
+            {
+              "@type": "ContactPoint",
+              "contactType": "Email",
+              "emailAddress": "inalgo@gmail.com",
+              "availableLanguage": ["English"]
+            }
+          ]
+        }}
+      />
+      <main className="contact-page">
       {showToast && (
-        <div style={{ position: 'fixed', top: '2rem', right: '2rem', zIndex: 9999 }}>
+        <div className="contact-toast">
           <Toast
-            message="Redirecting to WhatsApp!"
-            description="Opening WhatsApp with your filled details."
+            message="WhatsApp is ready"
+            description="Your project details have been prepared for the Inalgo team."
             type="success"
             duration={5000}
             onClose={() => setShowToast(false)}
@@ -62,197 +193,290 @@ function Contact() {
         </div>
       )}
 
-      {/* Hero Section */}
       <section className="contact-hero">
-        <div className="container">
-          <span className="contact-badge">Get In Touch</span>
-          <h1>Contact Our Engineering Team</h1>
-          <p className="lead">Have a project, query, or partnership in mind? Let's connect.</p>
+        <div className="hero-grid" aria-hidden="true" />
+        <div className="hero-orb hero-orb-one" aria-hidden="true" />
+        <div className="hero-orb hero-orb-two" aria-hidden="true" />
+
+        <div className="container contact-hero-inner">
+          <span className="contact-badge">
+            <span className="badge-dot" />
+            Start a conversation
+          </span>
+
+          <h1>Let&apos;s build something intelligent.</h1>
+
+          <p className="lead">
+            Tell us what you are building, what is blocking you, or where you
+            want to take your product next. We&apos;ll turn the conversation
+            into a clear technical path forward.
+          </p>
+
+          <div className="hero-actions">
+            <button
+              type="button"
+              className="hero-action primary"
+              onClick={() =>
+                document
+                  .getElementById('contact-form')
+                  ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              }
+            >
+              Discuss your project <span>→</span>
+            </button>
+
+            <a className="hero-action secondary" href={`mailto:${CONTACT.email}`}>
+              Email the team <span>↗</span>
+            </a>
+          </div>
+
+          <div className="trust-row">
+            <span><strong>AI &amp; ML</strong> engineering</span>
+            <span><i /> Product development</span>
+            <span><i /> Enterprise automation</span>
+          </div>
         </div>
       </section>
 
       <section className="contact-content">
         <div className="container">
+          <div className="contact-intro">
+            <div>
+              <span className="section-kicker">CONTACT OPTIONS</span>
+              <h2>Choose the way that works for you.</h2>
+            </div>
+            <p>
+              Prefer a direct conversation? Use one of the channels below.
+              For a structured project discussion, use the inquiry form.
+            </p>
+          </div>
+
           <div className="contact-grid">
-            
-            {/* Left Column: Interactive Contact Details */}
             <div className="contact-info">
-              <h2>Let's Connect</h2>
-              <p className="info-description">
-                Reach out to us directly through any of our official channels below or submit a form inquiry.
-              </p>
+              <div className="info-header">
+                <div>
+                  <span className="eyebrow">DIRECT CONNECTION</span>
+                  <h3>Talk to the team</h3>
+                </div>
+                <span className="availability-pill">
+                  <span /> Available
+                </span>
+              </div>
 
               <div className="info-items">
-                
-                {/* Email Item */}
-                <div className="info-item">
+                <button
+                  type="button"
+                  className={`info-item ${activeContact === 'email' ? 'is-active' : ''}`}
+                  onClick={() => handleQuickContact('email')}
+                >
                   <div className="info-icon email-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="2" y="4" width="20" height="16" rx="2" />
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                     </svg>
                   </div>
                   <div className="info-details">
                     <span className="info-label">Direct Email</span>
-                    <h3 className="info-handle">inaialgo@gmail.com</h3>
-                    <a href="mailto:inaialgo@gmail.com" className="info-link">
-                      <span>Send Email</span>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
+                    <strong className="info-handle">{CONTACT.email}</strong>
+                    <span className="info-link">Send an email <b>→</b></span>
                   </div>
-                </div>
+                  <span className="card-arrow">↗</span>
+                </button>
 
-                {/* WhatsApp Item */}
-                <div className="info-item">
+                <button
+                  type="button"
+                  className={`info-item ${activeContact === 'whatsapp' ? 'is-active' : ''}`}
+                  onClick={() => handleQuickContact('whatsapp')}
+                >
                   <div className="info-icon whatsapp-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 2a9.5 9.5 0 0 0-8.1 14.47L2.5 21.5l5.18-1.36A9.5 9.5 0 1 0 12 2Zm5.24 13.56c-.22.62-1.28 1.15-1.76 1.2-.45.05-1.02.07-1.65-.1-.38-.1-.87-.28-1.5-.55-2.64-1.14-4.36-3.8-4.49-3.98-.13-.18-1.07-1.42-1.07-2.71 0-1.29.68-1.92.92-2.18.24-.26.53-.32.71-.32h.51c.16 0 .38-.06.59.45.22.53.74 1.82.8 1.95.07.13.11.29.02.47-.09.18-.13.29-.27.45-.13.16-.28.36-.4.48-.13.13-.27.27-.12.53.15.26.66 1.09 1.42 1.76.98.87 1.81 1.14 2.07 1.27.26.13.41.11.56-.07.15-.18.64-.74.81-1 .17-.26.34-.22.58-.13.24.09 1.52.72 1.78.85.26.13.44.2.51.31.07.11.07.64-.15 1.26Z" />
                     </svg>
                   </div>
                   <div className="info-details">
                     <span className="info-label">WhatsApp Business</span>
-                    <h3 className="info-handle">+91 9026395833</h3>
-                    <a href="https://wa.me/919026395833" target="_blank" rel="noopener noreferrer" className="info-link">
-                      <span>Chat Directly</span>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
+                    <strong className="info-handle">{CONTACT.phone}</strong>
+                    <span className="info-link">Start a direct chat <b>→</b></span>
                   </div>
-                </div>
+                  <span className="card-arrow">↗</span>
+                </button>
 
-                {/* LinkedIn Item */}
-                <div className="info-item">
+                <button
+                  type="button"
+                  className={`info-item ${activeContact === 'linkedin' ? 'is-active' : ''}`}
+                  onClick={() => handleQuickContact('linkedin')}
+                >
                   <div className="info-icon linkedin-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M19 0H5a5 5 0 0 0-5 5v14a5 5 0 0 0 5 5h14a5 5 0 0 0 5-5V5a5 5 0 0 0-5-5ZM8 19H5V8h3v11ZM6.5 6.5A1.75 1.75 0 1 1 6.5 3a1.75 1.75 0 0 1 0 3.5ZM21 19h-3v-5.6c0-3.37-4-3.12-4 0V19h-3V8h3v1.77c1.4-2.59 7-2.78 7 2.48V19Z" />
                     </svg>
                   </div>
                   <div className="info-details">
                     <span className="info-label">LinkedIn Organization</span>
-                    <h3 className="info-handle">in-algo09</h3>
-                    <a href="https://www.linkedin.com/company/in-algo09/" target="_blank" rel="noopener noreferrer" className="info-link">
-                      <span>linkedin.com/company/in-algo09</span>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
+                    <strong className="info-handle">in-algo09</strong>
+                    <span className="info-link">View our LinkedIn <b>→</b></span>
                   </div>
-                </div>
+                  <span className="card-arrow">↗</span>
+                </button>
 
-                {/* Location Item */}
-                <div className="info-item">
+                <button
+                  type="button"
+                  className={`info-item ${activeContact === 'github' ? 'is-active' : ''}`}
+                  onClick={() => handleQuickContact('github')}
+                >
+                  <div className="info-icon github-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.4 3-.4s2.04.13 3 .4c2.29-1.55 3.3-1.23 3.3-1.23.65 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.69.83.57A12 12 0 0 0 12 .5Z" />
+                    </svg>
+                  </div>
+                  <div className="info-details">
+                    <span className="info-label">GitHub</span>
+                    <strong className="info-handle">@anmolmishra09</strong>
+                    <span className="info-link">Explore projects <b>→</b></span>
+                  </div>
+                  <span className="card-arrow">↗</span>
+                </button>
+
+                <div className="info-item static-item">
                   <div className="info-icon location-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                      <circle cx="12" cy="10" r="3"></circle>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M20 10c0 5.5-8 12-8 12S4 15.5 4 10a8 8 0 1 1 16 0Z" />
+                      <circle cx="12" cy="10" r="2.5" />
                     </svg>
                   </div>
                   <div className="info-details">
                     <span className="info-label">Engineering Hub</span>
-                    <h3 className="info-handle">Bengaluru, KA, India</h3>
-                    <p className="info-subtext">The Silicon Valley of India</p>
+                    <strong className="info-handle">{CONTACT.location}</strong>
+                    <span className="info-subtext">The Silicon Valley of India</span>
                   </div>
-                </div>
-
-                {/* GitHub Item */}
-                <div className="info-item">
-                  <div className="info-icon github-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                  </div>
-                  <div className="info-details">
-                    <span className="info-label">GitHub Engineer Lead</span>
-                    <h3 className="info-handle">@anmolmishra09</h3>
-                    <a href="https://github.com/anmolmishra09" target="_blank" rel="noopener noreferrer" className="info-link">
-                      <span>github.com/anmolmishra09</span>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </a>
-                  </div>
-                </div>
-
-              </div>
-              
-              <div className="social-connect">
-                <div className="social-links">
-                  
-                  {/* Telegram
-                  <a href="https://t.me/inaialgo" target="_blank" rel="noopener noreferrer" className="social-card telegram-card" aria-label="Telegram">
-                    <div className="social-icon-wrapper">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
-                      </svg>
-                    </div>
-                    <div className="social-meta">
-                      <span className="social-name">Telegram</span>
-                      <span className="social-tag">@inaialgo</span>
-                    </div>
-                    <svg className="social-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-                  </a>
-
-                  {/* GitHub Org */}
-                  {/* <a href="https://github.com/inalgo" target="_blank" rel="noopener noreferrer" className="social-card github-card" aria-label="GitHub Organization">
-                    <div className="social-icon-wrapper">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                      </svg>
-                    </div>
-                    <div className="social-meta">
-                      <span className="social-name">GitHub Org</span>
-                      <span className="social-tag">@inalgo</span>
-                    </div>
-                    <svg className="social-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-                  </a> */}
-
-                  {/* LinkedIn */}
-                  {/* <a href="https://www.linkedin.com/company/in-algo09/" target="_blank" rel="noopener noreferrer" className="social-card linkedin-card" aria-label="LinkedIn Page">
-                    <div className="social-icon-wrapper">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                      </svg>
-                    </div>
-                    <div className="social-meta">
-                      <span className="social-name">LinkedIn</span>
-                      <span className="social-tag">in-algo09</span>
-                    </div>
-                    <svg className="social-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-                  </a> */} 
-
                 </div>
               </div>
 
+              <div className="client-note">
+                <div className="client-note-icon">✦</div>
+                <div>
+                  <strong>Not sure what to ask?</strong>
+                  <p>
+                    Share your idea in plain language. We&apos;ll help shape the
+                    technical requirements.
+                  </p>
+                </div>
+              </div>
             </div>
 
-            {/* Right Column: Interactive Form */}
-            <div className="contact-form-wrapper">
+            <div className="contact-form-wrapper" id="contact-form">
+              <div className="form-heading">
+                <div>
+                  <span className="eyebrow">PROJECT BRIEF</span>
+                  <h3>Tell us about your project</h3>
+                  <p>A few details help us understand your needs before we connect.</p>
+                </div>
+                <div className="completion">
+                  <strong>{completion}%</strong>
+                  <span>complete</span>
+                </div>
+              </div>
+
+              <div className="progress-track" aria-hidden="true">
+                <span style={{ width: `${completion}%` }} />
+              </div>
+
               <form className="contact-form" onSubmit={handleSubmit}>
-                <h3 className="form-title">Send a Message</h3>
-                
-                <div className="form-group">
-                  <label htmlFor="name">Full Name *</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    placeholder="e.g. Alex Rivera"
-                  />
+                <div className="form-grid two">
+                  <div className="form-group">
+                    <label htmlFor="name">Full Name <em>*</em></label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      autoComplete="name"
+                      placeholder="Alex Rivera"
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="email">Work Email <em>*</em></label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      autoComplete="email"
+                      placeholder="alex@company.com"
+                    />
+                  </div>
+                </div>
+
+                <div className="form-grid two">
+                  <div className="form-group">
+                    <label htmlFor="company">Company</label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      autoComplete="organization"
+                      placeholder="Your company"
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="inquiryType">What can we help with? <em>*</em></label>
+                    <select
+                      id="inquiryType"
+                      name="inquiryType"
+                      value={formData.inquiryType}
+                      onChange={handleChange}
+                      required
+                    >
+                      <option value="">Select a service</option>
+                      {inquiryTypes.map((item) => (
+                        <option key={item} value={item}>{item}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="form-grid two">
+                  <div className="form-group">
+                    <label htmlFor="budget">Estimated Budget</label>
+                    <select
+                      id="budget"
+                      name="budget"
+                      value={formData.budget}
+                      onChange={handleChange}
+                    >
+                      <option value="">Select a range</option>
+                      {budgetOptions.map((item) => (
+                        <option key={item} value={item}>{item}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="timeline">Desired Timeline</label>
+                    <select
+                      id="timeline"
+                      name="timeline"
+                      value={formData.timeline}
+                      onChange={handleChange}
+                    >
+                      <option value="">Select a timeline</option>
+                      {timelineOptions.map((item) => (
+                        <option key={item} value={item}>{item}</option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="email">Email Address *</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    placeholder="alex@company.com"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="subject">Subject *</label>
+                  <label htmlFor="subject">Subject <em>*</em></label>
                   <input
                     type="text"
                     id="subject"
@@ -260,62 +484,100 @@ function Contact() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    placeholder="e.g. Project Inquiry & Architecture"
+                    placeholder="e.g. AI customer support platform"
                   />
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="message">Message *</label>
+                  <div className="label-row">
+                    <label htmlFor="message">Project Details <em>*</em></label>
+                    <span>{formData.message.length}/1000</span>
+                  </div>
                   <textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows="5"
-                    placeholder="Tell us about your requirements or questions..."
-                  ></textarea>
+                    maxLength={1000}
+                    rows={6}
+                    placeholder="What are you trying to build? Include goals, users, existing technology, or any important constraints."
+                  />
                 </div>
 
-                <button 
-                  type="submit" 
-                  className="btn btn-primary submit-btn"
-                  disabled={status === 'sending'}
-                >
-                  {status === 'sending' ? 'Opening WhatsApp...' : 'Send Message'}
-                </button>
+                <div className="form-footer">
+                  <div className="form-security">
+                    <span>✓</span>
+                    <p>Your details stay private and are only used to respond to your inquiry.</p>
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="contact-btn-submit"
+                    disabled={status === 'sending'}
+                  >
+                    {status === 'sending' ? (
+                      <>
+                        <span className="button-spinner" />
+                        Preparing WhatsApp...
+                      </>
+                    ) : (
+                      <>
+                        Send project inquiry
+                        <span>→</span>
+                      </>
+                    )}
+                  </button>
+                </div>
 
                 {status === 'success' && (
-                  <p className="form-message success">Thank you! Opening WhatsApp to send your message...</p>
+                  <p className="form-message success" role="status">
+                    Your inquiry is prepared. WhatsApp should open with the details ready to send.
+                  </p>
                 )}
               </form>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* Office Location Map */}
       <section className="map-section">
         <div className="container">
-          <h2>Visit Our HQ</h2>
-          <p className="map-description">Located in Bengaluru, Karnataka, India — The Silicon Valley of India</p>
+          <div className="map-header">
+            <div>
+              <span className="section-kicker">ENGINEERING HUB</span>
+              <h2>Built from Bengaluru. Connected globally.</h2>
+            </div>
+            <p>Our listed engineering hub is in Bengaluru, Karnataka, India.</p>
+          </div>
+
           <div className="map-container">
             <iframe
-              title="Inalgo Office Location"
+              title="Inalgo Engineering Hub - Bengaluru"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497698.77491188665!2d77.30126421902398!3d12.954294257077642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka%2C%20India!5e0!3m2!1sen!2sin!4v1709470000000!5m2!1sen!2sin"
               width="100%"
               height="420"
               style={{ border: 0 }}
-              allowFullScreen=""
+              allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+            />
+          </div>
+
+          <div className="map-bottom">
+            <span>📍 Bengaluru, Karnataka, India</span>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Bengaluru%2C%20Karnataka%2C%20India"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open in Google Maps ↗
+            </a>
           </div>
         </div>
       </section>
-
-    </div>
+    </main>
+    </>
   );
 }
 

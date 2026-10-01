@@ -1,0 +1,24 @@
+# robots.txt for Inalgo
+# For more information: https://developers.google.com/search/docs/advanced/robots/intro
+
+# Allow all crawlers access to all content
+User-agent: *
+Allow: /
+
+# Disallow admin and private paths
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /auth/
+
+# Allow access to CSS, JS, and images
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.svg$
+Allow: /*.ico$
+
+# Sitemap location
+Sitemap: https://inalgo.tech/sitemap.xml

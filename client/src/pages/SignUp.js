@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useGoogleLogin } from '@react-oauth/google';
+import SEO from '../components/SEO';
 import './SignUp.css';
 
 function SignUp() {
@@ -66,7 +67,25 @@ function SignUp() {
   });
 
   return (
-    <div className="signup-page-fullscreen">
+    <>
+      <SEO
+        title="Sign Up | Inalgo"
+        description="Create your Inalgo account to get started. Sign up with your email or Google account to access our platform, manage projects, and collaborate with our team."
+        canonicalUrl="https://inalgo.tech/signup"
+        openGraph={{
+          url: "https://inalgo.tech/signup",
+          title: "Sign Up | Inalgo",
+          description: "Create your Inalgo account to get started. Sign up with your email or Google account to access our platform, manage projects, and collaborate with our team.",
+          image: "https://inalgo.tech/logo.png"
+        }}
+        twitter={{
+          url: "https://inalgo.tech/signup",
+          title: "Sign Up | Inalgo",
+          description: "Create your Inalgo account to get started. Sign up with your email or Google account to access our platform, manage projects, and collaborate with our team.",
+          image: "https://inalgo.tech/logo.png"
+        }}
+      />
+      <div className="signup-page-fullscreen">
       <div className="signup-image-container">
         <img 
           className="signup-image" 
@@ -166,7 +185,9 @@ function SignUp() {
         </form>
       </div>
     </div>
-  );
+        </>
+
+    );
 }
 
 export default SignUp;

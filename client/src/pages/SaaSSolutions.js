@@ -1,10 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import './ServiceDetail.css';
 
 function SaaSSolutions() {
   return (
-    <div className="service-detail-page">
+    <>
+      <SEO
+        title="SaaS Solutions | Inalgo"
+        description="Inalgo offers scalable software-as-a-service platforms that grow with your business. We develop robust, cloud-based SaaS platforms with subscription management, multi-tenancy architecture, seamless integrations, admin dashboards, API integration, scalable infrastructure, and enterprise security measures."
+        canonicalUrl="https://inalgo.tech/services/saas-solutions"
+        openGraph={{
+          url: "https://inalgo.tech/services/saas-solutions",
+          title: "SaaS Solutions | Inalgo",
+          description: "Inalgo offers scalable software-as-a-service platforms that grow with your business. We develop robust, cloud-based SaaS platforms with subscription management, multi-tenancy architecture, seamless integrations, admin dashboards, API integration, scalable infrastructure, and enterprise security measures.",
+          image: "https://inalgo.tech/logo.png"
+        }}
+        twitter={{
+          url: "https://inalgo.tech/services/saas-solutions",
+          title: "SaaS Solutions | Inalgo",
+          description: "Inalgo offers scalable software-as-a-service platforms that grow with your business. We develop robust, cloud-based SaaS platforms with subscription management, multi-tenancy architecture, seamless integrations, admin dashboards, API integration, scalable infrastructure, and enterprise security measures.",
+          image: "https://inalgo.tech/logo.png"
+        }}
+      />
+      <div className="service-detail-page">
       <div className="service-hero">
         <div className="container">
           <div className="breadcrumb">
@@ -146,7 +165,9 @@ function SaaSSolutions() {
         </section>
       </div>
     </div>
-  );
+        </>
+
+    );
 }
 
 export default SaaSSolutions;

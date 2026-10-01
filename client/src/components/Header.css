@@ -1,100 +1,162 @@
 /* ==========================================================================
-   HEADER & NAVIGATION
-   Ultra-Interactive Glassmorphism — Fully Responsive
+   FLOATING NAVBAR
+   Minimal • Premium • Interactive • Responsive
    ========================================================================== */
 
 :root {
-  --nav-bg: rgba(255, 255, 255, 0.82);
-  --nav-border: rgba(226, 232, 240, 0.85);
-  --nav-text: #334155;
-  --nav-text-hover: #6d28d9;
+  --nav-bg: rgba(255, 255, 255, 0.94);
+  --nav-bg-solid: #ffffff;
 
-  --primary-gradient: linear-gradient(
-    135deg,
-    #6366f1 0%,
-    #8b5cf6 50%,
-    #d946ef 100%
-  );
+  --nav-border: rgba(15, 23, 42, 0.08);
 
-  --accent-glow: rgba(139, 92, 246, 0.35);
+  --nav-text: #475569;
+  --nav-dark: #0f172a;
+  --nav-muted: #64748b;
 
-  --nav-ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --bounce-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --nav-primary: #4f46e5;
+  --nav-primary-hover: #4338ca;
 
-  --header-height: 4.5rem;
+  --nav-soft: #f8fafc;
+  --nav-soft-purple: #eef2ff;
+
+  --nav-radius: 999px;
+
+  --nav-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.07),
+    0 2px 8px rgba(15, 23, 42, 0.04);
+
+  --nav-shadow-hover:
+    0 18px 45px rgba(15, 23, 42, 0.11),
+    0 4px 14px rgba(79, 70, 229, 0.05);
+
+  --nav-shadow-primary:
+    0 8px 22px rgba(79, 70, 229, 0.22);
+
+  --ease:
+    cubic-bezier(0.16, 1, 0.3, 1);
+
+  --bounce:
+    cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+
 /* ==========================================================================
-   BASE HEADER
+   BODY
    ========================================================================== */
 
-.header {
+body.menu-open {
+  overflow: hidden;
+}
+
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+
+.floating-header {
   position: fixed;
-  top: clamp(0.65rem, 2vw, 1.5rem);
+
+  top: 1rem;
   left: 0;
   right: 0;
+
   width: 100%;
+
   z-index: 1000;
 
-  transition:
-    transform 0.4s var(--nav-ease),
-    top 0.4s var(--nav-ease);
-
-  will-change: transform;
-
-  /* Prevent accidental horizontal overflow */
-  max-width: 100vw;
+  pointer-events: none;
 }
 
-/* ==========================================================================
-   CONTAINER
-   ========================================================================== */
-
-.header .container {
-  width: min(100% - 2rem, 72rem);
-  margin-inline: auto;
-}
 
 /* ==========================================================================
-   GLASS NAVBAR
+   FLOATING NAVBAR
    ========================================================================== */
 
-.navbar {
-  min-height: var(--header-height);
+.floating-navbar {
+  width: min(
+    calc(100% - 2rem),
+    1050px
+  );
+
+  min-height: 64px;
+
+  margin: 0 auto;
+  padding: 7px 8px;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
-
-  gap: 1rem;
-
-  padding: 0.45rem 0.6rem;
 
   background: var(--nav-bg);
 
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-
   border: 1px solid var(--nav-border);
-  border-radius: 9999px;
+  border-radius: var(--nav-radius);
 
-  box-shadow:
-    0 8px 32px -4px rgba(15, 23, 42, 0.06),
-    0 2px 8px -2px rgba(15, 23, 42, 0.04);
+  box-shadow: var(--nav-shadow);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  pointer-events: auto;
 
   transition:
-    border-color 0.4s var(--nav-ease),
-    box-shadow 0.4s var(--nav-ease),
-    background 0.4s var(--nav-ease);
+    box-shadow 0.35s var(--ease),
+    transform 0.35s var(--ease),
+    border-color 0.35s ease;
 }
 
-.navbar:hover {
-  border-color: rgba(139, 92, 246, 0.3);
+.floating-navbar:hover {
+  border-color: rgba(79, 70, 229, 0.12);
 
-  box-shadow:
-    0 12px 40px -4px rgba(139, 92, 246, 0.12),
-    0 4px 12px -2px rgba(15, 23, 42, 0.04);
+  box-shadow: var(--nav-shadow-hover);
 }
+
+
+/* ==========================================================================
+   LOGO
+   ========================================================================== */
+
+.navbar-brand {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+
+  margin-left: 8px;
+
+  position: relative;
+  z-index: 5;
+}
+
+.navbar-brand a {
+  display: flex;
+  align-items: center;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.3s var(--bounce),
+    opacity 0.3s ease;
+}
+
+.navbar-brand a:hover {
+  transform: translateY(-1px);
+
+  opacity: 0.92;
+}
+
+
+/* ==========================================================================
+   NAVIGATION WRAPPER
+   ========================================================================== */
+
+.nav-wrapper {
+  flex: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 /* ==========================================================================
    NAV MENU
@@ -104,12 +166,12 @@
   display: flex;
   align-items: center;
 
-  list-style: none;
-
-  gap: clamp(0.15rem, 0.5vw, 0.4rem);
+  gap: 3px;
 
   margin: 0;
   padding: 0;
+
+  list-style: none;
 }
 
 .nav-item {
@@ -117,8 +179,9 @@
   align-items: center;
 }
 
+
 /* ==========================================================================
-   NAV LINKS
+   NAV LINK
    ========================================================================== */
 
 .nav-link {
@@ -128,475 +191,487 @@
   align-items: center;
   justify-content: center;
 
-  min-height: 2.6rem;
+  min-height: 42px;
 
-  padding: 0.55rem clamp(0.65rem, 1.2vw, 1.15rem);
+  padding: 0 15px;
 
   color: var(--nav-text);
 
-  font-size: clamp(0.78rem, 0.8vw, 0.875rem);
+  font-size: 14px;
   font-weight: 500;
+
   line-height: 1;
 
   text-decoration: none;
   white-space: nowrap;
 
-  border-radius: 9999px;
+  border-radius: 999px;
 
   transition:
-    color 0.3s ease,
-    transform 0.3s var(--bounce-ease),
-    background 0.3s ease;
-
-  z-index: 1;
+    color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s var(--bounce),
+    box-shadow 0.25s ease;
 }
 
-/* Hover background */
 
-.nav-link::before {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-
-  border-radius: inherit;
-
-  background: rgba(241, 245, 249, 0.9);
-
-  opacity: 0;
-
-  transform: scale(0.85);
-
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s var(--bounce-ease);
-
-  z-index: -1;
-}
+/* Hover */
 
 .nav-link:hover {
-  color: var(--nav-text-hover);
-  transform: translateY(-2px);
+  color: var(--nav-dark);
+
+  background: var(--nav-soft);
+
+  transform: translateY(-1px);
 }
 
-.nav-link:hover::before {
-  opacity: 1;
-  transform: scale(1);
-}
 
 /* ==========================================================================
-   ACTIVE NAV LINK
+   ACTIVE LINK
    ========================================================================== */
 
 .nav-link.active {
   color: #ffffff;
 
-  font-weight: 600;
-
-  background: var(--primary-gradient);
+  background: var(--nav-primary);
 
   box-shadow:
-    0 4px 15px var(--accent-glow);
-
-  animation: activeSpring 0.5s var(--bounce-ease);
+    0 5px 15px rgba(79, 70, 229, 0.22);
 }
 
-.nav-link.active::before {
-  display: none;
+.nav-link.active:hover {
+  color: #ffffff;
+
+  background: var(--nav-primary-hover);
+
+  transform: translateY(-1px);
 }
 
-/* ==========================================================================
-   ACTIVE LINK SHIMMER
-   ========================================================================== */
+
+/* Active indicator */
 
 .nav-link.active::after {
   content: "";
 
   position: absolute;
 
-  top: 0;
-  left: -100%;
+  bottom: 5px;
+  left: 50%;
 
-  width: 60%;
-  height: 100%;
+  width: 4px;
+  height: 4px;
 
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
+  background: rgba(255, 255, 255, 0.9);
 
-  transform: skewX(-20deg);
+  border-radius: 50%;
 
-  animation: shimmerSweep 4s ease-in-out infinite;
-
-  pointer-events: none;
+  transform: translateX(-50%);
 }
 
+
 /* ==========================================================================
-   CONTACT CTA
+   DESKTOP SIGN IN
    ========================================================================== */
 
-.nav-contact-btn {
-  position: relative;
+.signin-btn {
+  flex-shrink: 0;
+
+  min-height: 42px;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  flex-shrink: 0;
+  gap: 7px;
 
-  min-height: 2.65rem;
-
-  padding: 0.6rem clamp(0.9rem, 1.5vw, 1.35rem);
-
-  border-radius: 9999px;
-
-  font-size: clamp(0.78rem, 0.8vw, 0.875rem);
-  font-weight: 600;
+  padding: 0 17px;
 
   color: #ffffff;
 
+  font-size: 14px;
+  font-weight: 600;
+
   text-decoration: none;
-  white-space: nowrap;
 
-  background: var(--primary-gradient);
+  background: var(--nav-dark);
 
-  box-shadow:
-    0 4px 18px var(--accent-glow);
-
-  overflow: hidden;
+  border-radius: 999px;
 
   transition:
-    transform 0.35s var(--nav-ease),
-    box-shadow 0.35s var(--nav-ease);
-
-  z-index: 1;
+    background 0.25s ease,
+    transform 0.3s var(--bounce),
+    box-shadow 0.3s ease;
 }
 
-.nav-contact-btn:hover {
-  transform: translateY(-2px) scale(1.02);
+.signin-btn:hover {
+  background: var(--nav-primary);
 
-  box-shadow:
-    0 8px 25px rgba(139, 92, 246, 0.5);
+  transform:
+    translateY(-2px)
+    scale(1.02);
+
+  box-shadow: var(--nav-shadow-primary);
 }
 
-.nav-contact-btn:active {
-  transform: translateY(0) scale(0.98);
+.signin-btn:active {
+  transform: scale(0.97);
 }
 
-/* Contact halo */
-
-.nav-contact-btn::before {
-  content: "";
-
-  position: absolute;
-
-  inset: -2px;
-
-  background: linear-gradient(
-    90deg,
-    #6366f1,
-    #d946ef,
-    #6366f1
-  );
-
-  border-radius: inherit;
-
-  z-index: -1;
-
-  opacity: 0;
-
-  transition: opacity 0.3s ease;
-
-  animation: spinHalo 4s linear infinite;
-}
-
-.nav-contact-btn:hover::before {
-  opacity: 1;
-}
 
 /* ==========================================================================
-   HAMBURGER
+   CTA ICON
    ========================================================================== */
 
-.hamburger {
+.signin-btn svg,
+.mobile-signin-btn svg {
+  width: 15px;
+  height: 15px;
+
+  fill: none;
+
+  stroke: currentColor;
+
+  stroke-width: 2;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  transition:
+    transform 0.3s var(--bounce);
+}
+
+.signin-btn:hover svg,
+.mobile-signin-btn:hover svg {
+  transform: translateX(3px);
+}
+
+
+/* ==========================================================================
+   MOBILE MENU BUTTON
+   ========================================================================== */
+
+.menu-toggle {
   display: none;
+
+  width: 42px;
+  height: 42px;
+
+  margin-left: auto;
 
   align-items: center;
   justify-content: center;
 
-  flex-shrink: 0;
+  flex-direction: column;
 
-  width: 2.75rem;
-  height: 2.75rem;
+  gap: 5px;
 
   padding: 0;
 
-  color: #0f172a;
+  color: var(--nav-dark);
 
-  background: transparent;
+  background: var(--nav-soft);
 
-  border: none;
+  border: 1px solid #e2e8f0;
+
   border-radius: 50%;
 
   cursor: pointer;
 
   transition:
-    background 0.3s ease,
-    transform 0.3s var(--bounce-ease);
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.3s var(--bounce);
 }
 
-.hamburger:hover {
-  background: rgba(241, 245, 249, 0.8);
-  transform: scale(1.08);
+.menu-toggle:hover {
+  background: var(--nav-soft-purple);
+
+  border-color: #c7d2fe;
+
+  transform: scale(1.05);
 }
 
-.hamburger:active {
-  transform: scale(0.95);
+.menu-toggle:active {
+  transform: scale(0.94);
 }
 
-.hamburger-icon {
-  width: 1.45rem;
-  height: 1.45rem;
+.menu-toggle span {
+  width: 17px;
+  height: 2px;
 
-  display: block;
+  background: currentColor;
+
+  border-radius: 10px;
+
+  transform-origin: center;
+
+  transition:
+    transform 0.35s var(--ease),
+    opacity 0.2s ease;
 }
+
+
+/* Hamburger → X */
+
+.menu-toggle.active span:nth-child(1) {
+  transform:
+    translateY(7px)
+    rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform:
+    translateY(-7px)
+    rotate(-45deg);
+}
+
 
 /* ==========================================================================
-   MOBILE CLOSE BUTTON
+   DESKTOP-ONLY MOBILE ELEMENTS
    ========================================================================== */
 
-.nav-close-btn {
+.mobile-menu-header,
+.mobile-menu-footer,
+.mobile-arrow,
+.nav-close-btn,
+.menu-overlay {
   display: none;
 }
 
-/* ==========================================================================
-   MOBILE SIGN IN
-   ========================================================================== */
-
-.mobile-signin {
-  display: none;
-}
-
-/* ==========================================================================
-   ACCESSIBILITY
-   ========================================================================== */
-
-.nav-link:focus-visible,
-.nav-contact-btn:focus-visible,
-.hamburger:focus-visible,
-.nav-close-btn:focus-visible {
-  outline: 3px solid rgba(139, 92, 246, 0.35);
-  outline-offset: 3px;
-}
-
-/* ==========================================================================
-   ANIMATIONS
-   ========================================================================== */
-
-@keyframes activeSpring {
-  0% {
-    transform: scale(0.85);
-  }
-
-  50% {
-    transform: scale(1.05);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes shimmerSweep {
-  0%,
-  70% {
-    left: -100%;
-  }
-
-  100% {
-    left: 200%;
-  }
-}
-
-@keyframes spinHalo {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* ==========================================================================
-   LARGE DESKTOP
-   1440px+
-   ========================================================================== */
-
-@media (min-width: 1440px) {
-  .header .container {
-    width: min(100% - 3rem, 76rem);
-  }
-
-  .navbar {
-    padding: 0.5rem 0.75rem;
-  }
-
-  .nav-menu {
-    gap: 0.4rem;
-  }
-
-  .nav-link {
-    padding-inline: 1.15rem;
-  }
-}
-
-/* ==========================================================================
-   LAPTOP
-   1024px - 1199px
-   ========================================================================== */
-
-@media (min-width: 1024px) and (max-width: 1199px) {
-  .header .container {
-    width: min(100% - 2rem, 64rem);
-  }
-
-  .nav-link {
-    padding-inline: 0.75rem;
-    font-size: 0.82rem;
-  }
-
-  .nav-contact-btn {
-    padding-inline: 1rem;
-  }
-}
 
 /* ==========================================================================
    TABLET
-   768px - 1023px
    ========================================================================== */
 
-@media (min-width: 768px) and (max-width: 1023px) {
-  .header {
-    top: 0.85rem;
-  }
+@media (max-width: 900px) {
 
-  .header .container {
-    width: calc(100% - 1.5rem);
-  }
-
-  .navbar {
-    min-height: 4.2rem;
-    padding: 0.4rem 0.5rem;
-  }
-
-  .nav-menu {
-    gap: 0.1rem;
+  .floating-navbar {
+    width: min(
+      calc(100% - 1.5rem),
+      760px
+    );
   }
 
   .nav-link {
-    min-height: 2.45rem;
+    padding-inline: 11px;
 
-    padding: 0.5rem 0.65rem;
-
-    font-size: 0.78rem;
+    font-size: 13px;
   }
 
-  .nav-contact-btn {
-    min-height: 2.45rem;
-    padding-inline: 0.8rem;
-    font-size: 0.78rem;
+  .signin-btn {
+    padding-inline: 14px;
+
+    font-size: 13px;
   }
 }
 
+
 /* ==========================================================================
    MOBILE
-   < 768px
    ========================================================================== */
 
 @media (max-width: 767px) {
-  .header {
+
+  .floating-header {
     top: 0.65rem;
   }
 
-  .header .container {
+  .floating-navbar {
     width: calc(100% - 1rem);
+
+    min-height: 58px;
+
+    padding: 6px;
+
+    border-radius: 999px;
   }
 
-  .navbar {
-    min-height: 3.8rem;
 
-    margin: 0;
+  /* --------------------------------------------------------------
+     MOBILE TOGGLE
+     -------------------------------------------------------------- */
 
-    padding: 0.35rem 0.45rem;
+  .menu-toggle {
+    display: flex;
 
-    border-radius: 9999px;
+    position: relative;
+
+    z-index: 1003;
   }
 
-  /* Hide desktop menu */
 
-  .nav-menu {
+  /* --------------------------------------------------------------
+     HIDE DESKTOP CTA
+     -------------------------------------------------------------- */
+
+  .signin-btn {
+    display: none;
+  }
+
+
+  /* --------------------------------------------------------------
+     MOBILE DRAWER
+     -------------------------------------------------------------- */
+
+  .nav-wrapper {
     position: fixed;
 
     top: 0;
     right: 0;
 
-    width: min(86vw, 360px);
+    width: min(88vw, 370px);
     height: 100dvh;
 
     display: flex;
 
     flex-direction: column;
-
-    justify-content: flex-start;
     align-items: stretch;
 
-    gap: 0.5rem;
+    padding: 24px 20px;
 
-    margin: 0;
-    padding:
-      5.5rem
-      1.25rem
-      2rem;
+    background: rgba(255, 255, 255, 0.98);
 
-    background: rgba(255, 255, 255, 0.97);
+    border-left: 1px solid #e2e8f0;
+
+    border-radius:
+      24px
+      0
+      0
+      24px;
+
+    box-shadow:
+      -20px 0 60px
+      rgba(15, 23, 42, 0.15);
 
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
 
-    border-left: 1px solid rgba(226, 232, 240, 0.9);
-
-    border-radius: 1.5rem 0 0 1.5rem;
-
-    box-shadow:
-      -15px 0 50px rgba(15, 23, 42, 0.15);
-
-    transform: translateX(100%);
+    transform: translateX(105%);
 
     visibility: hidden;
 
     transition:
-      transform 0.45s var(--nav-ease),
-      visibility 0.45s var(--nav-ease);
+      transform 0.45s var(--ease),
+      visibility 0.45s ease;
 
     overflow-y: auto;
 
     overscroll-behavior: contain;
 
-    z-index: 1001;
+    z-index: 1002;
   }
 
-  /* Open mobile menu */
-
-  .nav-menu.active {
-    right: 0;
-
+  .nav-wrapper.open {
     transform: translateX(0);
 
     visibility: visible;
+  }
+
+
+  /* --------------------------------------------------------------
+     MOBILE HEADER
+     -------------------------------------------------------------- */
+
+  .mobile-menu-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 44px;
+
+    margin-bottom: 22px;
+
+    padding-bottom: 16px;
+
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .mobile-menu-title {
+    color: var(--nav-dark);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+  }
+
+
+  /* --------------------------------------------------------------
+     CLOSE BUTTON
+     -------------------------------------------------------------- */
+
+  .nav-close-btn {
+    position: relative;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    background: var(--nav-soft);
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    transition:
+      background 0.25s ease,
+      transform 0.3s var(--bounce);
+  }
+
+  .nav-close-btn:hover {
+    background: var(--nav-soft-purple);
+
+    transform: rotate(90deg);
+  }
+
+  .nav-close-btn span {
+    position: absolute;
+
+    width: 16px;
+    height: 2px;
+
+    background: var(--nav-dark);
+
+    border-radius: 10px;
+  }
+
+  .nav-close-btn span:first-child {
+    transform: rotate(45deg);
+  }
+
+  .nav-close-btn span:last-child {
+    transform: rotate(-45deg);
+  }
+
+
+  /* --------------------------------------------------------------
+     MOBILE NAVIGATION
+     -------------------------------------------------------------- */
+
+  .nav-menu {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 6px;
   }
 
   .nav-item {
@@ -606,15 +681,15 @@
   .nav-link {
     width: 100%;
 
-    min-height: 3.1rem;
+    min-height: 52px;
 
-    padding: 0.85rem 1rem;
+    justify-content: space-between;
 
-    justify-content: flex-start;
+    padding: 0 15px;
 
-    font-size: 1rem;
+    font-size: 15px;
 
-    border-radius: 0.8rem;
+    border-radius: 13px;
   }
 
   .nav-link:hover {
@@ -622,172 +697,234 @@
   }
 
   .nav-link.active {
-    border-radius: 0.8rem;
+    box-shadow:
+      0 8px 20px
+      rgba(79, 70, 229, 0.18);
   }
-
-  /* Disable shimmer on mobile */
 
   .nav-link.active::after {
     display: none;
   }
 
-  /* Contact hidden from navbar */
 
-  .nav-contact-btn {
-    display: none;
+  /* --------------------------------------------------------------
+     MOBILE ARROW
+     -------------------------------------------------------------- */
+
+  .mobile-arrow {
+    display: block;
+
+    width: 17px;
+    height: 17px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 2;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    opacity: 0.45;
+
+    transition:
+      transform 0.3s var(--bounce);
   }
 
-  /* Hamburger */
-
-  .hamburger {
-    display: flex;
+  .nav-link:hover .mobile-arrow {
+    transform: translateX(3px);
   }
 
-  /* Close */
 
-  .nav-close-btn {
+  /* --------------------------------------------------------------
+     MOBILE CTA
+     -------------------------------------------------------------- */
+
+  .mobile-menu-footer {
+    display: block;
+
+    margin-top: auto;
+
+    padding-top: 25px;
+  }
+
+  .mobile-signin-btn {
+    width: 100%;
+
+    min-height: 52px;
+
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    position: absolute;
+    gap: 8px;
 
-    top: 1rem;
-    right: 1rem;
+    color: #ffffff;
 
-    width: 2.65rem;
-    height: 2.65rem;
+    font-size: 15px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    background: var(--nav-dark);
+
+    border-radius: 13px;
+
+    transition:
+      background 0.25s ease,
+      transform 0.3s var(--bounce),
+      box-shadow 0.3s ease;
+  }
+
+  .mobile-signin-btn:hover {
+    background: var(--nav-primary);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+      0 10px 25px
+      rgba(79, 70, 229, 0.22);
+  }
+
+
+  /* --------------------------------------------------------------
+     MOBILE OVERLAY
+     -------------------------------------------------------------- */
+
+  .menu-overlay {
+    display: block;
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
 
     padding: 0;
 
-    background: #f8fafc;
+    background:
+      rgba(15, 23, 42, 0.30);
 
-    color: #0f172a;
+    border: 0;
 
-    border: 1px solid #e2e8f0;
+    opacity: 0;
 
-    border-radius: 50%;
+    visibility: hidden;
 
-    cursor: pointer;
+    pointer-events: none;
+
+    cursor: default;
 
     transition:
-      background 0.3s ease,
-      transform 0.3s var(--bounce-ease);
+      opacity 0.35s ease,
+      visibility 0.35s ease;
+
+    z-index: 1001;
   }
 
-  .nav-close-btn:hover {
-    background: #e2e8f0;
+  .menu-overlay.visible {
+    opacity: 1;
 
-    transform: rotate(90deg);
-  }
+    visibility: visible;
 
-  /* Mobile sign in */
-
-  .mobile-signin {
-    display: flex;
-
-    width: 100%;
-
-    margin-top: 1rem;
-  }
-
-  .mobile-signin .nav-contact-btn {
-    display: inline-flex;
-
-    width: 100%;
-
-    min-height: 3rem;
+    pointer-events: auto;
   }
 }
+
 
 /* ==========================================================================
    SMALL MOBILE
-   < 480px
    ========================================================================== */
 
 @media (max-width: 480px) {
-  .header {
+
+  .floating-header {
     top: 0.5rem;
   }
 
-  .header .container {
+  .floating-navbar {
     width: calc(100% - 0.75rem);
+
+    min-height: 55px;
   }
 
-  .navbar {
-    min-height: 3.5rem;
-
-    padding: 0.3rem 0.35rem;
+  .navbar-brand {
+    margin-left: 5px;
   }
 
-  .hamburger {
-    width: 2.55rem;
-    height: 2.55rem;
+  .menu-toggle {
+    width: 39px;
+    height: 39px;
   }
 
-  .hamburger-icon {
-    width: 1.3rem;
-    height: 1.3rem;
-  }
-
-  .nav-menu {
-    width: 90vw;
+  .nav-wrapper {
+    width: 92vw;
 
     padding:
-      5.25rem
-      1rem
-      1.5rem;
-  }
-
-  .nav-link {
-    min-height: 3rem;
-
-    font-size: 0.98rem;
-
-    padding-inline: 0.9rem;
+      20px
+      16px;
   }
 }
+
 
 /* ==========================================================================
    VERY SMALL DEVICES
-   < 360px
    ========================================================================== */
 
 @media (max-width: 359px) {
-  .header .container {
+
+  .floating-navbar {
     width: calc(100% - 0.5rem);
   }
 
-  .navbar {
-    min-height: 3.35rem;
+  .navbar-brand {
+    margin-left: 3px;
   }
 
-  .hamburger {
-    width: 2.4rem;
-    height: 2.4rem;
+  .menu-toggle {
+    width: 38px;
+    height: 38px;
   }
 
-  .nav-menu {
-    width: 94vw;
-  }
-
-  .nav-link {
-    font-size: 0.95rem;
+  .nav-wrapper {
+    width: 95vw;
   }
 }
+
+
+/* ==========================================================================
+   ACCESSIBILITY
+   ========================================================================== */
+
+.nav-link:focus-visible,
+.signin-btn:focus-visible,
+.menu-toggle:focus-visible,
+.nav-close-btn:focus-visible,
+.mobile-signin-btn:focus-visible {
+  outline:
+    3px solid
+    rgba(79, 70, 229, 0.25);
+
+  outline-offset: 3px;
+}
+
 
 /* ==========================================================================
    REDUCED MOTION
    ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+
+  .floating-header *,
+  .floating-header *::before,
+  .floating-header *::after {
     animation-duration: 0.01ms !important;
+
     animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
+
     transition-duration: 0.01ms !important;
   }
 }

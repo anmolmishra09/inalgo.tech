@@ -1,88 +1,212 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import Logo from './Logo';
-import './Header.css';
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import Logo from "./Logo";
+import "./Header.css";
+
+const navItems = [
+  { label: "Home", path: "/" },
+  { label: "About", path: "/about" },
+  { label: "Services", path: "/services" },
+  { label: "Careers", path: "/careers" },
+  { label: "Contact", path: "/contact" },
+];
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+  const closeMenu = () => {
+    setMenuOpen(false);
   };
 
-  const closeMenu = () => {
-  setMenuOpen(false);
-  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-};
-  const isActive = (path) => {
-    return location.pathname === path ? 'active' : '';
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
   };
+
+  // Lock page scroll when mobile menu is open
+  useEffect(() => {
+    document.body.classList.toggle("menu-open", menuOpen);
+
+    return () => {
+      document.body.classList.remove("menu-open");
+    };
+  }, [menuOpen]);
+
+  // Close mobile menu whenever route changes
+  useEffect(() => {
+    setMenuOpen(false);
+
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, [location.pathname]);
+
+  // Close menu with Escape
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+      }
+    };
+
+    if (menuOpen) {
+      document.addEventListener("keydown", handleEscape);
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [menuOpen]);
 
   return (
-    <header className="header">
-      <div className="container">
-        <nav className="navbar">
-          <Logo onClick={closeMenu} />
-          
-          <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
-            <li className="nav-item">
-              <Link to="/" className={`nav-link ${isActive('/')}`} onClick={closeMenu}>
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/about" className={`nav-link ${isActive('/about')}`} onClick={closeMenu}>
-                About
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/services" className={`nav-link ${isActive('/services')}`} onClick={closeMenu}>
-                Services
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/careers" className={`nav-link ${isActive('/careers')}`} onClick={closeMenu}>
-                Careers
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/contact" className={`nav-link ${isActive('/contact')}`} onClick={closeMenu}>
-                Contact
-              </Link>
-            </li>
-            <li className="nav-item mobile-signin">
-              <Link to="/signin" className="nav-link" onClick={closeMenu}>
-                Sign In
-              </Link>
-            </li>
-            <button 
-              className="nav-close-btn"
+    <>
+      <header className="floating-header">
+        <nav
+          className="floating-navbar"
+          aria-label="Main navigation"
+        >
+          {/* Logo */}
+          <div className="navbar-brand">
+            <Link
+              to="/"
               onClick={closeMenu}
+              aria-label="Go to homepage"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M18 6 6 18" />
-                <path d="m6 6 12 12" />
-              </svg>
-            </button>
-          </ul>
+              <Logo />
+            </Link>
+          </div>
 
-          <button 
-            className={`hamburger ${menuOpen ? 'active' : ''}`}
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
+          {/* Desktop / Mobile Navigation */}
+          <div
+            className={`nav-wrapper ${
+              menuOpen ? "open" : ""
+            }`}
+            aria-hidden={!menuOpen}
           >
-            <svg className="hamburger-icon" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+            {/* Mobile Header */}
+            <div className="mobile-menu-header">
+              <span className="mobile-menu-title">
+                Navigation
+              </span>
 
-          <Link to="/signin" className="nav-contact-btn">
-            Sign In
+              <button
+                type="button"
+                className="nav-close-btn"
+                onClick={closeMenu}
+                aria-label="Close navigation"
+              >
+                <span />
+                <span />
+              </button>
+            </div>
+
+            {/* Navigation Links */}
+            <ul className="nav-menu">
+              {navItems.map((item) => {
+                const isActive =
+                  location.pathname === item.path;
+
+                return (
+                  <li
+                    className="nav-item"
+                    key={item.path}
+                  >
+                    <Link
+                      to={item.path}
+                      className={`nav-link ${
+                        isActive ? "active" : ""
+                      }`}
+                      onClick={closeMenu}
+                      aria-current={
+                        isActive ? "page" : undefined
+                      }
+                    >
+                      <span>{item.label}</span>
+
+                      <svg
+                        className="mobile-arrow"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path d="M9 18l6-6-6-6" />
+                      </svg>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+
+            {/* Mobile CTA */}
+            <div className="mobile-menu-footer">
+              <Link
+                to="/signin"
+                className="mobile-signin-btn"
+                onClick={closeMenu}
+              >
+                <span>Sign In</span>
+
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m13 6 6 6-6 6" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+
+          {/* Desktop CTA */}
+          <Link
+            to="/signin"
+            className="signin-btn"
+          >
+            <span>Sign In</span>
+
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14" />
+              <path d="m13 6 6 6-6 6" />
+            </svg>
           </Link>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            type="button"
+            className={`menu-toggle ${
+              menuOpen ? "active" : ""
+            }`}
+            onClick={toggleMenu}
+            aria-label={
+              menuOpen
+                ? "Close navigation menu"
+                : "Open navigation menu"
+            }
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+          >
+            <span />
+            <span />
+            <span />
+          </button>
         </nav>
-      </div>
-    </header>
+      </header>
+
+      {/* Mobile Overlay */}
+      <button
+        type="button"
+        className={`menu-overlay ${
+          menuOpen ? "visible" : ""
+        }`}
+        onClick={closeMenu}
+        aria-label="Close navigation menu"
+        tabIndex={menuOpen ? 0 : -1}
+      />
+    </>
   );
 }
 

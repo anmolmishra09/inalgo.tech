@@ -1,652 +1,1766 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './Home.css';
+import React, {
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
-// Component Imports
-import CTASection from '../components/CTASection';
-import FAQ from '../components/FAQ';
-import Portfolio from '../components/Portfolio';
-import TargetClients from '../components/TargetClients';
-import HubVisualization from '../components/HubVisualization';
-import ImageGallery from '../components/ImageGallery';
-import Newsletter from '../components/Newsletter';
-import GlassBorderButton from '../components/GlassBorderButton';
-import AppPromotion from '../components/AppPromotion';
-import TeamIntro from '../components/TeamIntro';
-import MarqueeTestimonials from '../components/MarqueeTestimonials';
-import LogoMarquee from '../components/LogoMarquee';
+import "./Home.css";
+// SEO Component
+import SEO from "../components/SEO";
 
-import demoVideo from '../images/download.mp4';
-import ageniImg from '../images/ageni.jpg';
+// Existing Inalgo components
+import CTASection from "../components/CTASection";
+import FAQ from "../components/FAQ";
+import Portfolio from "../components/Portfolio";
+import TargetClients from "../components/TargetClients";
+import HubVisualization from "../components/HubVisualization";
+import ImageGallery from "../components/ImageGallery";
+import Newsletter from "../components/Newsletter";
+import GlassBorderButton from "../components/GlassBorderButton";
+import AppPromotion from "../components/AppPromotion";
+import TeamIntro from "../components/TeamIntro";
+import MarqueeTestimonials from "../components/MarqueeTestimonials";
+import LogoMarquee from "../components/LogoMarquee";
 
-/* ==========================================================================
-   ROTATING HERO FEATURES
-   ========================================================================== */
+// Assets
+import heroVideo from "../images/download.mp4";
+import heroImage from "../images/ageni.jpg";
 
-const ROTATING_FEATURES = [
-  'intelligent AI agents',
-  'autonomous workflows',
-  'enterprise RAG systems',
-  'multimodal AI avatars',
-  'zero-infra auto-scaling',
+
+const ROTATING_TERMS = [
+  "intelligent AI agents",
+  "autonomous workflows",
+  "enterprise RAG systems",
+  "multimodal AI avatars",
+  "zero-infra auto-scaling",
 ];
 
-/* ==========================================================================
-   EXPERTISE
-   ========================================================================== */
-
-const EXPERTISE_AREAS = [
+const NAV_SECTIONS = [
   {
-    id: 'llm-genai',
-    title: 'Enterprise LLMs & Fine-Tuning',
-    description:
-      'Custom fine-tuning, domain-adapted models, and private cloud deployments protected by enterprise-grade data boundaries.',
-    metric: '01',
-    label: 'MODEL ENGINEERING',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path d="M12 2a10 10 0 1 0 10 10H12V2z" />
-        <path d="M12 12 2.1 12a10 10 0 0 0 17.8 5.9" />
-        <path d="M20 2 4 18" />
-      </svg>
-    ),
+    id: "home",
+    label: "Home",
   },
   {
-    id: 'autonomous-agents',
-    title: 'Autonomous Multi-Agent Networks',
-    description:
-      'Self-correcting multi-agent orchestrations built for complex tool utilization, distributed planning, and non-deterministic tasks.',
-    metric: '02',
-    label: 'AGENT SYSTEMS',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path d="M12 8V4H8" />
-        <rect width="16" height="12" x="4" y="8" rx="2" />
-        <path d="M2 14h2" />
-        <path d="M20 14h2" />
-        <path d="M15 13v2" />
-        <path d="M9 13v2" />
-      </svg>
-    ),
+    id: "visual-system",
+    label: "Platform",
   },
   {
-    id: 'multimodal-avatars',
-    title: 'Multimodal Avatars & Voice AI',
-    description:
-      'Ultra-low latency streaming voice, real-time facial synthesis, and interactive digital human interfaces.',
-    metric: '03',
-    label: 'MULTIMODAL AI',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z" />
-        <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-        <line x1="12" y1="19" x2="12" y2="22" />
-      </svg>
-    ),
+    id: "demo",
+    label: "Demo",
   },
   {
-    id: 'mlops-infrastructure',
-    title: 'Enterprise MLOps & RAG Infrastructure',
-    description:
-      'High-throughput GPU scaling, managed vector stores, automated telemetry, and resilient API gateways.',
-    metric: '04',
-    label: 'AI INFRASTRUCTURE',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <ellipse cx="12" cy="5" rx="9" ry="3" />
-        <path d="M3 5V19A9 3 0 0 0 21 19V5" />
-        <path d="M3 12A9 3 0 0 0 21 12" />
-      </svg>
-    ),
+    id: "expertise",
+    label: "Capabilities",
   },
   {
-    id: 'computer-vision',
-    title: 'Computer Vision Intelligence',
-    description:
-      'Real-time spatial video inspection, object classification, edge models, and continuous scene telemetry.',
-    metric: '05',
-    label: 'VISION SYSTEMS',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" />
-        <circle cx="12" cy="12" r="3" />
-      </svg>
-    ),
+    id: "clients",
+    label: "Clients",
   },
   {
-    id: 'predictive-analytics',
-    title: 'Predictive Neural Analytics',
-    description:
-      'Convert raw telemetry and enterprise signals into high-confidence projections using advanced neural architectures.',
-    metric: '06',
-    label: 'PREDICTIVE AI',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-      </svg>
-    ),
+    id: "portfolio",
+    label: "Portfolio",
+  },
+  {
+    id: "process",
+    label: "Process",
+  },
+  {
+    id: "testimonials",
+    label: "Testimonials",
+  },
+  {
+    id: "faq",
+    label: "FAQ",
+  },
+  {
+    id: "contact",
+    label: "Contact",
   },
 ];
 
-/* ==========================================================================
-   PROCESS
-   ========================================================================== */
-
-const PROCESS_STEPS = [
-  {
-    number: '01',
-    title: 'Discovery & Opportunity Mapping',
-    description:
-      'Audit internal operations to identify manual and repetitive workflows ideal for autonomous orchestration.',
-  },
-  {
-    number: '02',
-    title: 'Data & Model Architecture',
-    description:
-      'Establish retrieval systems, foundational models, training partitions, and enterprise data boundaries.',
-  },
-  {
-    number: '03',
-    title: 'Agent Orchestration & Tuning',
-    description:
-      'Construct agent execution graphs, configure tools, and stress-test evaluation paths.',
-  },
-  {
-    number: '04',
-    title: 'Full-Stack System Integration',
-    description:
-      'Connect low-latency APIs, event webhooks, realtime interfaces, identity providers, and enterprise systems.',
-  },
-  {
-    number: '05',
-    title: 'Safety Guardrails & Alignment',
-    description:
-      'Enforce hallucination mitigation, context isolation, rate limits, permissions, and automated evaluation.',
-  },
-  {
-    number: '06',
-    title: 'Production Telemetry & Scale',
-    description:
-      'Deploy with realtime latency monitoring, cost controls, observability, tracing, and continuous optimization.',
-  },
-];
-
-/* ==========================================================================
-   VIDEO SECTION
-   ========================================================================== */
-
-const VideoSection = () => {
-  const videoRef = useRef(null);
-
-  const handleMouseEnter = () => {
-    if (!videoRef.current) return;
-
-    videoRef.current.play().catch(() => {
-      // Autoplay may be blocked by the browser.
-    });
-  };
-
-  const handleMouseLeave = () => {
-    if (!videoRef.current) return;
-
-    videoRef.current.pause();
-    videoRef.current.currentTime = 0;
-  };
-
-  return (
-    <section className="video-section">
-      <div className="container">
-        <div className="section-header text-center reveal">
-          <span className="section-tag">
-            <span className="status-dot"></span>
-            REAL-TIME RUNTIME ENGINE
-          </span>
-
-          <h2 className="section-title">
-            Watch autonomous agents
-            <span className="gradient-text"> execute in real time</span>
-          </h2>
-
-          <p className="section-subtitle">
-            Preview multi-step tool calls, branching logic, agent coordination,
-            and realtime execution inside a production AI runtime.
-          </p>
-        </div>
-
-        <div
-  className="video-container reveal"
-  onMouseEnter={handleMouseEnter}
-  onMouseLeave={handleMouseLeave}
->
-  <video
-    ref={videoRef}
-    className="hover-video"
-    loop
-    playsInline
-    preload="metadata"
-  >
-    <source src={demoVideo} type="video/mp4" />
-    Your browser does not support interactive video playback.
-  </video>
-</div>
-</div>
-    </section>
-  );
-};
-
-
-/* ==========================================================================
-   HOME
-   ========================================================================== */
 
 function Home() {
-  const [featureIndex, setFeatureIndex] = useState(0);
-  const [fade, setFade] = useState(true);
-
   const heroRef = useRef(null);
+  const videoRef = useRef(null);
+  const assistantButtonRef = useRef(null);
 
-  /* Rotating headline */
+  const [activeTerm, setActiveTerm] = useState(0);
+  const [termVisible, setTermVisible] = useState(true);
+
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState("home");
+
+  const [isVideoMuted, setIsVideoMuted] = useState(true);
+
+  /*
+   * ==========================================================================
+   * ROTATING HERO TEXT
+   * ==========================================================================
+   */
+
   useEffect(() => {
-    let timeoutId;
+    const interval = window.setInterval(() => {
+      setTermVisible(false);
 
-    const intervalId = setInterval(() => {
-      setFade(false);
+      window.setTimeout(() => {
+        setActiveTerm((current) => (
+          (current + 1) % ROTATING_TERMS.length
+        ));
 
-      timeoutId = setTimeout(() => {
-        setFeatureIndex(
-          (previous) => (previous + 1) % ROTATING_FEATURES.length
-        );
-
-        setFade(true);
+        setTermVisible(true);
       }, 300);
     }, 3200);
 
     return () => {
-      clearInterval(intervalId);
-
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
+      window.clearInterval(interval);
     };
   }, []);
 
-  /* Scroll reveal */
-  useEffect(() => {
-    const elements = document.querySelectorAll('.reveal');
 
-    if (!('IntersectionObserver' in window)) {
-      elements.forEach((element) => element.classList.add('revealed'));
-      return;
+  /*
+   * ==========================================================================
+   * SCROLL PROGRESS
+   *
+   * Gives the user a subtle indication of how much of the page they have
+   * explored.
+   * ==========================================================================
+   */
+
+  useEffect(() => {
+    const updateScrollProgress = () => {
+      const documentHeight =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+      if (documentHeight <= 0) {
+        setScrollProgress(0);
+        return;
+      }
+
+      const progress =
+        (window.scrollY / documentHeight) * 100;
+
+      setScrollProgress(
+        Math.min(100, Math.max(0, progress))
+      );
+    };
+
+    updateScrollProgress();
+
+    window.addEventListener(
+      "scroll",
+      updateScrollProgress,
+      {
+        passive: true,
+      }
+    );
+
+    return () => {
+      window.removeEventListener(
+        "scroll",
+        updateScrollProgress
+      );
+    };
+  }, []);
+
+
+  /*
+   * ==========================================================================
+   * ACTIVE SECTION TRACKING
+   *
+   * Highlights the section currently visible to the user.
+   * This also makes the page easier to navigate once a sticky navigation
+   * component is added later.
+   * ==========================================================================
+   */
+
+  useEffect(() => {
+    const sections = NAV_SECTIONS
+      .map(({ id }) => document.getElementById(id))
+      .filter(Boolean);
+
+    if (!sections.length) {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) =>
+              b.intersectionRatio -
+              a.intersectionRatio
+          );
+
+        if (visibleEntries.length) {
+          setActiveSection(
+            visibleEntries[0].target.id
+          );
+        }
+      },
+      {
+        threshold: [
+          0.1,
+          0.25,
+          0.5,
+          0.75,
+        ],
+        rootMargin:
+          "-15% 0px -55% 0px",
+      }
+    );
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+
+  /*
+   * ==========================================================================
+   * SCROLL REVEAL
+   * ==========================================================================
+   */
+
+  useEffect(() => {
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    if (!revealElements.length) {
+      return undefined;
+    }
+
+    const mediaQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+
+    if (mediaQuery.matches) {
+      revealElements.forEach((element) => {
+        element.classList.add("revealed");
+      });
+
+      return undefined;
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-            observer.unobserve(entry.target);
+          if (!entry.isIntersecting) {
+            return;
           }
+
+          entry.target.classList.add("revealed");
+
+          observer.unobserve(
+            entry.target
+          );
         });
       },
       {
         threshold: 0.12,
-        rootMargin: '0px 0px -50px 0px',
+        rootMargin:
+          "0px 0px -50px 0px",
       }
     );
 
-    elements.forEach((element) => observer.observe(element));
+    revealElements.forEach((element) => {
+      observer.observe(element);
+    });
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
-  /* Interactive hero mouse lighting */
+
+  /*
+   * ==========================================================================
+   * STAGGERED CARD REVEAL
+   * ==========================================================================
+   */
+
+  useEffect(() => {
+    const groups = [
+      ".expertise-card",
+      ".process-step",
+      ".testimonial-card",
+    ];
+
+    groups.forEach((selector) => {
+      const cards =
+        document.querySelectorAll(selector);
+
+      cards.forEach((card, index) => {
+        const delay =
+          Math.min(index * 90, 500);
+
+        card.style.setProperty(
+          "--card-delay",
+          `${delay}ms`
+        );
+      });
+    });
+  }, []);
+
+
+  /*
+   * ==========================================================================
+   * HERO MOUSE GLOW
+   * ==========================================================================
+   */
+
   useEffect(() => {
     const hero = heroRef.current;
 
-    if (!hero) return;
+    if (!hero) {
+      return undefined;
+    }
 
-    const handlePointerMove = (event) => {
-      const rect = hero.getBoundingClientRect();
+    const mediaQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
 
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
+    if (
+      mediaQuery.matches ||
+      window.matchMedia(
+        "(hover: none)"
+      ).matches
+    ) {
+      return undefined;
+    }
 
-      hero.style.setProperty('--mouse-x', `${x}px`);
-      hero.style.setProperty('--mouse-y', `${y}px`);
+    const handleMouseMove = (event) => {
+      const rect =
+        hero.getBoundingClientRect();
+
+      if (
+        !rect.width ||
+        !rect.height
+      ) {
+        return;
+      }
+
+      const x =
+        ((event.clientX - rect.left) /
+          rect.width) *
+        100;
+
+      const y =
+        ((event.clientY - rect.top) /
+          rect.height) *
+        100;
+
+      hero.style.setProperty(
+        "--mouse-x",
+        `${x}%`
+      );
+
+      hero.style.setProperty(
+        "--mouse-y",
+        `${y}%`
+      );
     };
 
-    hero.addEventListener('pointermove', handlePointerMove);
+    const handleMouseLeave = () => {
+      hero.style.setProperty(
+        "--mouse-x",
+        "50%"
+      );
+
+      hero.style.setProperty(
+        "--mouse-y",
+        "50%"
+      );
+    };
+
+    hero.addEventListener(
+      "mousemove",
+      handleMouseMove,
+      {
+        passive: true,
+      }
+    );
+
+    hero.addEventListener(
+      "mouseleave",
+      handleMouseLeave
+    );
 
     return () => {
-      hero.removeEventListener('pointermove', handlePointerMove);
+      hero.removeEventListener(
+        "mousemove",
+        handleMouseMove
+      );
+
+      hero.removeEventListener(
+        "mouseleave",
+        handleMouseLeave
+      );
     };
   }, []);
 
-  return (
-    <div className="home-page">
 
-      {/* ================================================================
+  /*
+   * ==========================================================================
+   * VIDEO HOVER PLAY
+   *
+   * Desktop:
+   *   mouse enters -> play
+   *   mouse leaves -> pause
+   *
+   * Mobile:
+   *   native controls remain available.
+   * ==========================================================================
+   */
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video) {
+      return undefined;
+    }
+
+    const isTouchDevice =
+      window.matchMedia(
+        "(hover: none), (pointer: coarse)"
+      ).matches;
+
+    if (isTouchDevice) {
+      return undefined;
+    }
+
+    const playVideo = async () => {
+      try {
+        await video.play();
+      } catch {
+        // Browser restrictions are handled silently.
+      }
+    };
+
+    const pauseVideo = () => {
+      video.pause();
+    };
+
+    const container =
+      video.closest(".video-container");
+
+    if (!container) {
+      return undefined;
+    }
+
+    container.addEventListener(
+      "mouseenter",
+      playVideo
+    );
+
+    container.addEventListener(
+      "mouseleave",
+      pauseVideo
+    );
+
+    return () => {
+      container.removeEventListener(
+        "mouseenter",
+        playVideo
+      );
+
+      container.removeEventListener(
+        "mouseleave",
+        pauseVideo
+      );
+    };
+  }, []);
+
+
+  /*
+   * ==========================================================================
+   * VIDEO STATE SYNCHRONIZATION
+   * ==========================================================================
+   */
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video) {
+      return undefined;
+    }
+
+    const handleVolumeChange = () => {
+      setIsVideoMuted(video.muted);
+    };
+
+    video.addEventListener(
+      "volumechange",
+      handleVolumeChange
+    );
+
+    return () => {
+      video.removeEventListener(
+        "volumechange",
+        handleVolumeChange
+      );
+    };
+  }, []);
+
+
+  /*
+   * ==========================================================================
+   * VIDEO ACCESSIBLE CONTROLS
+   * ==========================================================================
+   */
+
+  const toggleVideoPlayback = async () => {
+    const video = videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    try {
+      if (video.paused) {
+        await video.play();
+      } else {
+        video.pause();
+      }
+    } catch {
+      // Browser restrictions are handled silently.
+    }
+  };
+
+  const toggleVideoMute = () => {
+    const video = videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    video.muted = !video.muted;
+    setIsVideoMuted(video.muted);
+  };
+
+
+  /*
+   * ==========================================================================
+   * SMOOTH INTERNAL ANCHOR SCROLLING
+   * ==========================================================================
+   */
+
+  useEffect(() => {
+    const handleAnchorClick = (event) => {
+      const link =
+        event.target.closest(
+          'a[href^="#"]'
+        );
+
+      if (!link) {
+        return;
+      }
+
+      const targetId =
+        link.getAttribute("href");
+
+      if (
+        !targetId ||
+        targetId === "#"
+      ) {
+        return;
+      }
+
+      let target = null;
+
+      try {
+        target =
+          document.querySelector(
+            targetId
+          );
+      } catch {
+        return;
+      }
+
+      if (!target) {
+        return;
+      }
+
+      event.preventDefault();
+
+      target.scrollIntoView({
+        behavior: window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches
+          ? "auto"
+          : "smooth",
+        block: "start",
+      });
+
+      /*
+       * Keep browser history useful without causing a full reload.
+       */
+      if (
+        window.history &&
+        window.history.replaceState
+      ) {
+        window.history.replaceState(
+          null,
+          "",
+          targetId
+        );
+      }
+    };
+
+    document.addEventListener(
+      "click",
+      handleAnchorClick
+    );
+
+    return () => {
+      document.removeEventListener(
+        "click",
+        handleAnchorClick
+      );
+    };
+  }, []);
+
+
+  /*
+   * ==========================================================================
+   * KEYBOARD SUPPORT
+   *
+   * Allows keyboard users to quickly focus the AI assistant.
+   * ==========================================================================
+   */
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      /*
+       * Alt + A opens/focuses the AI assistant trigger.
+       */
+      if (
+        event.altKey &&
+        event.key.toLowerCase() === "a"
+      ) {
+        event.preventDefault();
+
+        assistantButtonRef.current?.focus();
+      }
+    };
+
+    document.addEventListener(
+      "keydown",
+      handleKeyDown
+    );
+
+    return () => {
+      document.removeEventListener(
+        "keydown",
+        handleKeyDown
+      );
+    };
+  }, []);
+
+
+  /*
+   * ==========================================================================
+   * AI ASSISTANT
+   *
+   * The button is intentionally kept compatible with the existing design.
+   *
+   * If a real chatbot/modal is connected later, replace the body of this
+   * function with the assistant-opening logic.
+   * ==========================================================================
+   */
+
+  const handleAssistantOpen = () => {
+    const assistantEvent =
+      new CustomEvent(
+        "inalgo:open-assistant"
+      );
+
+    window.dispatchEvent(
+      assistantEvent
+    );
+  };
+
+
+  /*
+   * ==========================================================================
+   * BACK TO TOP
+   * ==========================================================================
+   */
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches
+        ? "auto"
+        : "smooth",
+    });
+  };
+
+
+  return (
+    <>
+      <SEO
+        title="Inalgo | Autonomous AI Solutions for Enterprise"
+        description="Inalgo builds production-ready AI infrastructure that helps enterprises automate complex workflows, deploy intelligent agents, and turn knowledge into measurable business outcomes."
+        canonicalUrl="https://inalgo.tech/"
+        openGraph={{
+          url: "https://inalgo.tech/",
+          title: "Inalgo | Autonomous AI Solutions for Enterprise",
+          description: "Inalgo builds production-ready AI infrastructure that helps enterprises automate complex workflows, deploy intelligent agents, and turn knowledge into measurable business outcomes.",
+          image: "https://inalgo.tech/logo.png"
+        }}
+        twitter={{
+          url: "https://inalgo.tech/",
+          title: "Inalgo | Autonomous AI Solutions for Enterprise",
+          description: "Inalgo builds production-ready AI infrastructure that helps enterprises automate complex workflows, deploy intelligent agents, and turn knowledge into measurable business outcomes.",
+          image: "https://inalgo.tech/logo.png"
+        }}
+        schemaOrg={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Inalgo",
+          "url": "https://inalgo.tech/",
+          "logo": "https://inalgo.tech/logo.png",
+          "description": "Inalgo builds production-ready AI infrastructure that helps enterprises automate complex workflows, deploy intelligent agents, and turn knowledge into measurable business outcomes.",
+          "sameAs": [
+            "https://linkedin.com/company/inalgo",
+            "https://twitter.com/inalgo",
+            "https://facebook.com/inalgo"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-800-INALGO-1",
+            "contactType": "Customer Service",
+            "url": "https://inalgo.tech/contact"
+          },
+          "founder": {
+            "@type": "Person",
+            "name": "Inalgo Founding Team"
+          },
+          "foundingDate": "2023",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 AI Innovation Drive",
+            "addressLocality": "San Francisco",
+            "addressRegion": "CA",
+            "postalCode": "94105",
+            "addressCountry": "US"
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Inalgo Services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Web Development",
+                  "description": "Custom web development services for enterprise clients"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Mobile Apps",
+                  "description": "Custom mobile application development for iOS and Android"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "SaaS Solutions",
+                  "description": "Scalable software-as-a-service platforms"
+                }
+              }
+            ]
+          }
+        }}
+      />
+      <main className="home-page">
+
+      {/* =====================================================================
+          SCROLL PROGRESS
+      ====================================================================== */}
+
+      <div
+        className="page-scroll-progress"
+        aria-hidden="true"
+      >
+        <span
+          style={{
+            width: `${scrollProgress}%`,
+          }}
+        />
+      </div>
+
+
+      {/* =====================================================================
           HERO
-      ================================================================ */}
+      ====================================================================== */}
 
       <section
-        className="hero-section"
         ref={heroRef}
+        className="hero-section"
+        id="home"
       >
-        <div className="hero-grid"></div>
-        <div className="hero-mouse-glow"></div>
 
-        <div className="hero-ray-burst"></div>
-        <div className="hero-burst-center"></div>
+        <div
+          className="hero-mouse-glow"
+          aria-hidden="true"
+        />
 
-        <div className="hero-glow glow-1"></div>
-        <div className="hero-glow glow-2"></div>
+        <div
+          className="hero-grid"
+          aria-hidden="true"
+        />
 
-        <div className="hero-orbit orbit-one"></div>
-        <div className="hero-orbit orbit-two"></div>
+        <div
+          className="hero-ray-burst"
+          aria-hidden="true"
+        />
+
+        <div
+          className="hero-burst-center"
+          aria-hidden="true"
+        />
+
+        <div
+          className="hero-glow glow-1"
+          aria-hidden="true"
+        />
+
+        <div
+          className="hero-glow glow-2"
+          aria-hidden="true"
+        />
+
+        <div
+          className="hero-orbit orbit-one"
+          aria-hidden="true"
+        />
+
+        <div
+          className="hero-orbit orbit-two"
+          aria-hidden="true"
+        />
 
         <div className="container hero-container">
+
           <div className="hero-content">
 
-            <div className="hero-live-status">
-              <span className="live-dot"></span>
-              <span>AI INFRASTRUCTURE ONLINE</span>
-              <span className="status-divider"></span>
-              <span>99.99% SYSTEM AVAILABILITY</span>
+            <div
+              className="hero-live-status"
+              aria-label="AI infrastructure status"
+            >
+              <span
+                className="status-dot"
+                aria-hidden="true"
+              />
+
+              <span>
+                AI INFRASTRUCTURE ONLINE
+              </span>
+
+              <span
+                className="status-divider"
+                aria-hidden="true"
+              />
+
+              <span>
+                SYSTEM OPERATIONAL
+              </span>
             </div>
 
-            <span className="hero-badge">
-              <span className="sparkle">✦</span>
-              Autonomous AI Workforce
-              <span className="badge-version">2.0</span>
-            </span>
+
+            <div className="hero-badge">
+
+              <span
+                className="sparkle"
+                aria-hidden="true"
+              >
+                ✦
+              </span>
+
+              <span>
+                Autonomous AI Workforce
+              </span>
+
+              <span className="badge-version">
+                RELEASE 2.0
+              </span>
+
+            </div>
+
 
             <h1 className="hero-title">
-              Automate complex operations using{' '}
+
+              Build the future with{" "}
+
               <span
                 className={`hero-highlight ${
-                  fade ? 'is-visible' : 'is-hidden'
+                  termVisible
+                    ? "is-visible"
+                    : "is-hidden"
                 }`}
+                aria-live="polite"
               >
-                {ROTATING_FEATURES[featureIndex]}
+                {ROTATING_TERMS[activeTerm]}
               </span>
+
             </h1>
 
+
             <p className="hero-subtitle">
-              Transform manual operations into intelligent autonomous
-              pipelines. Build, orchestrate, validate, and scale production
-              AI systems without infrastructure friction.
+              Inalgo builds production-ready AI
+              infrastructure that helps enterprises
+              automate complex workflows, deploy
+              intelligent agents, and turn knowledge
+              into measurable business outcomes.
             </p>
+
 
             <div className="hero-buttons">
 
-              <GlassBorderButton variant="purple">
-                <a
-                  href="https://transcript-ai-8.preview.emergentagent.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hero-primary-link"
-                >
-                  Start free trial
-                  <span>⚡</span>
-                </a>
-              </GlassBorderButton>
+              <a
+                href="https://transcript-ai-8.preview.emergentagent.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hero-primary-link"
+              >
+                <GlassBorderButton>
+                  Start free trial ⚡
+                </GlassBorderButton>
+              </a>
 
               <a
                 href="#expertise"
                 className="btn-secondary"
               >
-                <span>Explore capabilities</span>
+                Explore capabilities
 
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
+                <span aria-hidden="true">
+                  →
+                </span>
               </a>
 
             </div>
-{/* 
-            <div className="hero-proof">
+
+
+            <div
+              className="hero-proof"
+              aria-label="Inalgo platform highlights"
+            >
 
               <div className="proof-item">
-                <strong>50+</strong>
-                <span>AI workflows</span>
+                <strong>
+                  24/7
+                </strong>
+
+                <span>
+                  Autonomous
+                </span>
               </div>
 
-              <div className="proof-line"></div>
+              <div
+                className="proof-line"
+                aria-hidden="true"
+              />
 
               <div className="proof-item">
-                <strong>&lt;100ms</strong>
-                <span>runtime latency</span>
+                <strong>
+                  Enterprise
+                </strong>
+
+                <span>
+                  Ready
+                </span>
               </div>
 
-              <div className="proof-line"></div>
+              <div
+                className="proof-line"
+                aria-hidden="true"
+              />
 
               <div className="proof-item">
-                <strong>24/7</strong>
-                <span>autonomous execution</span>
+                <strong>
+                  AI Native
+                </strong>
+
+                <span>
+                  Infrastructure
+                </span>
               </div>
 
-            </div> */}
+            </div>
 
           </div>
-        </div>
 
-        <div className="hero-bottom-fade"></div>
+        </div>
       </section>
 
-      {/* ================================================================
+
+      {/* =====================================================================
+          LOGO MARQUEE
+      ====================================================================== */}
+
+      <section className="reveal">
+        <LogoMarquee />
+      </section>
+
+
+      {/* =====================================================================
           VISUAL SYSTEM
-      ================================================================ */}
+      ====================================================================== */}
 
-      <section className="visual-system-section">
+      <section
+        id="visual-system"
+        className="visual-system-section reveal"
+      >
         <div className="container">
-          <div className="section-header text-center reveal">
-            <span className="section-tag">AI SYSTEM ARCHITECTURE</span>
+
+          <div className="section-header text-center">
+
+            <div className="section-tag">
+              <span
+                className="status-dot"
+                aria-hidden="true"
+              />
+              Real-time runtime engine
+            </div>
 
             <h2 className="section-title">
-              Intelligence that moves
-              <span className="gradient-text"> through your entire stack.</span>
+              AI systems designed
+              <br />
+              for real-world operations.
             </h2>
 
             <p className="section-subtitle">
-              Connect models, data, tools, agents, applications, and
-              infrastructure into one intelligent execution layer.
+              Connect models, agents, data, tools,
+              and enterprise workflows inside one
+              intelligent execution layer.
             </p>
+
           </div>
 
-          <div className="visual-system">
-            <HubVisualization />
-          </div>
+          <HubVisualization />
+
         </div>
       </section>
 
-      <ImageGallery />
 
-      {/* ================================================================
+      {/* =====================================================================
           VIDEO
-      ================================================================ */}
+      ====================================================================== */}
 
-      <VideoSection />
+     <section
+  id="demo"
+  className="video-section reveal"
+>
+  <div className="container">
 
-      
+    <div className="section-header text-center">
 
-      {/* ================================================================
-          TESTIMONIALS
-      ================================================================ */}
+      <div className="section-tag">
+        Product intelligence
+      </div>
 
-      <section className="testimonials-section">
+      <h2 className="section-title">
+        See intelligence
+        <br />
+        in motion.
+      </h2>
+
+      <p className="section-subtitle">
+        Experience how autonomous agents,
+        enterprise knowledge, and AI workflows
+        work together.
+      </p>
+
+    </div>
+
+    <div className="video-container">
+      <video
+        ref={videoRef}
+        className="hover-video"
+        src={heroVideo}
+        poster={heroImage}
+        autoPlay
+        muted={isVideoMuted}
+        loop
+        playsInline
+        preload="auto"
+        tabIndex={0}
+        aria-label="Inalgo AI infrastructure demonstration. Press Enter or Space to play or pause."
+        onClick={toggleVideoPlayback}
+        onKeyDown={(event) => {
+          if (
+            event.key === "Enter" ||
+            event.key === " "
+          ) {
+            event.preventDefault();
+            toggleVideoPlayback();
+          }
+        }}
+      />
+    </div>
+
+  </div>
+</section>
+
+
+
+      {/* =====================================================================
+          EXPERTISE
+      ====================================================================== */}
+
+      <section
+        id="expertise"
+        className="expertise-section reveal"
+      >
+
         <div className="container">
 
-          <div className="section-header text-center reveal">
-            <span className="section-tag">ENGINEERING OUTCOMES</span>
+          <div className="section-header text-center">
+
+            <div className="section-tag">
+
+              <span
+                className="status-dot"
+                aria-hidden="true"
+              />
+
+              Core capabilities
+
+            </div>
 
             <h2 className="section-title">
-              Built for teams
-              <span className="gradient-text"> shipping AI</span>
+              Intelligence at
+              <br />
+              every layer.
             </h2>
 
             <p className="section-subtitle">
-              Technical teams use Inalgo to turn complex AI architecture into
-              production-ready systems.
+              From enterprise LLMs to autonomous
+              multi-agent systems, Inalgo provides
+              the infrastructure required to move
+              AI from experimentation into production.
             </p>
-          </div>
-
-          <div className="testimonials-grid">
-
-            <div className="testimonial-card reveal">
-              <div className="testimonial-top">
-                <div className="testimonial-stars">★★★★★</div>
-                <span>01</span>
-              </div>
-
-              <p className="testimonial-text">
-                "Inalgo launched our real-time multi-agent execution pipeline
-                in weeks. Their low-latency architecture and robust decision
-                logic raised the bar for our entire ML team."
-              </p>
-
-              <div className="author-info">
-                <h4>Dr. Sarah Mitchell</h4>
-                <p>AI Research Director, MIT AI Lab</p>
-              </div>
-            </div>
-
-            <div className="testimonial-card reveal">
-              <div className="testimonial-top">
-                <div className="testimonial-stars">★★★★★</div>
-                <span>02</span>
-              </div>
-
-              <p className="testimonial-text">
-                "The multimodal avatar integration surpassed expectations.
-                Streaming lip-sync responsiveness remained highly responsive
-                even under heavy concurrency."
-              </p>
-
-              <div className="author-info">
-                <h4>James Rodriguez</h4>
-                <p>Head of Product, Innovation Labs</p>
-              </div>
-            </div>
-
-            <div className="testimonial-card reveal">
-              <div className="testimonial-top">
-                <div className="testimonial-stars">★★★★★</div>
-                <span>03</span>
-              </div>
-
-              <p className="testimonial-text">
-                "Replacing standard API wrappers with Inalgo's optimized RAG
-                pipeline significantly reduced retrieval latency while
-                improving contextual accuracy."
-              </p>
-
-              <div className="author-info">
-                <h4>Emily Chen</h4>
-                <p>VP of Engineering, TechCorp</p>
-              </div>
-            </div>
 
           </div>
+
+
+          <div className="expertise-grid">
+
+            <article className="expertise-card reveal">
+              <div className="card-glow" />
+
+              <div className="expertise-card-top">
+                <span className="expertise-label">
+                  FOUNDATION
+                </span>
+
+                <span className="expertise-number">
+                  01
+                </span>
+              </div>
+
+              <div
+                className="expertise-icon"
+                aria-hidden="true"
+              >
+                ◇
+              </div>
+
+              <h3>
+                Enterprise LLMs & Fine-Tuning
+              </h3>
+
+              <p>
+                Build domain-aware language systems
+                optimized for enterprise knowledge,
+                workflows, and business requirements.
+              </p>
+
+              <div className="card-arrow">
+                <span>
+                  Explore
+                </span>
+
+                <span aria-hidden="true">
+                  →
+                </span>
+              </div>
+            </article>
+
+
+            <article className="expertise-card reveal">
+              <div className="card-glow" />
+
+              <div className="expertise-card-top">
+                <span className="expertise-label">
+                  ORCHESTRATION
+                </span>
+
+                <span className="expertise-number">
+                  02
+                </span>
+              </div>
+
+              <div
+                className="expertise-icon"
+                aria-hidden="true"
+              >
+                ◎
+              </div>
+
+              <h3>
+                Autonomous Multi-Agent Networks
+              </h3>
+
+              <p>
+                Coordinate specialized AI agents that
+                reason, collaborate, execute tools, and
+                complete complex tasks autonomously.
+              </p>
+
+              <div className="card-arrow">
+                <span>
+                  Explore
+                </span>
+
+                <span aria-hidden="true">
+                  →
+                </span>
+              </div>
+            </article>
+
+
+            <article className="expertise-card reveal">
+              <div className="card-glow" />
+
+              <div className="expertise-card-top">
+                <span className="expertise-label">
+                  MULTIMODAL
+                </span>
+
+                <span className="expertise-number">
+                  03
+                </span>
+              </div>
+
+              <div
+                className="expertise-icon"
+                aria-hidden="true"
+              >
+                ◉
+              </div>
+
+              <h3>
+                Multimodal Avatars & Voice AI
+              </h3>
+
+              <p>
+                Create natural interfaces combining
+                voice, vision, conversational AI, and
+                real-time digital experiences.
+              </p>
+
+              <div className="card-arrow">
+                <span>
+                  Explore
+                </span>
+
+                <span aria-hidden="true">
+                  →
+                </span>
+              </div>
+            </article>
+
+
+            <article className="expertise-card reveal">
+              <div className="card-glow" />
+
+              <div className="expertise-card-top">
+                <span className="expertise-label">
+                  INFRASTRUCTURE
+                </span>
+
+                <span className="expertise-number">
+                  04
+                </span>
+              </div>
+
+              <div
+                className="expertise-icon"
+                aria-hidden="true"
+              >
+                ⬡
+              </div>
+
+              <h3>
+                Enterprise MLOps & RAG Infrastructure
+              </h3>
+
+              <p>
+                Connect enterprise data with reliable
+                retrieval, evaluation, monitoring, and
+                scalable AI deployment infrastructure.
+              </p>
+
+              <div className="card-arrow">
+                <span>
+                  Explore
+                </span>
+
+                <span aria-hidden="true">
+                  →
+                </span>
+              </div>
+            </article>
+
+
+            <article className="expertise-card reveal">
+              <div className="card-glow" />
+
+              <div className="expertise-card-top">
+                <span className="expertise-label">
+                  VISION
+                </span>
+
+                <span className="expertise-number">
+                  05
+                </span>
+              </div>
+
+              <div
+                className="expertise-icon"
+                aria-hidden="true"
+              >
+                ◌
+              </div>
+
+              <h3>
+                Computer Vision Intelligence
+              </h3>
+
+              <p>
+                Transform visual data into structured
+                intelligence using production-grade
+                computer vision systems.
+              </p>
+
+              <div className="card-arrow">
+                <span>
+                  Explore
+                </span>
+
+                <span aria-hidden="true">
+                  →
+                </span>
+              </div>
+            </article>
+
+
+            <article className="expertise-card reveal">
+              <div className="card-glow" />
+
+              <div className="expertise-card-top">
+                <span className="expertise-label">
+                  ANALYTICS
+                </span>
+
+                <span className="expertise-number">
+                  06
+                </span>
+              </div>
+
+              <div
+                className="expertise-icon"
+                aria-hidden="true"
+              >
+                ∿
+              </div>
+
+              <h3>
+                Predictive Neural Analytics
+              </h3>
+
+              <p>
+                Turn operational data into predictive
+                intelligence for forecasting, detection,
+                optimization, and decision support.
+              </p>
+
+              <div className="card-arrow">
+                <span>
+                  Explore
+                </span>
+
+                <span aria-hidden="true">
+                  →
+                </span>
+              </div>
+            </article>
+
+          </div>
+
         </div>
       </section>
 
-      {/* ================================================================
-          FAQ
-      ================================================================ */}
 
-      <FAQ />
+      {/* =====================================================================
+          TARGET CLIENTS
+      ====================================================================== */}
 
-      <Newsletter />
+      <section
+        id="clients"
+        className="reveal"
+      >
+        <TargetClients />
+      </section>
 
-      {/* ================================================================
-          APP PROMOTION
-      ================================================================ */}
 
-      <AppPromotion
-        title="Monitor your agent fleets on the go"
-        description="Track live workflows, response latency, token consumption, and trace logs directly from mobile telemetry."
-        buttonText="Request early access"
-        buttonLink="/contact"
-        googlePlayUrl="#"
-        appStoreUrl="#"
-      />
+      {/* =====================================================================
+          PORTFOLIO
+      ====================================================================== */}
 
-      {/* ================================================================
+      <section
+        id="portfolio"
+        className="reveal"
+      >
+        <Portfolio />
+      </section>
+
+
+      {/* =====================================================================
+          IMAGE GALLERY
+      ====================================================================== */}
+
+      <section className="reveal">
+        <ImageGallery />
+      </section>
+
+
+      {/* =====================================================================
+          PROCESS
+      ====================================================================== */}
+
+      <section
+        id="process"
+        className="process-section reveal"
+      >
+
+        <div className="container">
+
+          <div className="section-header text-center">
+
+            <div className="section-tag">
+
+              <span
+                className="status-dot"
+                aria-hidden="true"
+              />
+
+              Deployment workflow
+
+            </div>
+
+            <h2 className="section-title">
+              From opportunity
+              <br />
+              to production.
+            </h2>
+
+            <p className="section-subtitle">
+              A structured path for turning AI ideas
+              into reliable systems that operate at
+              enterprise scale.
+            </p>
+
+          </div>
+
+
+          <div className="process-timeline">
+
+            {[
+              [
+                "01",
+                "Discovery & Opportunity Mapping",
+                "Identify high-value business problems, data requirements, automation opportunities, and measurable outcomes.",
+              ],
+              [
+                "02",
+                "Architecture & AI Strategy",
+                "Design the model, agent, retrieval, data, integration, and infrastructure architecture.",
+              ],
+              [
+                "03",
+                "Prototype & Validation",
+                "Build a focused prototype and validate technical feasibility, user experience, and business value.",
+              ],
+              [
+                "04",
+                "Production Engineering",
+                "Harden the system with APIs, observability, security, evaluation, testing, and scalable infrastructure.",
+              ],
+              [
+                "05",
+                "Deployment & Integration",
+                "Connect AI capabilities with existing enterprise applications, workflows, and operational systems.",
+              ],
+              [
+                "06",
+                "Production Telemetry & Scale",
+                "Monitor performance, usage, quality, cost, and reliability while continuously improving the system.",
+              ],
+            ].map(
+              (
+                [number, title, description],
+                index
+              ) => (
+                <article
+                  key={number}
+                  className="process-step reveal"
+                  style={{
+                    "--step-delay": `${
+                      Math.min(
+                        index * 80,
+                        400
+                      )
+                    }ms`,
+                  }}
+                >
+
+                  <div className="process-number">
+                    {number}
+                  </div>
+
+                  <div className="process-content">
+
+                    <span>
+                      PHASE {number}
+                    </span>
+
+                    <h3>
+                      {title}
+                    </h3>
+
+                    <p>
+                      {description}
+                    </p>
+
+                  </div>
+
+                  <div
+                    className="process-arrow"
+                    aria-hidden="true"
+                  >
+                    →
+                  </div>
+
+                </article>
+              )
+            )}
+
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* =====================================================================
           TEAM
-      ================================================================ */}
+      ====================================================================== */}
 
-      <TeamIntro
-        title="Built by engineers, backed by researchers"
-        description="Our team unites distributed systems specialists, ML researchers, and interface designers committed to reliable AI engineering."
-        buttonText="Explore open roles"
-        buttonLink="/contact"
-      />
+      <section className="reveal">
+        <TeamIntro />
+      </section>
 
-      <MarqueeTestimonials />
-      <LogoMarquee />
 
-      {/* ================================================================
+      {/* =====================================================================
+          APP PROMOTION
+      ====================================================================== */}
+
+      <section className="reveal">
+        <AppPromotion />
+      </section>
+
+
+      {/* =====================================================================
+          TESTIMONIALS
+      ====================================================================== */}
+
+      <section
+        id="testimonials"
+        className="testimonials-section reveal"
+      >
+
+        <div className="container">
+
+          <div className="section-header text-center">
+
+            <div className="section-tag">
+              Production feedback
+            </div>
+
+            <h2 className="section-title">
+              Proven in production
+              <br />
+              environments.
+            </h2>
+
+            <p className="section-subtitle">
+              AI systems should create measurable
+              operational value, not just impressive
+              demos.
+            </p>
+
+          </div>
+
+          <MarqueeTestimonials />
+
+        </div>
+      </section>
+
+
+      {/* =====================================================================
+          FAQ
+      ====================================================================== */}
+
+      <section
+        id="faq"
+        className="reveal"
+      >
+        <FAQ />
+      </section>
+
+
+      {/* =====================================================================
+          NEWSLETTER
+      ====================================================================== */}
+
+      <section
+        id="newsletter"
+        className="reveal"
+      >
+        <Newsletter />
+      </section>
+
+
+      {/* =====================================================================
           FINAL CTA
-      ================================================================ */}
+      ====================================================================== */}
 
-      <CTASection
-        badge="Enterprise AI Infrastructure"
-        title="Ready to automate core business logic?"
-        titleGradient="Deploy autonomous architectures designed to scale"
-        description="Book a technical strategy session with our AI architects and launch custom agent networks without infrastructure headaches."
-        buttonText="Schedule technical consultation"
-        buttonLink="/contact"
-      />
+      <section
+        id="contact"
+        className="reveal"
+      >
+        <CTASection />
+      </section>
 
-      {/* ================================================================
-          FLOATING ACTIONS
-      ================================================================ */}
 
-      <div className="floating-widgets">
+      {/* =====================================================================
+          FLOATING ACTION BUTTONS
+      ====================================================================== */}
+
+      <div
+        className="floating-widgets"
+        aria-label="Quick actions"
+      >
+
+        {/* WhatsApp */}
 
         <a
-  href="https://wa.me/918787222966"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="floating-btn whatsapp-btn"
-  aria-label="Contact support on WhatsApp"
->
-  <svg
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    aria-hidden="true"
-    focusable="false"
-  >
-    <path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.6 5.96L.05 24l6.28-1.65a11.86 11.86 0 0 0 5.73 1.47h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.44ZM12.07 21.8h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.73.98.99-3.64-.23-.37a9.85 9.85 0 0 1-1.51-5.28C2.19 6.47 6.62 2.04 12.07 2.04c2.64 0 5.12 1.03 6.98 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.43 9.87-9.87 9.87Zm5.41-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.46-.88-.79-1.47-1.76-1.64-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.09 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.89.12.58-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z" />
-  </svg>
-</a>
+          href="https://wa.me/"
+          className="floating-btn whatsapp-btn"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Contact Inalgo on WhatsApp"
+        >
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M20.52 3.48A11.77 11.77 0 0012.1 0C5.6.0.31 5.29.31 11.8c0 2.08.54 4.11 1.57 5.9L.21 24l6.45-1.64a11.78 11.78 0 005.43 1.31h.01c6.5 0 11.8-5.29 11.8-11.8 0-3.15-1.23-6.11-3.38-8.39zM12.1 21.66h-.01a9.84 9.84 0 01-5.01-1.37l-.36-.21-3.83.98 1.02-3.74-.23-.38a9.82 9.82 0 01-1.5-5.14C2.18 6.37 6.62 1.93 12.1 1.93c2.66 0 5.16 1.04 7.04 2.93a9.89 9.89 0 012.92 7.05c0 5.48-4.45 9.75-9.96 9.75zm5.41-7.34c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.21 5.09 4.5.71.31 1.26.49 1.69.63.71.23 1.35.2 1.86.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" />
+          </svg>
+
+        </a>
+
+
+        {/* AI Assistant */}
 
         <button
+          ref={assistantButtonRef}
+          type="button"
           className="floating-btn agent-btn"
-          aria-label="Open AI assistant interface"
-          onClick={() => {
-            window.location.href = '/agent';
-          }}
+          aria-label="Open Inalgo AI assistant"
+          title="Open AI assistant"
+          onClick={handleAssistantOpen}
         >
+
           <img
-            src={ageniImg}
-            alt="AI Assistant"
+            src={heroImage}
+            alt=""
             className="agent-img"
           />
 
-          <span className="agent-indicator"></span>
+          <span
+            className="agent-indicator"
+            aria-hidden="true"
+          />
+
+        </button>
+
+
+        {/* Back to top */}
+
+        <button
+          type="button"
+          className={`floating-btn back-to-top ${
+            scrollProgress > 12
+              ? "is-visible"
+              : ""
+          }`}
+          aria-label="Back to top"
+          title="Back to top"
+          onClick={scrollToTop}
+        >
+          ↑
         </button>
 
       </div>
 
-    </div>
+
+      {/* =====================================================================
+          ACTIVE SECTION STATUS
+      ====================================================================== */}
+
+      <span
+        className="sr-only"
+        aria-live="polite"
+      >
+        Current section:{" "}
+        {
+          NAV_SECTIONS.find(
+            (section) =>
+              section.id === activeSection
+          )?.label || "Home"
+        }
+      </span>
+
+    </main>
+    </>
   );
 }
 

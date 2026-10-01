@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import SEO from '../components/SEO';
 import './OTPVerification.css';
 
 function OTPVerification() {
@@ -75,53 +76,72 @@ function OTPVerification() {
   };
 
   return (
-    <div className="otp-page">
-      <div className="container">
-        <div className="otp-card">
-          <div className="otp-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect width="20" height="16" x="2" y="4" rx="2"/>
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-            </svg>
-          </div>
-          
-          <h2 className="otp-title">Email Verify OTP</h2>
-          <p className="otp-subtitle">Enter the 6-digit code sent to your email ID.</p>
-
-          <form onSubmit={handleVerify}>
-            <div className="otp-inputs" onPaste={handlePaste}>
-              {otp.map((digit, index) => (
-                <input
-                  key={index}
-                  ref={(el) => (inputRefs.current[index] = el)}
-                  type="text"
-                  inputMode="numeric"
-                  maxLength="1"
-                  value={digit}
-                  onChange={(e) => handleChange(index, e.target.value)}
-                  onKeyDown={(e) => handleKeyDown(index, e)}
-                  className="otp-input"
-                  aria-label={`Digit ${index + 1}`}
-                />
-              ))}
+    <>
+      <SEO
+        title="OTP Verification | Inalgo"
+        description="Verify your email address with the 6-digit OTP sent to your inbox. This step ensures the security of your Inalgo account and helps protect your personal information."
+        canonicalUrl="https://inalgo.tech/otp-verification"
+        openGraph={{
+          url: "https://inalgo.tech/otp-verification",
+          title: "OTP Verification | Inalgo",
+          description: "Verify your email address with the 6-digit OTP sent to your inbox. This step ensures the security of your Inalgo account and helps protect your personal information.",
+          image: "https://inalgo.tech/logo.png"
+        }}
+        twitter={{
+          url: "https://inalgo.tech/otp-verification",
+          title: "OTP Verification | Inalgo",
+          description: "Verify your email address with the 6-digit OTP sent to your inbox. This step ensures the security of your Inalgo account and helps protect your personal information.",
+          image: "https://inalgo.tech/logo.png"
+        }}
+      />
+      <div className="otp-page">
+        <div className="container">
+          <div className="otp-card">
+            <div className="otp-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
             </div>
 
-            <button type="submit" className="verify-btn">
-              Verify Email
-            </button>
-          </form>
+            <h2 className="otp-title">Email Verify OTP</h2>
+            <p className="otp-subtitle">Enter the 6-digit code sent to your email ID.</p>
 
-          <div className="otp-footer">
-            <p className="resend-text">
-              Didn't receive the code?{' '}
-              <button type="button" onClick={handleResend} className="resend-link">
-                Resend OTP
+            <form onSubmit={handleVerify}>
+              <div className="otp-inputs" onPaste={handlePaste}>
+                {otp.map((digit, index) => (
+                  <input
+                    key={index}
+                    ref={(el) => (inputRefs.current[index] = el)}
+                    type="text"
+                    inputMode="numeric"
+                    maxLength="1"
+                    value={digit}
+                    onChange={(e) => handleChange(index, e.target.value)}
+                    onKeyDown={(e) => handleKeyDown(index, e)}
+                    className="otp-input"
+                    aria-label={`Digit ${index + 1}`}
+                  />
+                ))}
+              </div>
+
+              <button type="submit" className="verify-btn">
+                Verify Email
               </button>
-            </p>
+            </form>
+
+            <div className="otp-footer">
+              <p className="resend-text">
+                Didn't receive the code?{' '}
+                <button type="button" onClick={handleResend} className="resend-link">
+                  Resend OTP
+                </button>
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -227,6 +227,31 @@ function Portfolio() {
 },
 {
   id: 9,
+  title: 'Inalgo File Vault',
+  subtitle: 'Secure & Modern File Management Platform',
+  description: 'A clean, modern web-based file management platform designed for secure file storage, organization, and access. Built with a responsive interface, intuitive interactions, and a streamlined user experience optimized across desktop and mobile devices.',
+  image: '📁',
+  category: 'File Management & SaaS',
+  statusBadge: 'Live Experience',
+  metric: 'Fast UX | Cloud Hosted',
+  tech: [
+    'Next.js',
+    'React',
+    'TypeScript',
+    'TailwindCSS',
+    'Vercel'
+  ],
+  features: [
+    'Secure File Workspace: Intuitive interface for uploading, organizing, managing, and accessing files',
+    'Modern Responsive UI: Clean layouts with polished visual design, smooth interactions, and responsive components',
+    'Efficient File Management: Streamlined workflows for browsing, organizing, and managing digital files',
+    'Adaptive Mobile-First Design: Optimized layouts and touch-friendly interactions across mobile, tablet, and desktop devices'
+  ],
+  liveDemo: 'https://inalgofilevault.vercel.app/',
+  github: 'https://github.com/anmolmishra09/Filevault'
+},
+{
+  id: 11,
   title: 'WanderMind',
   subtitle: 'Intelligent Trip Planner & Itinerary Generation Engine',
   description: 'Full-stack AI-driven travel planning platform that synthesizes destination data, user preferences, budget constraints, and duration into personalized multi-day travel itineraries. Features Google OAuth authentication, secure user session management, automated trip persistence, and responsive UI components.',

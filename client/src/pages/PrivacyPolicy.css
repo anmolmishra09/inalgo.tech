@@ -1,173 +1,736 @@
+/* ==========================================================================
+   PRIVACY POLICY — PREMIUM INALGO DESIGN
+   ========================================================================== */
+
 .privacy-policy {
-  background: #f8fafc;
-  color: #0f172a;
+  --privacy-bg: #f8fafc;
+  --privacy-surface: #ffffff;
+  --privacy-surface-soft: #f1f5f9;
+  --privacy-border: #e2e8f0;
+  --privacy-text: #0f172a;
+  --privacy-text-secondary: #475569;
+  --privacy-text-muted: #64748b;
+  --privacy-blue: #2563eb;
+  --privacy-blue-dark: #1d4ed8;
+  --privacy-purple: #7c3aed;
+  --privacy-cyan: #0ea5e9;
+
+  position: relative;
   min-height: 100vh;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(37, 99, 235, 0.04),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 70%,
+      rgba(124, 58, 237, 0.04),
+      transparent 30%
+    ),
+    var(--privacy-bg);
+
+  color: var(--privacy-text);
+
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
 }
+
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
 
 .privacy-hero {
-  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
-  padding: 5rem 0 3rem;
+  position: relative;
+  isolation: isolate;
+
+  padding: 6.5rem 1.5rem 5rem;
+
   text-align: center;
+
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 255, 255, 0.16),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(255, 255, 255, 0.12),
+      transparent 25%
+    ),
+    linear-gradient(
+      135deg,
+      #1d4ed8 0%,
+      #2563eb 42%,
+      #7c3aed 100%
+    );
+
+  color: #ffffff;
+
+  overflow: hidden;
 }
+
+
+/* Decorative glow */
+
+.privacy-hero::before,
+.privacy-hero::after {
+  content: "";
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter: blur(2px);
+
+  z-index: -1;
+}
+
+.privacy-hero::before {
+  width: 420px;
+  height: 420px;
+
+  top: -240px;
+  left: -100px;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.privacy-hero::after {
+  width: 360px;
+  height: 360px;
+
+  right: -120px;
+  bottom: -230px;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+
+/* Hero container */
+
+.privacy-hero .container {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+
+/* Small eyebrow */
+
+.privacy-hero::marker {
+  display: none;
+}
+
 
 .privacy-hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  margin: 0 0 1rem;
+
   color: #ffffff;
+
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+
+  line-height: 1.05;
+
   font-weight: 800;
-  letter-spacing: -0.025em;
+
+  letter-spacing: -0.045em;
+
+  text-shadow:
+    0 8px 30px rgba(15, 23, 42, 0.15);
+
+  animation: privacyHeroTitle 0.8s ease both;
 }
+
 
 .privacy-hero .lead {
-  font-size: 1rem;
-  color: #e0e7ff;
+  max-width: 600px;
+
+  margin: 0 auto;
+
+  color: rgba(255, 255, 255, 0.84);
+
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+
+  line-height: 1.7;
+
+  font-weight: 400;
+
+  animation: privacyHeroLead 0.9s ease 0.1s both;
 }
 
+
+/* ==========================================================================
+   CONTENT
+   ========================================================================== */
+
 .privacy-content {
-  padding: 4rem 0;
+  position: relative;
+
+  padding: 5rem 1.5rem 7rem;
+}
+
+
+/* Background decorative grid */
+
+.privacy-content::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.35;
+
+  background-image:
+    linear-gradient(
+      rgba(15, 23, 42, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(15, 23, 42, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 48px 48px;
+}
+
+
+/* ==========================================================================
+   CONTAINER
+   ========================================================================== */
+
+.privacy-content > .container {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
 }
 
 .privacy-container {
-  max-width: 900px;
+  width: 100%;
+  max-width: 920px;
+
   margin: 0 auto;
 }
 
+
+/* ==========================================================================
+   PRIVACY SECTIONS
+   ========================================================================== */
+
 .privacy-section {
-  margin-bottom: 3rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid #e2e8f0;
+  position: relative;
+
+  margin-bottom: 2rem;
+
+  padding: 2rem 2.25rem;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(248, 250, 252, 0.96)
+    );
+
+  border: 1px solid var(--privacy-border);
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 4px 12px rgba(15, 23, 42, 0.025),
+    0 12px 35px rgba(15, 23, 42, 0.035);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
 
-.privacy-section:last-of-type {
-  border-bottom: none;
+
+/* Blue accent line */
+
+.privacy-section::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 4px;
+  height: 0;
+
+  border-radius: 18px 0 0 18px;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--privacy-blue),
+      var(--privacy-purple)
+    );
+
+  transition: height 0.35s ease;
 }
+
+
+.privacy-section:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(37, 99, 235, 0.18);
+
+  box-shadow:
+    0 8px 18px rgba(15, 23, 42, 0.045),
+    0 20px 45px rgba(37, 99, 235, 0.07);
+}
+
+
+.privacy-section:hover::before {
+  height: 100%;
+}
+
+
+/* ==========================================================================
+   HEADINGS
+   ========================================================================== */
 
 .privacy-section h2 {
-  color: #0f172a;
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
+  position: relative;
+
+  margin: 0 0 1.15rem;
+
+  color: var(--privacy-text);
+
+  font-size: clamp(1.35rem, 2.5vw, 1.7rem);
+
+  line-height: 1.3;
+
+  font-weight: 750;
+
+  letter-spacing: -0.025em;
 }
+
 
 .privacy-section h3 {
+  margin: 1.8rem 0 0.75rem;
+
   color: #1e293b;
-  font-size: 1.25rem;
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-  font-weight: 600;
+
+  font-size: 1.1rem;
+
+  line-height: 1.4;
+
+  font-weight: 650;
+
+  letter-spacing: -0.01em;
 }
+
+
+/* ==========================================================================
+   TEXT
+   ========================================================================== */
 
 .privacy-section p {
-  color: #475569;
-  line-height: 1.8;
-  margin-bottom: 1rem;
-  font-size: 1rem;
+  margin: 0 0 1rem;
+
+  color: var(--privacy-text-secondary);
+
+  font-size: 0.98rem;
+
+  line-height: 1.85;
 }
 
-.privacy-section ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 1rem 0;
+
+.privacy-section p:last-child {
+  margin-bottom: 0;
 }
 
-.privacy-section li {
-  color: #475569;
-  padding: 0.5rem 0;
-  padding-left: 1.5rem;
-  position: relative;
-  line-height: 1.6;
-}
-
-.privacy-section li::before {
-  content: '•';
-  position: absolute;
-  left: 0;
-  color: #2563eb;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.privacy-section a {
-  color: #2563eb;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.privacy-section a:hover {
-  color: #1d4ed8;
-  text-decoration: underline;
-}
 
 .privacy-section strong {
-  color: #0f172a;
-  font-weight: 600;
+  color: var(--privacy-text);
+
+  font-weight: 650;
 }
+
+
+/* ==========================================================================
+   LISTS
+   ========================================================================== */
+
+.privacy-section ul {
+  margin: 1.15rem 0 1.25rem;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+
+.privacy-section li {
+  position: relative;
+
+  margin-bottom: 0.7rem;
+
+  padding-left: 1.65rem;
+
+  color: var(--privacy-text-secondary);
+
+  font-size: 0.97rem;
+
+  line-height: 1.7;
+}
+
+
+.privacy-section li:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Custom bullet */
+
+.privacy-section li::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0.65rem;
+  left: 0.15rem;
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--privacy-blue);
+
+  box-shadow:
+    0 0 0 4px rgba(37, 99, 235, 0.08);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.privacy-section li:hover::before {
+  transform: scale(1.25);
+
+  background: var(--privacy-purple);
+}
+
+
+/* ==========================================================================
+   LINKS
+   ========================================================================== */
+
+.privacy-section a {
+  position: relative;
+
+  color: var(--privacy-blue);
+
+  text-decoration: none;
+
+  font-weight: 600;
+
+  transition:
+    color 0.2s ease;
+}
+
+
+.privacy-section a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: -2px;
+
+  height: 1px;
+
+  background: currentColor;
+
+  transform: scaleX(0);
+
+  transform-origin: right;
+
+  transition:
+    transform 0.25s ease;
+}
+
+
+.privacy-section a:hover {
+  color: var(--privacy-blue-dark);
+}
+
+
+.privacy-section a:hover::after {
+  transform: scaleX(1);
+
+  transform-origin: left;
+}
+
+
+/* ==========================================================================
+   CONTACT CARD
+   ========================================================================== */
 
 .contact-info {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-top: 1rem;
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  position: relative;
+
+  margin-top: 1.5rem;
+
+  padding: 1.4rem 1.5rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8fafc,
+      #ffffff
+    );
+
+  border: 1px solid var(--privacy-border);
+
+  border-radius: 14px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  overflow: hidden;
 }
 
-.contact-info p {
-  margin-bottom: 0.75rem;
+
+.contact-info::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--privacy-blue),
+      var(--privacy-cyan),
+      var(--privacy-purple)
+    );
 }
+
+
+.contact-info p {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.35rem;
+
+  margin-bottom: 0.75rem;
+
+  color: var(--privacy-text-secondary);
+
+  font-size: 0.95rem;
+}
+
 
 .contact-info p:last-child {
   margin-bottom: 0;
 }
 
-.privacy-acknowledgment {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 2rem;
-  margin-top: 3rem;
-  text-align: center;
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+
+.contact-info strong {
+  min-width: 85px;
+
+  color: var(--privacy-text);
 }
+
+
+/* ==========================================================================
+   ACKNOWLEDGMENT
+   ========================================================================== */
+
+.privacy-acknowledgment {
+  position: relative;
+
+  margin-top: 2.5rem;
+
+  padding: 2rem 2.25rem;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(37, 99, 235, 0.055),
+      rgba(124, 58, 237, 0.055)
+    );
+
+  border: 1px solid rgba(37, 99, 235, 0.13);
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 35px rgba(37, 99, 235, 0.06);
+
+  overflow: hidden;
+}
+
+
+.privacy-acknowledgment::before {
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  top: -110px;
+  right: -60px;
+
+  border-radius: 50%;
+
+  background: rgba(124, 58, 237, 0.08);
+
+  pointer-events: none;
+}
+
 
 .privacy-acknowledgment p {
-  color: #475569;
+  position: relative;
+
   margin: 0;
-  font-size: 1.05rem;
-  font-weight: 500;
+
+  color: var(--privacy-text-secondary);
+
+  font-size: 1rem;
+
+  line-height: 1.75;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .privacy-hero {
-    padding: 4rem 0 2rem;
+
+.privacy-acknowledgment strong {
+  color: var(--privacy-text);
+
+  font-weight: 650;
+}
+
+
+/* ==========================================================================
+   FOCUS / ACCESSIBILITY
+   ========================================================================== */
+
+.privacy-section a:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.25);
+
+  outline-offset: 4px;
+
+  border-radius: 4px;
+}
+
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+@keyframes privacyHeroTitle {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
 
-  .privacy-hero h1 {
-    font-size: 2rem;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes privacyHeroLead {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .privacy-section,
+  .privacy-section::before,
+  .privacy-section li::before,
+  .privacy-section a::after {
+    transition: none;
+  }
+
+  .privacy-hero h1,
+  .privacy-hero .lead {
+    animation: none;
+  }
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .privacy-hero {
+    padding: 5rem 1.25rem 3.75rem;
   }
 
   .privacy-content {
-    padding: 3rem 0;
+    padding: 3.5rem 1.25rem 5rem;
+  }
+
+  .privacy-container {
+    max-width: 100%;
+  }
+
+  .privacy-section {
+    padding: 1.6rem 1.4rem;
+
+    margin-bottom: 1.25rem;
+
+    border-radius: 15px;
   }
 
   .privacy-section h2 {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
   }
 
   .privacy-section h3 {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
 
   .privacy-section p,
   .privacy-section li {
-    font-size: 0.95rem;
-  }
-
-  .contact-info {
-    padding: 1.25rem;
+    font-size: 0.94rem;
   }
 
   .privacy-acknowledgment {
@@ -175,16 +738,106 @@
   }
 }
 
-@media (min-width: 1024px) {
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media (max-width: 480px) {
   .privacy-hero {
-    padding: 6rem 0 4rem;
+    padding: 4rem 1rem 3rem;
   }
 
   .privacy-hero h1 {
-    font-size: 3.5rem;
+    font-size: 2.35rem;
+
+    letter-spacing: -0.04em;
+  }
+
+  .privacy-hero .lead {
+    font-size: 0.9rem;
   }
 
   .privacy-content {
-    padding: 6rem 0;
+    padding: 2.5rem 0.9rem 4rem;
+  }
+
+  .privacy-section {
+    padding: 1.35rem 1.15rem;
+
+    border-radius: 14px;
+  }
+
+  .privacy-section h2 {
+    margin-bottom: 0.9rem;
+
+    font-size: 1.25rem;
+  }
+
+  .privacy-section h3 {
+    margin-top: 1.4rem;
+
+    font-size: 1rem;
+  }
+
+  .privacy-section p,
+  .privacy-section li {
+    font-size: 0.91rem;
+
+    line-height: 1.75;
+  }
+
+  .privacy-section li {
+    padding-left: 1.35rem;
+  }
+
+  .privacy-section li::before {
+    width: 6px;
+    height: 6px;
+  }
+
+  .contact-info {
+    padding: 1.15rem;
+  }
+
+  .contact-info p {
+    display: block;
+
+    line-height: 1.7;
+  }
+
+  .contact-info strong {
+    display: inline-block;
+
+    min-width: 75px;
+  }
+
+  .privacy-acknowledgment {
+    padding: 1.35rem 1.15rem;
+
+    border-radius: 14px;
+  }
+
+  .privacy-acknowledgment p {
+    font-size: 0.92rem;
+  }
+}
+
+
+/* ==========================================================================
+   LARGE DESKTOP
+   ========================================================================== */
+
+@media (min-width: 1200px) {
+  .privacy-hero {
+    padding: 7rem 1.5rem 5.5rem;
+  }
+
+  .privacy-content {
+    padding: 6rem 1.5rem 8rem;
+  }
+
+  .privacy-section {
+    padding: 2.35rem 2.5rem;
   }
 }

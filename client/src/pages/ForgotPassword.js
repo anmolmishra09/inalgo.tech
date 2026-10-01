@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import './ForgotPassword.css';
 
 function ForgotPassword() {
@@ -32,7 +33,25 @@ function ForgotPassword() {
   };
 
   return (
-    <div className="forgot-password-page">
+    <>
+      <SEO
+        title="Forgot Password | Inalgo"
+        description="Forgot your Inalgo password? Enter your email address to receive a password reset link. We'll send you a secure link to reset your password and regain access to your account."
+        canonicalUrl="https://inalgo.tech/forgot-password"
+        openGraph={{
+          url: "https://inalgo.tech/forgot-password",
+          title: "Forgot Password | Inalgo",
+          description: "Forgot your Inalgo password? Enter your email address to receive a password reset link. We'll send you a secure link to reset your password and regain access to your account.",
+          image: "https://inalgo.tech/logo.png"
+        }}
+        twitter={{
+          url: "https://inalgo.tech/forgot-password",
+          title: "Forgot Password | Inalgo",
+          description: "Forgot your Inalgo password? Enter your email address to receive a password reset link. We'll send you a secure link to reset your password and regain access to your account.",
+          image: "https://inalgo.tech/logo.png"
+        }}
+      />
+      <div className="forgot-password-page">
       <div className="container">
         <div className="forgot-password-card">
           {!isSubmitted ? (
@@ -141,6 +160,7 @@ function ForgotPassword() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

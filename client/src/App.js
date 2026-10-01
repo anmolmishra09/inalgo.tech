@@ -21,6 +21,7 @@ import Partners from './pages/Partners';
 import Careers from './pages/Careers';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Agent from './pages/Agent';
+import NotFound from './pages/NotFound';
 
 // Replace this with your actual Google Client ID from Google Cloud Console
 const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || 'YOUR_GOOGLE_CLIENT_ID_HERE';
@@ -51,6 +52,7 @@ function App() {
               <Route path="/otp-verification" element={<OTPVerification />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route path="/agent" element={<Agent />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
           <Footer />
