@@ -532,16 +532,6 @@ function Home() {
     }
   };
 
-  const toggleVideoMute = () => {
-    const video = videoRef.current;
-
-    if (!video) {
-      return;
-    }
-
-    video.muted = !video.muted;
-    setIsVideoMuted(video.muted);
-  };
 
 
   /*
