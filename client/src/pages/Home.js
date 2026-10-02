@@ -847,48 +847,49 @@ function Home() {
 
           <div className="hero-content">
 
-            <div
-              className="hero-live-status"
-              aria-label="AI infrastructure status"
-            >
-              <span
-                className="status-dot"
-                aria-hidden="true"
-              />
+  <div
+    className="hero-live-status"
+    aria-label="AI platform status"
+  >
+    <span
+      className="status-dot"
+      aria-hidden="true"
+    />
 
-              <span>
-                AI INFRASTRUCTURE ONLINE
-              </span>
+    <span>
+      AI SYSTEMS ONLINE
+    </span>
 
-              <span
-                className="status-divider"
-                aria-hidden="true"
-              />
+    <span
+      className="status-divider"
+      aria-hidden="true"
+    />
 
-              <span>
-                SYSTEM OPERATIONAL
-              </span>
-            </div>
+    <span>
+      FULLY OPERATIONAL
+    </span>
+  </div>
+
+  <div className="hero-badge">
+
+    <span
+      className="sparkle"
+      aria-hidden="true"
+    >
+      ✦
+    </span>
+
+    <span>
+      Autonomous AI Agents
+    </span>
+
+    <span className="badge-version">
+      NEXT-GEN
+    </span>
+
+  </div>
 
 
-            <div className="hero-badge">
-
-              <span
-                className="sparkle"
-                aria-hidden="true"
-              >
-                ✦
-              </span>
-
-              <span>
-                Autonomous AI Workforce
-              </span>
-
-              <span className="badge-version">
-                RELEASE 2.0
-              </span>
-
-            </div>
 
 
             <h1 className="hero-title">

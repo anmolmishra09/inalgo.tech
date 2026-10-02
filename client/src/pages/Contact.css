@@ -98,18 +98,15 @@
 
 
 /* ==========================================================================
-
    HERO
-
    ========================================================================== */
 
 .contact-hero {
   position: relative;
 
-  min-height: 650px;
+  min-height: 700px;
 
   display: flex;
-
   align-items: center;
 
   overflow: hidden;
@@ -132,7 +129,9 @@
 }
 
 
-/* Grid */
+/* ==========================================================================
+   HERO GRID
+   ========================================================================== */
 
 .hero-grid {
   position: absolute;
@@ -161,13 +160,22 @@
       transparent 90%
     );
 
+  -webkit-mask-image:
+    linear-gradient(
+      to bottom,
+      #000,
+      transparent 90%
+    );
+
   pointer-events: none;
 
   z-index: -2;
 }
 
 
-/* Floating decorative orbs */
+/* ==========================================================================
+   HERO ORBS
+   ========================================================================== */
 
 .hero-orb {
   position: absolute;
@@ -186,11 +194,9 @@
 
 .hero-orb-one {
   width: 360px;
-
   height: 360px;
 
   top: 5%;
-
   left: -160px;
 
   background:
@@ -203,11 +209,9 @@
 
 .hero-orb-two {
   width: 420px;
-
   height: 420px;
 
   right: -180px;
-
   bottom: -160px;
 
   background:
@@ -223,6 +227,8 @@
 
 /* ==========================================================================
    HERO CONTENT
+   IMPORTANT:
+   Floating navbar is fixed at the top, so extra top spacing is intentional.
    ========================================================================== */
 
 .contact-hero-inner {
@@ -231,11 +237,12 @@
   width: 100%;
 
   /*
-   * Increased top spacing so the hero content
-   * sits comfortably below the navbar.
+   * Desktop:
+   * Floating navbar ≈ 64px high + top offset.
+   * 165px gives the hero enough breathing room.
    */
   padding:
-    135px
+    165px
     0
     85px;
 
@@ -243,7 +250,9 @@
 }
 
 
-/* Badge */
+/* ==========================================================================
+   BADGE
+   ========================================================================== */
 
 .contact-badge {
   display: inline-flex;
@@ -275,12 +284,14 @@
   text-transform: uppercase;
 
   animation:
-    contactReveal 0.7s var(--contact-ease) both;
+    contactReveal
+    0.7s
+    var(--contact-ease)
+    both;
 }
 
 .badge-dot {
   width: 7px;
-
   height: 7px;
 
   flex: 0 0 7px;
@@ -293,11 +304,16 @@
     0 0 0 5px rgba(16, 185, 129, 0.1);
 
   animation:
-    contactPulse 2s ease-in-out infinite;
+    contactPulse
+    2s
+    ease-in-out
+    infinite;
 }
 
 
-/* Hero title */
+/* ==========================================================================
+   HERO TITLE
+   ========================================================================== */
 
 .contact-hero h1 {
   max-width: 920px;
@@ -342,7 +358,9 @@
 }
 
 
-/* Hero description */
+/* ==========================================================================
+   HERO DESCRIPTION
+   ========================================================================== */
 
 .contact-hero .lead {
   max-width: 700px;
@@ -370,79 +388,6 @@
 
 
 /* ==========================================================================
-   RESPONSIVE HERO SPACING
-   ========================================================================== */
-
-/* Tablet */
-
-@media (max-width: 1024px) {
-
-  .contact-hero-inner {
-    padding:
-      120px
-      0
-      75px;
-  }
-
-}
-
-
-/* Mobile */
-
-@media (max-width: 768px) {
-
-  .contact-hero {
-    min-height: auto;
-  }
-
-  .contact-hero-inner {
-    padding:
-      100px
-      0
-      65px;
-  }
-
-  .contact-hero h1 {
-    font-size:
-      clamp(
-        2.6rem,
-        10vw,
-        4.5rem
-      );
-  }
-
-}
-
-
-/* Small mobile */
-
-@media (max-width: 480px) {
-
-  .contact-hero-inner {
-    padding:
-      85px
-      0
-      55px;
-  }
-
-  .contact-hero h1 {
-    font-size:
-      clamp(
-        2.25rem,
-        12vw,
-        3.2rem
-      );
-  }
-
-  .contact-hero .lead {
-    font-size: 0.9rem;
-
-    line-height: 1.7;
-  }
-
-}
-
-/* ==========================================================================
    HERO BUTTONS
    ========================================================================== */
 
@@ -458,7 +403,11 @@
   margin-top: 34px;
 
   animation:
-    contactReveal 0.8s 0.24s var(--contact-ease) both;
+    contactReveal
+    0.8s
+    0.24s
+    var(--contact-ease)
+    both;
 }
 
 .hero-action {
@@ -467,7 +416,6 @@
   display: inline-flex;
 
   align-items: center;
-
   justify-content: center;
 
   gap: 14px;
@@ -541,7 +489,8 @@
 }
 
 .hero-action.secondary:hover {
-  border-color: rgba(37, 99, 235, 0.25);
+  border-color:
+    rgba(37, 99, 235, 0.25);
 
   background: #ffffff;
 
@@ -550,13 +499,14 @@
 }
 
 
-/* Trust indicators */
+/* ==========================================================================
+   TRUST ROW
+   ========================================================================== */
 
 .trust-row {
   display: flex;
 
   justify-content: center;
-
   align-items: center;
 
   flex-wrap: wrap;
@@ -601,7 +551,9 @@
 }
 
 
-/* Intro */
+/* ==========================================================================
+   CONTACT INTRO
+   ========================================================================== */
 
 .contact-intro {
   display: grid;
@@ -673,7 +625,9 @@
 }
 
 
-/* Shared card */
+/* ==========================================================================
+   SHARED CARD
+   ========================================================================== */
 
 .contact-info,
 .contact-form-wrapper {
@@ -718,7 +672,6 @@
   display: flex;
 
   align-items: flex-start;
-
   justify-content: space-between;
 
   gap: 15px;
@@ -778,7 +731,9 @@
 }
 
 
-/* Information items */
+/* ==========================================================================
+   INFO ITEMS
+   ========================================================================== */
 
 .info-items {
   display: grid;
@@ -822,6 +777,7 @@
 
 button.info-item {
   appearance: none;
+
   font: inherit;
 }
 
@@ -837,9 +793,6 @@ button.info-item {
   box-shadow:
     0 12px 30px rgba(15, 23, 42, 0.07);
 }
-
-
-/* Active indicator */
 
 .info-item::before {
   content: "";
@@ -861,8 +814,7 @@ button.info-item {
       #7c3aed
     );
 
-  transform:
-    scaleY(0);
+  transform: scaleY(0);
 
   transition:
     transform 0.3s var(--contact-ease);
@@ -874,7 +826,9 @@ button.info-item {
 }
 
 
-/* Icons */
+/* ==========================================================================
+   INFO ICONS
+   ========================================================================== */
 
 .info-icon {
   width: 47px;
@@ -919,9 +873,6 @@ button.info-item {
     rotate(-3deg);
 }
 
-
-/* Icon variations */
-
 .whatsapp-icon {
   color: #059669;
 
@@ -951,7 +902,9 @@ button.info-item {
 }
 
 
-/* Info text */
+/* ==========================================================================
+   INFO TEXT
+   ========================================================================== */
 
 .info-details {
   min-width: 0;
@@ -1046,7 +999,9 @@ button.info-item {
 }
 
 
-/* Client note */
+/* ==========================================================================
+   CLIENT NOTE
+   ========================================================================== */
 
 .client-note {
   display: flex;
@@ -1115,7 +1070,7 @@ button.info-item {
 .contact-form-wrapper {
   padding: 31px;
 
-  scroll-margin-top: 30px;
+  scroll-margin-top: 110px;
 }
 
 .contact-form-wrapper:focus-within {
@@ -1225,7 +1180,9 @@ button.info-item {
 }
 
 
-/* Form */
+/* ==========================================================================
+   FORM
+   ========================================================================== */
 
 .contact-form {
   display: grid;
@@ -1358,7 +1315,9 @@ button.info-item {
 }
 
 
-/* Form footer */
+/* ==========================================================================
+   FORM FOOTER
+   ========================================================================== */
 
 .form-footer {
   display: grid;
@@ -1461,9 +1420,6 @@ button.info-item {
     opacity 0.25s ease;
 }
 
-
-/* Shine */
-
 .contact-btn-submit::before {
   content: "";
 
@@ -1497,7 +1453,9 @@ button.info-item {
 }
 
 .contact-btn-submit:active:not(:disabled) {
-  transform: translateY(-1px) scale(0.99);
+  transform:
+    translateY(-1px)
+    scale(0.99);
 }
 
 .contact-btn-submit:disabled {
@@ -1529,11 +1487,14 @@ button.info-item {
   border-radius: 50%;
 
   animation:
-    contactSpin 0.7s linear infinite;
+    contactSpin
+    0.7s
+    linear
+    infinite;
 }
 
 
-/* Form success */
+/* Success */
 
 .form-message {
   margin: 0;
@@ -1683,7 +1644,11 @@ button.info-item {
 
   z-index: 9999;
 
-  max-width: min(420px, calc(100vw - 32px));
+  max-width:
+    min(
+      420px,
+      calc(100vw - 32px)
+    );
 }
 
 
@@ -1766,6 +1731,7 @@ button.info-item {
    ========================================================================== */
 
 @media (max-width: 1020px) {
+
   .contact-grid {
     grid-template-columns: 1fr;
   }
@@ -1797,27 +1763,97 @@ button.info-item {
 
 
 /* ==========================================================================
+   TABLET HERO SPACING
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+
+  .contact-hero {
+    min-height: 650px;
+  }
+
+  .contact-hero-inner {
+    /*
+     * Navbar is still floating at the top.
+     * Keep hero content clearly below it.
+     */
+    padding:
+      145px
+      0
+      75px;
+  }
+
+}
+
+
+/* ==========================================================================
    MOBILE
    ========================================================================== */
 
 @media (max-width: 760px) {
+
   .contact-page .container {
     width:
-      min(100% - 28px, 1240px);
+      min(
+        calc(100% - 28px),
+        1240px
+      );
   }
+
+
+  /* --------------------------------------------------------------
+     HERO
+     -------------------------------------------------------------- */
 
   .contact-hero {
     min-height: auto;
+
+    display: block;
   }
 
   .contact-hero-inner {
-    padding: 76px 0 62px;
+    /*
+     * Mobile floating navbar:
+     * ~58px high + top spacing.
+     *
+     * 125px creates a clean visual gap.
+     */
+    padding:
+      125px
+      0
+      62px;
   }
 
   .contact-hero h1 {
     font-size:
-      clamp(2.65rem, 13vw, 4.4rem);
+      clamp(
+        2.65rem,
+        13vw,
+        4.4rem
+      );
+
+    line-height: 1;
+
+    letter-spacing: -0.06em;
   }
+
+  .contact-hero .lead {
+    max-width: 620px;
+
+    font-size:
+      clamp(
+        0.95rem,
+        3.5vw,
+        1.05rem
+      );
+
+    line-height: 1.75;
+  }
+
+
+  /* --------------------------------------------------------------
+     TRUST
+     -------------------------------------------------------------- */
 
   .trust-row {
     display: grid;
@@ -1825,12 +1861,26 @@ button.info-item {
     justify-content: center;
 
     gap: 9px;
+
+    margin-top: 30px;
   }
+
+
+  /* --------------------------------------------------------------
+     MAIN CONTENT
+     -------------------------------------------------------------- */
 
   .contact-content,
   .map-section {
-    padding: 70px 0;
+    padding:
+      70px
+      0;
   }
+
+
+  /* --------------------------------------------------------------
+     INTRO
+     -------------------------------------------------------------- */
 
   .contact-intro {
     grid-template-columns: 1fr;
@@ -1843,6 +1893,11 @@ button.info-item {
   .contact-intro > p {
     justify-self: start;
   }
+
+
+  /* --------------------------------------------------------------
+     INFO
+     -------------------------------------------------------------- */
 
   .contact-info {
     display: block;
@@ -1858,14 +1913,26 @@ button.info-item {
     margin-top: 18px;
   }
 
+
+  /* --------------------------------------------------------------
+     FORM
+     -------------------------------------------------------------- */
+
   .contact-form-wrapper {
     padding: 21px;
+
+    scroll-margin-top: 90px;
   }
 
   .form-grid.two,
   .form-footer {
     grid-template-columns: 1fr;
   }
+
+
+  /* --------------------------------------------------------------
+     MAP
+     -------------------------------------------------------------- */
 
   .map-header {
     display: block;
@@ -1888,13 +1955,82 @@ button.info-item {
    ========================================================================== */
 
 @media (max-width: 480px) {
+
+  .contact-page .container {
+    width:
+      calc(100% - 24px);
+  }
+
+
+  /* --------------------------------------------------------------
+     HERO
+     -------------------------------------------------------------- */
+
+  .contact-hero-inner {
+    /*
+     * Extra-safe spacing for the smallest devices.
+     */
+    padding:
+      110px
+      0
+      55px;
+  }
+
+  .contact-badge {
+    max-width: 100%;
+
+    padding:
+      7px
+      11px;
+
+    font-size: 0.68rem;
+  }
+
+  .contact-hero h1 {
+    margin:
+      19px
+      auto
+      16px;
+
+    font-size:
+      clamp(
+        2.25rem,
+        12vw,
+        3.2rem
+      );
+
+    line-height: 1.02;
+  }
+
+  .contact-hero .lead {
+    font-size: 0.9rem;
+
+    line-height: 1.7;
+  }
+
+
+  /* --------------------------------------------------------------
+     BUTTONS
+     -------------------------------------------------------------- */
+
   .hero-actions {
     display: grid;
+
+    gap: 10px;
+
+    margin-top: 27px;
   }
 
   .hero-action {
     width: 100%;
+
+    min-height: 50px;
   }
+
+
+  /* --------------------------------------------------------------
+     INFO
+     -------------------------------------------------------------- */
 
   .info-item {
     min-height: 88px;
@@ -1917,6 +2053,11 @@ button.info-item {
     display: none;
   }
 
+
+  /* --------------------------------------------------------------
+     FORM
+     -------------------------------------------------------------- */
+
   .form-heading {
     display: block;
   }
@@ -1931,14 +2072,61 @@ button.info-item {
     width: 100%;
   }
 
+
+  /* --------------------------------------------------------------
+     TOAST
+     -------------------------------------------------------------- */
+
   .contact-toast {
     top: 14px;
 
     right: 14px;
-
     left: 14px;
 
     max-width: none;
+  }
+}
+
+
+/* ==========================================================================
+   VERY SMALL MOBILE
+   ========================================================================== */
+
+@media (max-width: 359px) {
+
+  .contact-page .container {
+    width:
+      calc(100% - 20px);
+  }
+
+  .contact-hero-inner {
+    padding:
+      105px
+      0
+      50px;
+  }
+
+  .contact-hero h1 {
+    font-size:
+      2.15rem;
+  }
+
+  .contact-hero .lead {
+    font-size: 0.86rem;
+  }
+
+  .hero-action {
+    min-height: 48px;
+
+    font-size: 0.9rem;
+  }
+
+  .contact-info {
+    padding: 16px;
+  }
+
+  .contact-form-wrapper {
+    padding: 17px;
   }
 }
 
@@ -1948,6 +2136,7 @@ button.info-item {
    ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
   .contact-page *,
   .contact-page *::before,
   .contact-page *::after {

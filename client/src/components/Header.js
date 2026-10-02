@@ -23,40 +23,44 @@ function Header() {
     setMenuOpen((prev) => !prev);
   };
 
-  // Lock page scroll when mobile menu is open
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
-    document.body.classList.toggle("menu-open", menuOpen);
+    if (menuOpen) {
+      document.body.classList.add("menu-open");
+    } else {
+      document.body.classList.remove("menu-open");
+    }
 
     return () => {
       document.body.classList.remove("menu-open");
     };
   }, [menuOpen]);
 
-  // Close mobile menu whenever route changes
+  // Close menu and scroll to top after route changes
   useEffect(() => {
     setMenuOpen(false);
 
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "instant",
+      behavior: "auto",
     });
   }, [location.pathname]);
 
-  // Close menu with Escape
+  // Escape key
   useEffect(() => {
-    const handleEscape = (event) => {
+    if (!menuOpen) return;
+
+    const handleKeyDown = (event) => {
       if (event.key === "Escape") {
         setMenuOpen(false);
       }
     };
 
-    if (menuOpen) {
-      document.addEventListener("keydown", handleEscape);
-    }
+    document.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      document.removeEventListener("keydown", handleEscape);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [menuOpen]);
 
@@ -78,14 +82,14 @@ function Header() {
             </Link>
           </div>
 
-          {/* Desktop / Mobile Navigation */}
+          {/* Navigation */}
           <div
+            id="mobile-navigation"
             className={`nav-wrapper ${
               menuOpen ? "open" : ""
             }`}
-            aria-hidden={!menuOpen}
           >
-            {/* Mobile Header */}
+            {/* Mobile drawer header */}
             <div className="mobile-menu-header">
               <span className="mobile-menu-title">
                 Navigation
@@ -102,7 +106,7 @@ function Header() {
               </button>
             </div>
 
-            {/* Navigation Links */}
+            {/* Links */}
             <ul className="nav-menu">
               {navItems.map((item) => {
                 const isActive =
@@ -138,7 +142,7 @@ function Header() {
               })}
             </ul>
 
-            {/* Mobile CTA */}
+            {/* Mobile Sign In */}
             <div className="mobile-menu-footer">
               <Link
                 to="/signin"
@@ -158,7 +162,7 @@ function Header() {
             </div>
           </div>
 
-          {/* Desktop CTA */}
+          {/* Desktop Sign In */}
           <Link
             to="/signin"
             className="signin-btn"
@@ -174,7 +178,7 @@ function Header() {
             </svg>
           </Link>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Toggle */}
           <button
             type="button"
             className={`menu-toggle ${
@@ -197,14 +201,12 @@ function Header() {
       </header>
 
       {/* Mobile Overlay */}
-      <button
-        type="button"
+      <div
         className={`menu-overlay ${
           menuOpen ? "visible" : ""
         }`}
         onClick={closeMenu}
-        aria-label="Close navigation menu"
-        tabIndex={menuOpen ? 0 : -1}
+        aria-hidden="true"
       />
     </>
   );

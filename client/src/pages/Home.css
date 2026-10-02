@@ -364,41 +364,56 @@ a {
 
 /* ==========================================================================
    05. HERO
+   INALGO — Premium Interactive AI Infrastructure Hero
    ========================================================================== */
 
 .hero-section {
   --mouse-x: 50%;
-  --mouse-y: 50%;
+  --mouse-y: 45%;
 
   position: relative;
-
   min-height: 900px;
-
   display: flex;
-
   align-items: center;
   justify-content: center;
 
   padding:
-    150px 0
+    150px 24px
     120px;
 
   overflow: hidden;
+  isolation: isolate;
 
   background:
     radial-gradient(
-      circle at 50% 20%,
-      rgba(37, 99, 235, 0.06),
-      transparent 32%
+      circle at 50% 18%,
+      rgba(37, 99, 235, 0.075),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 20% 65%,
+      rgba(6, 182, 212, 0.045),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 82% 60%,
+      rgba(124, 58, 237, 0.035),
+      transparent 25%
     ),
     #ffffff;
 }
 
+
+/* ==========================================================================
+   HERO MOUSE GLOW
+   ========================================================================== */
+
 .hero-mouse-glow {
   position: absolute;
+  z-index: 0;
 
-  width: 700px;
-  height: 700px;
+  width: 720px;
+  height: 720px;
 
   left: var(--mouse-x);
   top: var(--mouse-y);
@@ -411,97 +426,134 @@ a {
   background:
     radial-gradient(
       circle,
-      rgba(37, 99, 235, 0.1),
-      rgba(6, 182, 212, 0.04) 35%,
-      transparent 70%
+      rgba(37, 99, 235, 0.11) 0%,
+      rgba(6, 182, 212, 0.055) 28%,
+      rgba(124, 58, 237, 0.025) 48%,
+      transparent 72%
     );
 
-  filter: blur(25px);
+  filter: blur(30px);
+
+  opacity: 0.9;
 
   transition:
-    left 0.15s ease-out,
-    top 0.15s ease-out;
+    left 0.18s cubic-bezier(0.22, 1, 0.36, 1),
+    top 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+
+  will-change:
+    left,
+    top;
 }
+
+
+/* ==========================================================================
+   HERO GRID
+   ========================================================================== */
 
 .hero-grid {
   position: absolute;
-
   inset: 0;
 
   pointer-events: none;
 
-  opacity: 0.42;
+  opacity: 0.48;
 
   background-image:
     linear-gradient(
-      rgba(15, 23, 42, 0.035) 1px,
+      rgba(15, 23, 42, 0.032) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      rgba(15, 23, 42, 0.035) 1px,
+      rgba(15, 23, 42, 0.032) 1px,
       transparent 1px
     );
 
-  background-size: 48px 48px;
+  background-size:
+    48px 48px;
 
   mask-image:
     radial-gradient(
-      circle at center,
-      black 10%,
-      transparent 72%
+      ellipse at center,
+      black 5%,
+      rgba(0, 0, 0, 0.85) 28%,
+      transparent 73%
     );
 
   -webkit-mask-image:
     radial-gradient(
-      circle at center,
-      black 10%,
-      transparent 72%
+      ellipse at center,
+      black 5%,
+      rgba(0, 0, 0, 0.85) 28%,
+      transparent 73%
     );
+
+  animation:
+    gridBreathing 8s ease-in-out infinite alternate;
 }
+
+
+/* ==========================================================================
+   HERO RAY BURST
+   ========================================================================== */
 
 .hero-ray-burst {
   position: absolute;
 
-  inset: -30%;
+  inset: -35%;
 
   pointer-events: none;
 
   background:
     repeating-conic-gradient(
       from 0deg at 50% 50%,
-      rgba(37, 99, 235, 0.08) 0deg 0.7deg,
-      transparent 0.7deg 7deg,
-      rgba(6, 182, 212, 0.055) 7deg 7.7deg,
-      transparent 7.7deg 14deg
+
+      rgba(37, 99, 235, 0.065)
+        0deg 0.65deg,
+
+      transparent
+        0.65deg 7deg,
+
+      rgba(6, 182, 212, 0.045)
+        7deg 7.65deg,
+
+      transparent
+        7.65deg 14deg
     );
 
   mask-image:
     radial-gradient(
       circle at center,
-      black 10%,
-      transparent 70%
+      black 8%,
+      transparent 69%
     );
 
   -webkit-mask-image:
     radial-gradient(
       circle at center,
-      black 10%,
-      transparent 70%
+      black 8%,
+      transparent 69%
     );
 
+  opacity: 0.8;
+
   animation:
-    rotateRays 45s linear infinite;
+    rotateRays 55s linear infinite;
 }
+
+
+/* ==========================================================================
+   HERO BURST CENTER
+   ========================================================================== */
 
 .hero-burst-center {
   position: absolute;
 
-  width: 420px;
-  height: 420px;
+  width: 500px;
+  height: 500px;
 
   left: 50%;
-  top: 48%;
+  top: 47%;
 
   transform:
     translate(-50%, -50%);
@@ -511,16 +563,24 @@ a {
   background:
     radial-gradient(
       circle,
-      rgba(37, 99, 235, 0.12),
-      rgba(6, 182, 212, 0.05) 40%,
+      rgba(37, 99, 235, 0.105),
+      rgba(6, 182, 212, 0.045) 35%,
+      rgba(124, 58, 237, 0.025) 50%,
       transparent 72%
     );
 
-  filter: blur(15px);
+  filter: blur(18px);
+
+  pointer-events: none;
 
   animation:
-    pulseCore 6s ease-in-out infinite alternate;
+    pulseCore 7s ease-in-out infinite alternate;
 }
+
+
+/* ==========================================================================
+   FLOATING AMBIENT GLOWS
+   ========================================================================== */
 
 .hero-glow {
   position: absolute;
@@ -529,86 +589,163 @@ a {
 
   pointer-events: none;
 
-  filter: blur(130px);
+  filter: blur(125px);
+
+  opacity: 0.75;
+
+  will-change:
+    transform;
 }
+
 
 .glow-1 {
-  width: 420px;
-  height: 420px;
+  width: 460px;
+  height: 460px;
 
-  left: 2%;
-  top: 10%;
+  left: -4%;
+  top: 8%;
 
   background:
-    rgba(37, 99, 235, 0.08);
+    rgba(37, 99, 235, 0.075);
 
   animation:
-    floatGlow 12s ease-in-out infinite alternate;
+    floatGlow 14s ease-in-out infinite alternate;
 }
+
 
 .glow-2 {
-  width: 450px;
-  height: 450px;
+  width: 500px;
+  height: 500px;
 
-  right: 3%;
-  bottom: 10%;
+  right: -4%;
+  bottom: 4%;
 
   background:
-    rgba(6, 182, 212, 0.07);
+    rgba(6, 182, 212, 0.065);
 
   animation:
-    floatGlowReverse 15s ease-in-out infinite alternate;
+    floatGlowReverse 17s ease-in-out infinite alternate;
 }
+
+
+.glow-3 {
+  position: absolute;
+
+  width: 280px;
+  height: 280px;
+
+  left: 50%;
+  top: 15%;
+
+  transform:
+    translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    rgba(124, 58, 237, 0.035);
+
+  filter: blur(110px);
+
+  pointer-events: none;
+
+  animation:
+    floatingPurple 10s ease-in-out infinite alternate;
+}
+
+
+/* ==========================================================================
+   ORBITS
+   ========================================================================== */
 
 .hero-orbit {
   position: absolute;
 
   left: 50%;
-  top: 48%;
+  top: 47%;
 
   border:
-    1px solid rgba(37, 99, 235, 0.09);
+    1px solid rgba(37, 99, 235, 0.075);
 
   border-radius: 50%;
 
   pointer-events: none;
+
+  opacity: 0.8;
 }
 
+
 .orbit-one {
-  width: 720px;
-  height: 720px;
+  width: 760px;
+  height: 760px;
 
   transform:
     translate(-50%, -50%)
     rotate(20deg);
 
   animation:
-    orbitRotate 30s linear infinite;
+    orbitRotate 34s linear infinite;
 }
 
+
 .orbit-two {
-  width: 950px;
-  height: 430px;
+  width: 1000px;
+  height: 460px;
 
   transform:
     translate(-50%, -50%)
     rotate(-25deg);
 
   border-color:
-    rgba(6, 182, 212, 0.07);
+    rgba(6, 182, 212, 0.055);
 
   animation:
-    orbitRotateReverse 40s linear infinite;
+    orbitRotateReverse 44s linear infinite;
 }
+
+
+.orbit-three {
+  width: 560px;
+  height: 560px;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(65deg);
+
+  border-color:
+    rgba(124, 58, 237, 0.045);
+
+  animation:
+    orbitRotate 48s linear infinite reverse;
+}
+
+
+/* ==========================================================================
+   HERO CONTAINER
+   ========================================================================== */
 
 .hero-container {
   position: relative;
 
-  z-index: 5;
+  z-index: 10;
+
+  width: min(
+    100%,
+    1180px
+  );
+
+  margin-inline: auto;
 }
 
+
+/* ==========================================================================
+   HERO CONTENT
+   ========================================================================== */
+
 .hero-content {
-  max-width: 950px;
+  position: relative;
+
+  max-width: 980px;
 
   margin-inline: auto;
 
@@ -618,31 +755,43 @@ a {
     heroEnter
     1s
     var(--ease)
-    forwards;
+    both;
 }
+
+
+/* ==========================================================================
+   LIVE STATUS
+   ========================================================================== */
 
 .hero-live-status {
   display: inline-flex;
 
   align-items: center;
+  justify-content: center;
 
   gap: 10px;
 
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 
-  padding: 8px 14px;
+  padding:
+    8px 14px;
 
   border:
-    1px solid rgba(15, 23, 42, 0.09);
+    1px solid rgba(15, 23, 42, 0.08);
 
   border-radius: 999px;
 
   background:
-    rgba(255, 255, 255, 0.7);
+    rgba(255, 255, 255, 0.72);
 
-  backdrop-filter: blur(14px);
+  backdrop-filter:
+    blur(18px);
 
-  color: #64748b;
+  -webkit-backdrop-filter:
+    blur(18px);
+
+  color:
+    #64748b;
 
   font-family:
     ui-monospace,
@@ -652,12 +801,34 @@ a {
     Consolas,
     monospace;
 
-  font-size: 0.66rem;
+  font-size:
+    0.66rem;
 
-  font-weight: 700;
+  font-weight:
+    700;
 
-  letter-spacing: 0.08em;
+  letter-spacing:
+    0.08em;
+
+  box-shadow:
+    0 8px 30px
+    rgba(15, 23, 42, 0.035);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
+
+
+.hero-live-status:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 14px 35px
+    rgba(15, 23, 42, 0.07);
+}
+
 
 .status-divider {
   width: 1px;
@@ -665,8 +836,41 @@ a {
 
   flex-shrink: 0;
 
-  background: #cbd5e1;
+  background:
+    #cbd5e1;
 }
+
+
+/* ==========================================================================
+   LIVE STATUS DOT
+   ========================================================================== */
+
+.hero-live-status::before {
+  content: "";
+
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background:
+    #22c55e;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(34, 197, 94, 0.08),
+
+    0 0 14px
+    rgba(34, 197, 94, 0.35);
+
+  animation:
+    livePulse 2s ease-in-out infinite;
+}
+
+
+/* ==========================================================================
+   HERO BADGE
+   ========================================================================== */
 
 .hero-badge {
   display: inline-flex;
@@ -675,60 +879,111 @@ a {
 
   gap: 9px;
 
-  margin-bottom: 30px;
+  margin-bottom: 28px;
 
-  padding: 8px 16px;
+  padding:
+    9px 16px;
 
   border:
-    1px solid rgba(37, 99, 235, 0.16);
+    1px solid
+    rgba(37, 99, 235, 0.15);
 
-  border-radius: 999px;
+  border-radius:
+    999px;
 
   background:
     linear-gradient(
       135deg,
-      rgba(239, 246, 255, 0.9),
-      rgba(240, 249, 255, 0.8)
+      rgba(239, 246, 255, 0.92),
+      rgba(240, 249, 255, 0.78)
     );
 
-  color: #1e40af;
+  color:
+    #1e40af;
 
-  font-size: 0.82rem;
+  font-size:
+    0.82rem;
 
-  font-weight: 700;
+  font-weight:
+    700;
 
   box-shadow:
-    0 8px 30px rgba(37, 99, 235, 0.06);
+    0 10px 35px
+    rgba(37, 99, 235, 0.055);
 
-  backdrop-filter: blur(12px);
+  backdrop-filter:
+    blur(15px);
+
+  -webkit-backdrop-filter:
+    blur(15px);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
 }
+
+
+.hero-badge:hover {
+  transform:
+    translateY(-3px);
+
+  border-color:
+    rgba(37, 99, 235, 0.28);
+
+  box-shadow:
+    0 18px 45px
+    rgba(37, 99, 235, 0.10);
+}
+
 
 .sparkle {
-  color: var(--blue);
+  color:
+    var(--blue);
 
   animation:
-    sparkleRotate
-    3s ease-in-out infinite;
+    sparkleRotate 3s ease-in-out infinite;
 }
+
 
 .badge-version {
-  padding: 3px 7px;
+  padding:
+    3px 7px;
 
-  border-radius: 6px;
+  border-radius:
+    6px;
 
-  background: #0f172a;
+  background:
+    #0f172a;
 
-  color: #ffffff;
+  color:
+    #ffffff;
 
-  font-size: 0.62rem;
+  font-size:
+    0.62rem;
+
+  letter-spacing:
+    0.02em;
+
+  box-shadow:
+    0 4px 10px
+    rgba(15, 23, 42, 0.12);
 }
 
+
+/* ==========================================================================
+   HERO TITLE
+   ========================================================================== */
+
 .hero-title {
-  max-width: 980px;
+  max-width:
+    1050px;
 
-  margin: 0 auto 28px;
+  margin:
+    0 auto 30px;
 
-  color: #07111f;
+  color:
+    #07111f;
 
   font-family:
     "Instrument Serif",
@@ -736,127 +991,301 @@ a {
     serif;
 
   font-size:
-    clamp(3.5rem, 7.2vw, 6.4rem);
+    clamp(
+      3.6rem,
+      7.4vw,
+      6.7rem
+    );
 
-  line-height: 0.98;
+  line-height:
+    0.94;
 
-  letter-spacing: -0.045em;
+  letter-spacing:
+    -0.048em;
 
-  font-weight: 400;
+  font-weight:
+    400;
+
+  text-wrap:
+    balance;
+
+  text-shadow:
+    0 2px 30px
+    rgba(15, 23, 42, 0.025);
 }
 
+
+/* ==========================================================================
+   HERO HIGHLIGHT
+   ========================================================================== */
+
 .hero-highlight {
+  position: relative;
+
   display: inline-block;
 
-  font-style: italic;
+  font-style:
+    italic;
 
   background:
     linear-gradient(
       100deg,
       #07111f 0%,
-      #2563eb 45%,
-      #06b6d4 100%
+      #2563eb 42%,
+      #06b6d4 72%,
+      #7c3aed 100%
     );
 
-  -webkit-background-clip: text;
-  background-clip: text;
+  background-size:
+    200% auto;
 
-  -webkit-text-fill-color: transparent;
+  -webkit-background-clip:
+    text;
+
+  background-clip:
+    text;
+
+  -webkit-text-fill-color:
+    transparent;
+
+  animation:
+    gradientFlow 7s ease-in-out infinite;
 
   transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
+    opacity 0.35s ease,
+    transform 0.35s ease;
 }
 
+
+.hero-highlight::after {
+  content: "";
+
+  position: absolute;
+
+  left: 10%;
+  right: 10%;
+  bottom: -5px;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(37, 99, 235, 0.35),
+      rgba(6, 182, 212, 0.35),
+      transparent
+    );
+
+  opacity: 0.45;
+
+  filter:
+    blur(0.5px);
+}
+
+
 .hero-highlight.is-visible {
-  opacity: 1;
+  opacity:
+    1;
 
   transform:
     translateY(0);
 }
 
+
 .hero-highlight.is-hidden {
-  opacity: 0;
+  opacity:
+    0;
 
   transform:
-    translateY(10px);
+    translateY(12px);
 }
+
+
+/* ==========================================================================
+   HERO SUBTITLE
+   ========================================================================== */
 
 .hero-subtitle {
-  max-width: 700px;
+  max-width:
+    720px;
 
-  margin: 0 auto 42px;
+  margin:
+    0 auto 42px;
 
-  color: #475569;
+  color:
+    #475569;
 
   font-size:
-    clamp(1.05rem, 2vw, 1.25rem);
+    clamp(
+      1.04rem,
+      1.8vw,
+      1.23rem
+    );
 
-  line-height: 1.75;
+  line-height:
+    1.78;
 
-  letter-spacing: -0.01em;
+  letter-spacing:
+    -0.012em;
+
+  text-wrap:
+    balance;
 }
+
+
+/* ==========================================================================
+   HERO BUTTONS
+   ========================================================================== */
 
 .hero-buttons {
-  display: flex;
+  display:
+    flex;
 
-  align-items: center;
-  justify-content: center;
+  align-items:
+    center;
 
-  gap: 13px;
+  justify-content:
+    center;
 
-  flex-wrap: wrap;
+  gap:
+    13px;
+
+  flex-wrap:
+    wrap;
 }
+
+
+/* ==========================================================================
+   PRIMARY LINK
+   ========================================================================== */
 
 .hero-primary-link {
-  display: inline-flex;
+  display:
+    inline-flex;
 
-  align-items: center;
-  justify-content: center;
+  align-items:
+    center;
 
-  gap: 8px;
+  justify-content:
+    center;
 
-  color: inherit;
+  gap:
+    8px;
 
-  text-decoration: none;
+  color:
+    inherit;
+
+  text-decoration:
+    none;
 }
+
+
+/* ==========================================================================
+   SECONDARY BUTTON
+   ========================================================================== */
 
 .btn-secondary {
-  display: inline-flex;
+  position:
+    relative;
 
-  align-items: center;
-  justify-content: center;
+  display:
+    inline-flex;
 
-  gap: 9px;
+  align-items:
+    center;
 
-  min-height: 50px;
+  justify-content:
+    center;
 
-  padding: 0 22px;
+  gap:
+    9px;
+
+  min-height:
+    52px;
+
+  padding:
+    0 23px;
+
+  overflow:
+    hidden;
 
   border:
-    1px solid #dbe2ea;
+    1px solid
+    #dbe2ea;
 
-  border-radius: 12px;
+  border-radius:
+    13px;
 
   background:
-    rgba(255, 255, 255, 0.85);
+    rgba(255, 255, 255, 0.86);
 
-  color: #0f172a;
+  color:
+    #0f172a;
 
-  font-size: 0.92rem;
+  font-size:
+    0.92rem;
 
-  font-weight: 700;
+  font-weight:
+    700;
 
-  text-decoration: none;
+  text-decoration:
+    none;
 
   box-shadow:
-    0 5px 20px rgba(15, 23, 42, 0.04);
+    0 6px 24px
+    rgba(15, 23, 42, 0.045);
+
+  backdrop-filter:
+    blur(12px);
+
+  -webkit-backdrop-filter:
+    blur(12px);
 
   transition:
-    transform 0.3s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.3s ease,
-    box-shadow 0.3s ease;
+    box-shadow 0.3s ease,
+    background 0.3s ease;
 }
+
+
+/* Moving shine */
+
+.btn-secondary::before {
+  content:
+    "";
+
+  position:
+    absolute;
+
+  top:
+    0;
+
+  left:
+    -120%;
+
+  width:
+    80%;
+
+  height:
+    100%;
+
+  background:
+    linear-gradient(
+      100deg,
+      transparent,
+      rgba(255, 255, 255, 0.8),
+      transparent
+    );
+
+  transform:
+    skewX(-20deg);
+
+  transition:
+    left 0.65s ease;
+}
+
 
 .btn-secondary:hover {
   transform:
@@ -865,63 +1294,720 @@ a {
   border-color:
     #94a3b8;
 
+  background:
+    rgba(255, 255, 255, 0.98);
+
   box-shadow:
-    0 15px 30px rgba(15, 23, 42, 0.09);
+    0 16px 36px
+    rgba(15, 23, 42, 0.10);
 }
+
+
+.btn-secondary:hover::before {
+  left:
+    130%;
+}
+
 
 .btn-secondary svg {
   transition:
     transform 0.3s ease;
 }
 
+
 .btn-secondary:hover svg {
   transform:
     translateX(4px);
 }
 
+
+/* ==========================================================================
+   HERO PROOF
+   ========================================================================== */
+
 .hero-proof {
-  display: flex;
+  display:
+    flex;
 
-  align-items: center;
-  justify-content: center;
+  align-items:
+    center;
 
-  gap: 26px;
+  justify-content:
+    center;
 
-  margin-top: 52px;
+  gap:
+    28px;
+
+  margin-top:
+    52px;
+
+  padding-top:
+    4px;
 }
+
 
 .proof-item {
-  display: flex;
+  display:
+    flex;
 
-  flex-direction: column;
+  flex-direction:
+    column;
 
-  gap: 1px;
+  gap:
+    3px;
+
+  min-width:
+    95px;
+
+  transition:
+    transform 0.3s ease;
 }
+
+
+.proof-item:hover {
+  transform:
+    translateY(-3px);
+}
+
 
 .proof-item strong {
-  color: #0f172a;
+  color:
+    #0f172a;
 
-  font-size: 1.05rem;
+  font-size:
+    1.08rem;
 
-  letter-spacing: -0.03em;
+  font-weight:
+    750;
+
+  letter-spacing:
+    -0.035em;
 }
+
 
 .proof-item span {
-  color: #94a3b8;
+  color:
+    #94a3b8;
 
-  font-size: 0.68rem;
+  font-size:
+    0.66rem;
 
-  letter-spacing: 0.08em;
+  font-weight:
+    650;
 
-  text-transform: uppercase;
+  letter-spacing:
+    0.085em;
+
+  text-transform:
+    uppercase;
 }
+
 
 .proof-line {
-  width: 1px;
-  height: 32px;
+  width:
+    1px;
 
-  background: #e2e8f0;
+  height:
+    32px;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      #dbe2ea,
+      transparent
+    );
 }
+
+
+/* ==========================================================================
+   HERO ENTER ANIMATION
+   ========================================================================== */
+
+@keyframes heroEnter {
+  from {
+    opacity: 0;
+    transform:
+      translateY(30px)
+      scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/* ==========================================================================
+   GRID ANIMATION
+   ========================================================================== */
+
+@keyframes gridBreathing {
+  from {
+    opacity:
+      0.32;
+  }
+
+  to {
+    opacity:
+      0.52;
+  }
+}
+
+
+/* ==========================================================================
+   RAY ROTATION
+   ========================================================================== */
+
+@keyframes rotateRays {
+  from {
+    transform:
+      rotate(0deg)
+      scale(1);
+  }
+
+  to {
+    transform:
+      rotate(360deg)
+      scale(1.02);
+  }
+}
+
+
+/* ==========================================================================
+   CORE PULSE
+   ========================================================================== */
+
+@keyframes pulseCore {
+  from {
+    transform:
+      translate(-50%, -50%)
+      scale(0.92);
+
+    opacity:
+      0.55;
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%)
+      scale(1.08);
+
+    opacity:
+      0.95;
+  }
+}
+
+
+/* ==========================================================================
+   FLOATING GLOWS
+   ========================================================================== */
+
+@keyframes floatGlow {
+  0% {
+    transform:
+      translate3d(0, 0, 0)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translate3d(45px, -25px, 0)
+      scale(1.08);
+  }
+
+  100% {
+    transform:
+      translate3d(-20px, 35px, 0)
+      scale(0.96);
+  }
+}
+
+
+@keyframes floatGlowReverse {
+  0% {
+    transform:
+      translate3d(0, 0, 0)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translate3d(-40px, 25px, 0)
+      scale(1.07);
+  }
+
+  100% {
+    transform:
+      translate3d(25px, -30px, 0)
+      scale(0.95);
+  }
+}
+
+
+@keyframes floatingPurple {
+  from {
+    transform:
+      translateX(-50%)
+      translateY(-10px)
+      scale(0.95);
+  }
+
+  to {
+    transform:
+      translateX(-50%)
+      translateY(25px)
+      scale(1.08);
+  }
+}
+
+
+/* ==========================================================================
+   ORBIT ANIMATIONS
+   ========================================================================== */
+
+@keyframes orbitRotate {
+  from {
+    transform:
+      translate(-50%, -50%)
+      rotate(20deg);
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%)
+      rotate(380deg);
+  }
+}
+
+
+@keyframes orbitRotateReverse {
+  from {
+    transform:
+      translate(-50%, -50%)
+      rotate(-25deg);
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%)
+      rotate(-385deg);
+  }
+}
+
+
+/* ==========================================================================
+   SPARKLE
+   ========================================================================== */
+
+@keyframes sparkleRotate {
+  0%,
+  100% {
+    transform:
+      rotate(0deg)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      rotate(18deg)
+      scale(1.12);
+  }
+}
+
+
+/* ==========================================================================
+   LIVE PULSE
+   ========================================================================== */
+
+@keyframes livePulse {
+  0%,
+  100% {
+    transform:
+      scale(1);
+
+    opacity:
+      1;
+  }
+
+  50% {
+    transform:
+      scale(1.18);
+
+    opacity:
+      0.7;
+  }
+}
+
+
+/* ==========================================================================
+   GRADIENT FLOW
+   ========================================================================== */
+
+@keyframes gradientFlow {
+  0% {
+    background-position:
+      0% 50%;
+  }
+
+  50% {
+    background-position:
+      100% 50%;
+  }
+
+  100% {
+    background-position:
+      0% 50%;
+  }
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .hero-section {
+    min-height:
+      820px;
+
+    padding:
+      135px 24px
+      100px;
+  }
+
+  .hero-title {
+    font-size:
+      clamp(
+        3.4rem,
+        8vw,
+        5.6rem
+      );
+  }
+
+  .orbit-one {
+    width:
+      620px;
+
+    height:
+      620px;
+  }
+
+  .orbit-two {
+    width:
+      820px;
+
+    height:
+      380px;
+  }
+
+  .hero-mouse-glow {
+    width:
+      600px;
+
+    height:
+      600px;
+  }
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height:
+      auto;
+
+    padding:
+      125px 18px
+      85px;
+  }
+
+  .hero-content {
+    max-width:
+      100%;
+  }
+
+  .hero-live-status {
+    margin-bottom:
+      17px;
+
+    padding:
+      7px 11px;
+
+    font-size:
+      0.58rem;
+  }
+
+  .hero-badge {
+    margin-bottom:
+      22px;
+
+    padding:
+      8px 13px;
+
+    font-size:
+      0.73rem;
+  }
+
+  .hero-title {
+    margin-bottom:
+      24px;
+
+    font-size:
+      clamp(
+        3rem,
+        14vw,
+        4.8rem
+      );
+
+    line-height:
+      0.96;
+
+    letter-spacing:
+      -0.045em;
+  }
+
+  .hero-subtitle {
+    margin-bottom:
+      32px;
+
+    max-width:
+      580px;
+
+    font-size:
+      1rem;
+
+    line-height:
+      1.68;
+  }
+
+  .hero-buttons {
+    width:
+      100%;
+
+    gap:
+      10px;
+  }
+
+  .hero-primary-link,
+  .btn-secondary {
+    width:
+      100%;
+
+    max-width:
+      310px;
+  }
+
+  .btn-secondary {
+    min-height:
+      50px;
+  }
+
+  .hero-proof {
+    gap:
+      16px;
+
+    margin-top:
+      40px;
+  }
+
+  .proof-item {
+    min-width:
+      72px;
+  }
+
+  .proof-item strong {
+    font-size:
+      0.95rem;
+  }
+
+  .proof-item span {
+    font-size:
+      0.56rem;
+
+    letter-spacing:
+      0.06em;
+  }
+
+  .proof-line {
+    height:
+      27px;
+  }
+
+  .hero-grid {
+    background-size:
+      36px 36px;
+  }
+
+  .hero-ray-burst {
+    inset:
+      -50%;
+  }
+
+  .hero-burst-center {
+    width:
+      350px;
+
+    height:
+      350px;
+  }
+
+  .orbit-one {
+    width:
+      500px;
+
+    height:
+      500px;
+  }
+
+  .orbit-two {
+    width:
+      650px;
+
+    height:
+      300px;
+  }
+
+  .orbit-three {
+    width:
+      400px;
+
+    height:
+      400px;
+  }
+
+  .glow-1 {
+    width:
+      300px;
+
+    height:
+      300px;
+  }
+
+  .glow-2 {
+    width:
+      320px;
+
+    height:
+      320px;
+  }
+
+  .hero-mouse-glow {
+    display:
+      none;
+  }
+}
+
+
+/* ==========================================================================
+   SMALL MOBILE
+   ========================================================================== */
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding:
+      115px 16px
+      70px;
+  }
+
+  .hero-live-status {
+    max-width:
+      92vw;
+
+    white-space:
+      nowrap;
+
+    overflow:
+      hidden;
+
+    text-overflow:
+      ellipsis;
+  }
+
+  .hero-badge {
+    gap:
+      7px;
+
+    font-size:
+      0.68rem;
+  }
+
+  .badge-version {
+    font-size:
+      0.56rem;
+  }
+
+  .hero-title {
+    font-size:
+      clamp(
+        2.75rem,
+        15vw,
+        4rem
+      );
+  }
+
+  .hero-subtitle {
+    font-size:
+      0.94rem;
+  }
+
+  .hero-proof {
+    gap:
+      10px;
+  }
+
+  .proof-item {
+    min-width:
+      64px;
+  }
+
+  .proof-item strong {
+    font-size:
+      0.88rem;
+  }
+
+  .proof-item span {
+    font-size:
+      0.5rem;
+  }
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content,
+  .hero-grid,
+  .hero-ray-burst,
+  .hero-burst-center,
+  .hero-glow,
+  .hero-orbit,
+  .hero-badge,
+  .hero-live-status,
+  .hero-highlight,
+  .sparkle,
+  .btn-secondary {
+    animation:
+      none !important;
+
+    transition:
+      none !important;
+  }
+
+  .hero-mouse-glow {
+    display:
+      none;
+  }
+}
+
 
 
 /* ==========================================================================
