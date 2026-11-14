@@ -58,7 +58,7 @@ function TargetClients() {
             <div className="target-pricing-section">
               <div className="target-pricing">
                 <div className="pricing-label">Starting from</div>
-                <div className="pricing-value">₹2,50,000</div>
+                <div className="pricing-value">₹1,20,000</div>
                 <div className="pricing-note">50% less than agencies</div>
               </div>
               <a href="/contact" className="target-cta btn btn-primary">Get Your MVP Quote</a>
@@ -112,7 +112,7 @@ function TargetClients() {
             <div className="target-pricing-section">
               <div className="target-pricing">
                 <div className="pricing-label">Starting from</div>
-                <div className="pricing-value">₹1,25,000</div>
+                <div className="pricing-value">₹1,10,000</div>
                 <div className="pricing-note">Perfect for restaurants, salons, shops</div>
               </div>
               <a href="/contact" className="target-cta btn btn-primary">Book Free Consultation</a>
@@ -164,7 +164,7 @@ function TargetClients() {
             <div className="target-pricing-section">
               <div className="target-pricing">
                 <div className="pricing-label">Hourly rate</div>
-                <div className="pricing-value">₹3,500/hr</div>
+                <div className="pricing-value">₹1,100/hr</div>
                 <div className="pricing-note">Volume discounts available</div>
               </div>
               <a href="/contact" className="target-cta btn btn-primary">Partner With Us</a>

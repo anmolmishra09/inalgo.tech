@@ -1,11 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
 /* ================= CTA GRADIENT SECTION ================= */
 
 .cta-gradient-section {
-  padding: 5rem 0;
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0;
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.08) 0%, #f8fafc 70%);
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(124, 58, 237, 0.08) 0%,
+    #f8fafc 70%
+  );
   position: relative;
   overflow: hidden;
 }
@@ -19,10 +23,10 @@
 /* ================= CTA CARD CONTENT ================= */
 
 .cta-gradient-content {
-  background: #ffffff;
-  border: 1px solid rgba(139, 92, 246, 0.2);
+  background: linear-gradient(165deg, #ffffff 0%, #faf9ff 100%);
+  border: 2px solid rgba(139, 92, 246, 0.22);
   border-radius: 28px;
-  padding: 4.5rem 2.5rem;
+  padding: clamp(2.75rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 2.75rem);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -31,54 +35,116 @@
   color: #0f172a;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
+  box-shadow:
+    0 14px 36px -8px rgba(15, 23, 42, 0.06),
+    0 0 0 1px rgba(139, 92, 246, 0.06);
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s ease,
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
   opacity: 0;
   transform: translateY(25px);
   animation: fadeUp 0.8s ease forwards;
 }
 
-/* Card Hover Elevation */
 .cta-gradient-content:hover {
   transform: translateY(-6px);
-  border-color: rgba(139, 92, 246, 0.4);
-  box-shadow: 0 20px 45px -10px rgba(139, 92, 246, 0.18);
+  border-color: #8b5cf6;
+  box-shadow: 0 24px 50px -12px rgba(124, 58, 237, 0.22);
+}
+
+/* Subtle Architectural Grid Overlay */
+.cta-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(124, 58, 237, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(124, 58, 237, 0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse at center, black 35%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 35%, transparent 78%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Dynamic Ambient Glow Backdrop */
 .cta-gradient-content::before {
   content: "";
   position: absolute;
-  top: -50%;
+  top: -45%;
   left: 50%;
   transform: translateX(-50%);
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.14) 0%,
+    rgba(6, 182, 212, 0.06) 45%,
+    transparent 70%
+  );
   border-radius: 50%;
   pointer-events: none;
   animation: pulseGlow 8s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+/* ================= BRAND EMBLEM ICON ================= */
+
+.cta-brand-emblem {
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1.25rem;
+  background: linear-gradient(135deg, #6d28d9 0%, #2563eb 100%);
+  color: #ffffff;
+  box-shadow: 0 12px 26px -4px rgba(109, 40, 217, 0.38);
+  position: relative;
+  z-index: 2;
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cta-brand-emblem svg {
+  width: 26px;
+  height: 26px;
+}
+
+.cta-gradient-content:hover .cta-brand-emblem {
+  transform: scale(1.1) rotate(-6deg);
 }
 
 /* ================= BADGE ================= */
 
 .cta-badge {
-  padding: 0.5rem 1.5rem;
+  padding: 0.45rem 1.25rem;
   border-radius: 9999px;
-  font-size: 0.875rem;
+  font-size: 0.82rem;
   border: 1px solid rgba(139, 92, 246, 0.3);
-  background: rgba(139, 92, 246, 0.06);
+  background: rgba(255, 255, 255, 0.9);
   font-weight: 600;
-  margin-bottom: 1.5rem;
-  display: inline-block;
+  margin-bottom: 1.35rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   position: relative;
   z-index: 2;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 2px 10px rgba(124, 58, 237, 0.08);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
 }
 
-.cta-badge span {
+.cta-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+}
+
+.cta-badge-text {
   background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -86,26 +152,26 @@
 }
 
 .cta-gradient-content:hover .cta-badge {
-  transform: scale(1.04);
+  transform: scale(1.03);
   border-color: rgba(139, 92, 246, 0.6);
 }
 
 /* ================= TYPOGRAPHY ================= */
 
 .cta-title {
-  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
-  line-height: 1.25;
+  font-size: clamp(1.95rem, 4.4vw, 3.2rem);
+  line-height: 1.22;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   max-width: 46rem;
-  margin: 0 auto 1.25rem;
+  margin: 0 auto 1.15rem;
   color: #0f172a;
   position: relative;
   z-index: 2;
 }
 
 .cta-title-gradient {
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 55%, #06b6d4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -113,48 +179,102 @@
 }
 
 .cta-description {
-  color: #334155;
-  font-size: 1.05rem;
+  color: #475569;
+  font-size: clamp(0.95rem, 1.5vw, 1.08rem);
   line-height: 1.7;
-  margin: 0 auto 2.25rem;
+  margin: 0 auto 2.15rem;
   max-width: 40rem;
   font-weight: 400;
   position: relative;
   z-index: 2;
 }
 
-/* ================= BUTTONS ================= */
+/* ================= ACTIONS ROW ================= */
 
-.cta-gradient-button {
-  padding: 0.85rem 3.25rem;
-  margin-top: 0.5rem;
-  border-radius: 9999px;
-  font-size: 0.95rem;
-  font-weight: 600;
+.cta-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.cta-glass-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+}
+
+.cta-glass-link svg {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cta-glass-link:hover svg {
+  transform: translateX(4px);
+}
+
+.cta-secondary-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-  border: none;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  gap: 0.5rem;
+  padding: 0.82rem 1.65rem;
+  border-radius: 9999px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #334155;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-secondary-btn:hover {
+  color: #6d28d9;
+  background: #f5f3ff;
+  border-color: rgba(124, 58, 237, 0.38);
+  transform: translateY(-2px);
+}
+
+/* ================= TRUST HIGHLIGHTS STRIP ================= */
+
+.cta-trust-strip {
+  margin-top: 2.35rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+  width: 100%;
+  max-width: 44rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem 1.15rem;
   position: relative;
   z-index: 2;
-  overflow: hidden;
-  box-shadow: 0 6px 20px -2px rgba(99, 102, 241, 0.35);
-  cursor: pointer;
 }
 
-.cta-gradient-button:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 12px 28px -4px rgba(139, 92, 246, 0.45);
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+.cta-trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #475569;
 }
 
-.cta-gradient-button:active {
-  transform: translateY(-1px) scale(0.98);
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+.cta-trust-item svg {
+  color: #7c3aed;
+  flex-shrink: 0;
+}
+
+.cta-trust-divider {
+  color: #cbd5e1;
+  font-size: 0.9rem;
 }
 
 /* ================= KEYFRAMES ================= */
@@ -173,11 +293,11 @@
 @keyframes pulseGlow {
   0% {
     transform: translateX(-50%) scale(1);
-    opacity: 0.6;
+    opacity: 0.65;
   }
   100% {
     transform: translateX(-50%) scale(1.2);
-    opacity: 0.9;
+    opacity: 0.95;
   }
 }
 
@@ -189,35 +309,26 @@
   }
 
   .cta-gradient-content {
-    padding: 3rem 1.5rem;
-    border-radius: 20px;
+    border-radius: 22px;
   }
 
-  .cta-title {
-    font-size: 1.85rem;
+  .cta-trust-divider {
+    display: none;
   }
 
-  .cta-description {
-    font-size: 0.95rem;
-  }
-
-  .cta-badge {
-    font-size: 0.8rem;
-    padding: 0.4rem 1.2rem;
-  }
-
-  .cta-gradient-button {
-    padding: 0.75rem 2.25rem;
-    font-size: 0.875rem;
+  .cta-trust-strip {
+    flex-direction: column;
+    gap: 0.6rem;
   }
 }
 
 @media (max-width: 480px) {
-  .cta-gradient-content {
-    padding: 2.25rem 1.15rem;
+  .cta-actions-row {
+    width: 100%;
+    flex-direction: column;
   }
 
-  .cta-title {
-    font-size: 1.5rem;
+  .cta-secondary-btn {
+    width: 100%;
   }
 }

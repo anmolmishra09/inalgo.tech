@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Image Gallery Section — Responsive / All Devices
+   Image Gallery Section — Unified Purple/Cyan Theme & All-Device Responsive
    ========================================================================== */
 
 :root {
@@ -9,32 +9,27 @@
   --gallery-text-secondary: #334155;
   --gallery-text-muted: #64748b;
 
-  --gallery-accent-primary: #6d28d9;
-  --gallery-accent-hover: #0369a1;
-  --gallery-accent-active: #075985;
-  --gallery-accent-light: #f0f9ff;
+  --gallery-accent-primary: #7c3aed;
+  --gallery-accent-dark: #6d28d9;
+  --gallery-accent-cyan: #06b6d4;
   --gallery-border-subtle: #e2e8f0;
 
-  --gallery-shadow-sm: 0 4px 16px rgba(15, 23, 42, 0.05);
-  --gallery-shadow-lg: 0 20px 40px -10px rgba(2, 132, 199, 0.22);
+  --gallery-shadow-sm: 0 6px 20px -4px rgba(15, 23, 42, 0.06);
+  --gallery-shadow-lg: 0 22px 44px -12px rgba(124, 58, 237, 0.26);
 
-  --gallery-radius: 1.25rem;
+  --gallery-radius: 1.35rem;
   --gallery-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --gallery-transition: 0.4s var(--gallery-ease-out);
+  --gallery-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --gallery-transition: 0.38s var(--gallery-ease-out);
 }
 
-
-/* ==========================================================================
-   Base / Box Sizing
-   ========================================================================== */
-
+/* Base / Box Sizing */
 .image-gallery-section,
 .image-gallery-section *,
 .image-gallery-section *::before,
 .image-gallery-section *::after {
   box-sizing: border-box;
 }
-
 
 /* ==========================================================================
    Gallery Section
@@ -43,18 +38,20 @@
 .image-gallery-section {
   position: relative;
   isolation: isolate;
-
   width: 100%;
-  min-height: 100vh;
-
-  padding: clamp(3rem, 7vw, 6rem) clamp(0.75rem, 3vw, 1.5rem);
-
+  padding: clamp(3.5rem, 7vw, 6.5rem) clamp(0.85rem, 3vw, 1.5rem);
   overflow: hidden;
-
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   background:
     radial-gradient(
       circle at 50% 0%,
-      rgba(2, 132, 199, 0.08) 0%,
+      rgba(124, 58, 237, 0.07) 0%,
       transparent 65%
     ),
     var(--gallery-bg);
@@ -62,45 +59,29 @@
 
 .image-gallery-section::before {
   content: "";
-
   position: absolute;
   z-index: -1;
-
   top: -100px;
   left: 50%;
-
-  width: min(650px, 100vw);
-  height: min(650px, 100vw);
-
+  width: min(680px, 100vw);
+  height: min(680px, 100vw);
   transform: translateX(-50%);
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(109, 40, 217, 0.1) 0%,
-      transparent 70%
-    );
-
+  background: radial-gradient(
+    circle,
+    rgba(124, 58, 237, 0.1) 0%,
+    transparent 70%
+  );
   pointer-events: none;
-
   animation: pulseGalleryGlow 8s ease-in-out infinite alternate;
 }
-
-
-/* ==========================================================================
-   Container
-   ========================================================================== */
 
 .image-gallery-section .container {
   position: relative;
   z-index: 2;
-
   width: 100%;
   max-width: 80rem;
-
   margin-inline: auto;
 }
-
 
 /* ==========================================================================
    Header
@@ -109,7 +90,6 @@
 .gallery-header {
   width: 100%;
   margin: 0 auto clamp(2rem, 5vw, 2.75rem);
-
   text-align: center;
 }
 
@@ -117,25 +97,17 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  max-width: 100%;
-
-  padding: 0.35rem 0.85rem;
-  margin-bottom: 0.85rem;
-
+  padding: 0.38rem 0.95rem;
+  margin-bottom: 0.9rem;
   color: var(--gallery-accent-primary);
-
-  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+  font-size: clamp(0.68rem, 1.5vw, 0.75rem);
   font-weight: 700;
   line-height: 1.2;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
-  text-align: center;
-
-  background: rgba(2, 132, 199, 0.08);
-  border: 1px solid rgba(2, 132, 199, 0.2);
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid rgba(124, 58, 237, 0.24);
   border-radius: 9999px;
-
   transition: transform 0.3s ease;
 }
 
@@ -145,36 +117,23 @@
 
 .gallery-title {
   margin: 0;
-
-  color: var(--gallery-text-primary);
-
-  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-size: clamp(1.9rem, 4.8vw, 3rem);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.025em;
-
-  background: linear-gradient(
-    135deg,
-    #0f172a 30%,
-    #6d28d9 100%
-  );
-
+  background: linear-gradient(135deg, #0f172a 25%, #4f46e5 65%, #7c3aed 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .gallery-description {
-  width: min(100%, 38rem);
-
+  width: min(100%, 40rem);
   margin: 0.85rem auto 0;
-
   color: var(--gallery-text-secondary);
-
-  font-size: clamp(0.875rem, 2vw, 1.125rem);
+  font-size: clamp(0.9rem, 2vw, 1.08rem);
   line-height: 1.65;
 }
-
 
 /* ==========================================================================
    Category Filter Navigation
@@ -182,68 +141,47 @@
 
 .gallery-filter-nav {
   width: 100%;
-  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: clamp(2rem, 5vw, 3.25rem);
 }
 
-
-/* Responsive filter container */
 .filter-list {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-
   width: fit-content;
   max-width: 100%;
-
-  gap: clamp(0.3rem, 1vw, 0.5rem);
-
-  padding: clamp(0.3rem, 1vw, 0.45rem);
+  gap: clamp(0.3rem, 1vw, 0.45rem);
+  padding: 0.4rem;
   margin: 0 auto;
-
   list-style: none;
-
   background: var(--gallery-surface);
   border: 1px solid var(--gallery-border-subtle);
   border-radius: 9999px;
-
   box-shadow: var(--gallery-shadow-sm);
 }
 
-
-/* Prevent list items from causing overflow */
 .filter-list li {
   min-width: 0;
   max-width: 100%;
 }
 
-
-/* Filter buttons */
 .filter-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  min-height: 2.5rem;
-  min-width: 2.5rem;
-
-  padding: 0.55rem clamp(0.75rem, 2vw, 1.35rem);
-
+  min-height: 2.45rem;
+  padding: 0.5rem clamp(0.8rem, 2vw, 1.25rem);
   color: var(--gallery-text-secondary);
-
   font-family: inherit;
-  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+  font-size: clamp(0.76rem, 1.5vw, 0.875rem);
   font-weight: 600;
   line-height: 1.2;
-
   white-space: nowrap;
-
   background: transparent;
   border: 0;
   border-radius: 9999px;
-
   cursor: pointer;
-
   transition:
     color var(--gallery-transition),
     background-color var(--gallery-transition),
@@ -253,25 +191,19 @@
 
 .filter-btn:hover {
   color: var(--gallery-accent-primary);
-
-  background: rgba(241, 245, 249, 0.8);
-
+  background: #f1f5f9;
   transform: translateY(-1px);
-}
-
-.filter-btn:active {
-  transform: translateY(0);
 }
 
 .filter-btn.active {
   color: #ffffff;
-
-  background-color: var(--gallery-accent-primary);
-
-  box-shadow:
-    0 6px 18px rgba(109, 40, 217, 0.25);
+  background: linear-gradient(
+    135deg,
+    var(--gallery-accent-dark) 0%,
+    var(--gallery-accent-primary) 100%
+  );
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.3);
 }
-
 
 /* ==========================================================================
    Gallery Grid
@@ -279,38 +211,22 @@
 
 .image-gallery {
   display: grid;
-
   width: 100%;
-
   grid-template-columns: minmax(0, 1fr);
-
-  gap: clamp(1rem, 2.5vw, 2rem);
+  gap: clamp(1.1rem, 2.5vw, 1.85rem);
 }
 
-
-/* Small tablets */
-@media (min-width: 540px) {
+@media (min-width: 560px) {
   .image-gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-
-/* Desktop */
-@media (min-width: 900px) {
+@media (min-width: 940px) {
   .image-gallery {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
-
-
-/* Large desktop */
-@media (min-width: 1400px) {
-  .image-gallery {
-    gap: 2rem;
-  }
-}
-
 
 /* ==========================================================================
    Gallery Card
@@ -318,69 +234,110 @@
 
 .gallery-item {
   position: relative;
-
   min-width: 0;
-
   overflow: hidden;
-
   background-color: var(--gallery-surface);
-
-  border: 1px solid var(--gallery-border-subtle);
+  border: 2px solid var(--gallery-border-subtle);
   border-radius: var(--gallery-radius);
-
   box-shadow: var(--gallery-shadow-sm);
-
   cursor: pointer;
-
   transform: translateZ(0);
-
   transition:
     transform var(--gallery-transition),
-    border-color var(--gallery-transition),
+    border-color 0.3s ease,
     box-shadow var(--gallery-transition);
 }
 
 .gallery-item:hover {
-  transform: translateY(-6px);
-
-  border-color: rgba(2, 132, 199, 0.4);
-
+  transform: translateY(-7px);
+  border-color: #8b5cf6;
   box-shadow: var(--gallery-shadow-lg);
 }
 
-
-/* ==========================================================================
-   Image Wrapper
-   ========================================================================== */
-
+/* Image Wrapper */
 .image-wrapper {
   position: relative;
-
   width: 100%;
-
   aspect-ratio: 4 / 3;
-
   overflow: hidden;
-
-  background-color: #e2e8f0;
+  background-color: #0f172a;
 }
 
 .gallery-image {
   display: block;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
   object-position: center;
-
-  transition: transform 0.7s var(--gallery-ease-out);
+  opacity: 0.9;
+  transition:
+    transform 0.7s var(--gallery-ease-out),
+    opacity 0.4s ease;
 }
 
 .gallery-item:hover .gallery-image {
-  transform: scale(1.06);
+  transform: scale(1.07);
+  opacity: 0.78;
 }
 
+/* ==========================================================================
+   Top Floating Icon & Metric Pill
+   ========================================================================== */
+
+.gallery-top-bar {
+  position: absolute;
+  top: clamp(0.85rem, 2vw, 1.15rem);
+  left: clamp(0.85rem, 2vw, 1.15rem);
+  right: clamp(0.85rem, 2vw, 1.15rem);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+
+.gallery-project-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 0.8rem;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+  transition:
+    transform 0.45s var(--gallery-spring),
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.gallery-project-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.gallery-item:hover .gallery-project-icon {
+  transform: scale(1.08) rotate(-6deg);
+  background: linear-gradient(135deg, #7c3aed, #2563eb);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.gallery-metric-pill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #ecfdf5;
+  background: rgba(6, 78, 59, 0.78);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  padding: 0.28rem 0.65rem;
+  border-radius: 9999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  white-space: nowrap;
+}
 
 /* ==========================================================================
    Card Overlay
@@ -389,60 +346,36 @@
 .gallery-overlay {
   position: absolute;
   inset: 0;
-
+  z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-
-  padding: clamp(1rem, 3vw, 1.75rem);
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(15, 23, 42, 0) 10%,
-      rgba(15, 23, 42, 0.62) 55%,
-      rgba(15, 23, 42, 0.96) 100%
-    );
-
-  opacity: 0.92;
-
-  transition: opacity var(--gallery-transition);
+  padding: clamp(1rem, 2.6vw, 1.55rem);
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.12) 0%,
+    rgba(15, 23, 42, 0.68) 48%,
+    rgba(15, 23, 42, 0.97) 100%
+  );
+  transition: background var(--gallery-transition);
 }
-
-.gallery-item:hover .gallery-overlay {
-  opacity: 1;
-}
-
-
-/* ==========================================================================
-   Overlay Badge
-   ========================================================================== */
 
 .overlay-badge {
   align-self: flex-start;
-
-  max-width: 100%;
-
-  margin-bottom: 0.55rem;
-  padding: 0.25rem 0.6rem;
-
+  margin-bottom: 0.5rem;
+  padding: 0.25rem 0.62rem;
   color: #ffffff;
-
-  font-size: clamp(0.625rem, 1.5vw, 0.725rem);
+  font-size: 0.68rem;
   font-weight: 700;
   line-height: 1.2;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-
-  background-color: rgba(109, 40, 217, 0.85);
-
-  border-radius: 0.4rem;
-
+  background: rgba(124, 58, 237, 0.9);
+  border: 1px solid rgba(196, 181, 253, 0.35);
+  border-radius: 0.45rem;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-
-  transform: translateY(8px);
-
+  transform: translateY(4px);
   transition: transform var(--gallery-transition);
 }
 
@@ -450,22 +383,13 @@
   transform: translateY(0);
 }
 
-
-/* ==========================================================================
-   Overlay Title
-   ========================================================================== */
-
 .overlay-title {
   margin: 0 0 0.35rem;
-
   color: #ffffff;
-
-  font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+  font-size: clamp(1.08rem, 2.2vw, 1.3rem);
   font-weight: 700;
-  line-height: 1.3;
-
-  transform: translateY(8px);
-
+  line-height: 1.28;
+  transform: translateY(4px);
   transition: transform var(--gallery-transition);
 }
 
@@ -473,29 +397,16 @@
   transform: translateY(0);
 }
 
-
-/* ==========================================================================
-   Overlay Description
-   ========================================================================== */
-
 .overlay-description {
   display: -webkit-box;
-
-  max-width: 100%;
-  margin: 0 0 1rem;
-
+  margin: 0 0 0.9rem;
   overflow: hidden;
-
-  color: rgba(255, 255, 255, 0.88);
-
-  font-size: clamp(0.75rem, 1.7vw, 0.875rem);
+  color: rgba(241, 245, 249, 0.9);
+  font-size: clamp(0.78rem, 1.6vw, 0.86rem);
   line-height: 1.5;
-
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-
-  transform: translateY(8px);
-
+  transform: translateY(4px);
   transition: transform var(--gallery-transition);
 }
 
@@ -503,56 +414,35 @@
   transform: translateY(0);
 }
 
-
-/* ==========================================================================
-   Action Button
-   ========================================================================== */
-
 .overlay-btn {
   display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
-
   width: fit-content;
-  min-height: 2rem;
-
   gap: 0.45rem;
-
   padding: 0;
-
-  color: #ffffff;
-
+  color: #c4b5fd;
   font-family: inherit;
-  font-size: clamp(0.75rem, 1.7vw, 0.875rem);
-  font-weight: 600;
+  font-size: 0.84rem;
+  font-weight: 700;
   line-height: 1.2;
-
   background: transparent;
   border: 0;
-
   cursor: pointer;
-
-  transform: translateY(8px);
-
+  transform: translateY(4px);
   transition:
     transform var(--gallery-transition),
     color 0.25s ease;
 }
 
-.overlay-btn:hover {
-  color: #bae6fd;
-}
-
 .gallery-item:hover .overlay-btn {
+  color: #ffffff;
   transform: translateY(0);
 }
 
 .overlay-btn svg {
   flex: 0 0 auto;
-
   width: 1rem;
   height: 1rem;
-
   transition: transform var(--gallery-transition);
 }
 
@@ -560,177 +450,293 @@
   transform: translateX(5px);
 }
 
+/* ==========================================================================
+   Built-in Case Study Modal
+   ========================================================================== */
+
+.gallery-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  animation: fadeInModal 0.25s ease forwards;
+}
+
+.gallery-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 60px -12px rgba(15, 23, 42, 0.4);
+  animation: slideUpModal 0.3s var(--gallery-ease-out) forwards;
+}
+
+.gallery-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 5;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(15, 23, 42, 0.7);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gallery-modal-close:hover {
+  background: #7c3aed;
+  transform: rotate(90deg);
+}
+
+.gallery-modal-media {
+  position: relative;
+  height: 220px;
+  background: #0f172a;
+}
+
+.gallery-modal-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+}
+
+.gallery-modal-media-badges {
+  position: absolute;
+  bottom: 1rem;
+  left: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gallery-modal-body {
+  padding: 1.65rem 1.75rem 1.85rem;
+}
+
+.gallery-modal-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.gallery-modal-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 0.85rem;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #f5f3ff 0%, #eef2ff 100%);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  color: #7c3aed;
+}
+
+.gallery-modal-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.gallery-modal-title-row h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.gallery-modal-desc {
+  margin: 0 0 1.25rem;
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: #475569;
+}
+
+.gallery-modal-highlights {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.25rem;
+}
+
+.gallery-modal-highlights h4 {
+  margin: 0 0 0.65rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+}
+
+.gallery-modal-highlights ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gallery-modal-highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: #1e293b;
+}
+
+.gallery-modal-highlights li svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.gallery-modal-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-tech-pill {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #334155;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  padding: 0.28rem 0.68rem;
+  border-radius: 0.45rem;
+}
+
+.gallery-modal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.modal-primary-btn,
+.modal-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.3rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.modal-primary-btn {
+  color: #ffffff;
+  background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%);
+  border: 0;
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.28);
+}
+
+.modal-primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(124, 58, 237, 0.4);
+}
+
+.modal-secondary-btn {
+  color: #334155;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+}
+
+.modal-secondary-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
 
 /* ==========================================================================
-   Accessibility / Focus
+   Accessibility & Responsive Overrides
    ========================================================================== */
 
 .filter-btn:focus-visible,
 .overlay-btn:focus-visible,
-.gallery-item:focus-visible {
+.gallery-item:focus-visible,
+.gallery-modal-close:focus-visible {
   outline: 2px solid var(--gallery-accent-primary);
   outline-offset: 3px;
 }
 
-
-/* ==========================================================================
-   Mobile Optimization
-   ========================================================================== */
-
 @media (max-width: 600px) {
-  .image-gallery-section {
-    padding-top: 2.75rem;
-    padding-bottom: 2.75rem;
-  }
-
-  .gallery-header {
-    margin-bottom: 1.75rem;
-  }
-
-  .gallery-filter-nav {
-    margin-bottom: 2rem;
-  }
-
-  /*
-    On small screens the pill container becomes a rounded
-    rectangular container so wrapped buttons have more room.
-  */
   .filter-list {
     width: 100%;
-    max-width: 100%;
-
-    border-radius: 1rem;
-
-    padding: 0.4rem;
-  }
-
-  .filter-list li {
-    flex: 0 1 auto;
-  }
-
-  .filter-btn {
-    min-height: 2.4rem;
-
-    padding-inline: 0.8rem;
-  }
-
-  .gallery-item {
     border-radius: 1rem;
   }
 
-  .gallery-overlay {
-    padding: 1rem;
+  .gallery-modal-body {
+    padding: 1.25rem;
+  }
+
+  .gallery-modal-actions {
+    flex-direction: column;
+  }
+
+  .modal-primary-btn,
+  .modal-secondary-btn {
+    width: 100%;
   }
 }
-
-
-/* ==========================================================================
-   Very Small Phones
-   ========================================================================== */
-
-@media (max-width: 380px) {
-  .image-gallery-section {
-    padding-inline: 0.6rem;
-  }
-
-  .gallery-title {
-    font-size: 1.7rem;
-  }
-
-  .gallery-description {
-    font-size: 0.85rem;
-  }
-
-  .filter-list {
-    gap: 0.25rem;
-    padding: 0.35rem;
-  }
-
-  .filter-btn {
-    min-height: 2.25rem;
-
-    padding-inline: 0.65rem;
-
-    font-size: 0.72rem;
-  }
-
-  .image-gallery {
-    gap: 0.85rem;
-  }
-
-  .gallery-overlay {
-    padding: 0.85rem;
-  }
-
-  .overlay-description {
-    margin-bottom: 0.7rem;
-  }
-}
-
-
-/* ==========================================================================
-   Touch Devices
-   ========================================================================== */
-
-@media (hover: none) {
-  .gallery-item:hover {
-    transform: none;
-    box-shadow: var(--gallery-shadow-sm);
-  }
-
-  .gallery-item:hover .gallery-image {
-    transform: none;
-  }
-
-  .gallery-item:hover .gallery-overlay {
-    opacity: 0.92;
-  }
-
-  .gallery-item:hover .overlay-badge,
-  .gallery-item:hover .overlay-title,
-  .gallery-item:hover .overlay-description,
-  .gallery-item:hover .overlay-btn {
-    transform: translateY(0);
-  }
-
-  .gallery-item:hover .overlay-btn svg {
-    transform: none;
-  }
-
-  .gallery-header:hover .gallery-tag {
-    transform: none;
-  }
-}
-
-
-/* ==========================================================================
-   Reduced Motion
-   ========================================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-
-/* ==========================================================================
-   Gallery Glow Animation
-   ========================================================================== */
 
 @keyframes pulseGalleryGlow {
   0% {
     transform: translateX(-50%) scale(1);
     opacity: 0.6;
   }
-
   100% {
     transform: translateX(-50%) scale(1.2);
     opacity: 0.95;
+  }
+}
+
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUpModal {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }

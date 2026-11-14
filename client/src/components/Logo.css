@@ -1,83 +1,111 @@
+
+/* =================================
+   INALGO - PREMIUM LOGO DESIGN
+================================= */
+
 .logo-wrapper {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  transition: transform 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  transition: transform 0.25s ease;
 }
 
 .logo-wrapper:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
+}
+
+.logo-wrapper:active {
+  transform: scale(0.97);
 }
 
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 10px;
 }
 
+/* Logo Icon */
 .logo-icon {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
   transition: transform 0.3s ease;
 }
 
 .logo-wrapper:hover .logo-icon {
-  transform: rotate(5deg);
+  transform: rotate(5deg) scale(1.06);
 }
 
+/* Logo Graphics */
 .logo-path {
-  transition: all 0.3s ease;
+  transition: filter 0.3s ease;
 }
 
 .logo-wrapper:hover .logo-path {
-  filter: brightness(0.9);
+  filter: brightness(1.15);
 }
 
 .logo-dot,
 .logo-line {
-  animation: pulse 2s ease-in-out infinite;
+  animation: logoPulse 2.5s ease-in-out infinite;
 }
 
-@keyframes pulse {
+@keyframes logoPulse {
   0%, 100% {
     opacity: 1;
   }
   50% {
-    opacity: 0.5;
+    opacity: 0.65;
   }
 }
 
+/* Brand Text */
 .logo-text {
   display: flex;
   flex-direction: column;
-  line-height: 1.2;
+  justify-content: center;
+  line-height: 1.1;
 }
 
+/* INALGO Typography */
 .logo-primary {
-  position: relative;
   display: inline-block;
-  font-size: 1.75rem;
+  font-family: 'Inter', 'Poppins', sans-serif;
+  font-size: 1.8rem;
   font-weight: 800;
-  line-height: 0.9;
-  color: transparent;
-  -webkit-text-stroke: 1.5px #152fb4;
-  letter-spacing: -0.5px;
-  font-family: 'Poppins', sans-serif;
-}
-
-
-/* Alternative variants for light theme */
-/* .logo-wrapper.light .logo-primary {
-  background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+  letter-spacing: -1.2px;
+  line-height: 1;
+  color: #1738B8;
+  background: linear-gradient(
+    120deg,
+    #1738B8 0%,
+    #2563EB 50%,
+    #06B6D4 100%
+  );
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
-} */
-
-.logo-wrapper.footer {
-  pointer-events: all;
+  -webkit-text-fill-color: transparent;
+  transition: letter-spacing 0.3s ease;
 }
 
+.logo-wrapper:hover .logo-primary {
+  letter-spacing: -0.7px;
+}
+
+/* Optional Tagline */
+.logo-tagline {
+  margin-top: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: #64748B;
+  text-transform: uppercase;
+}
+
+/* Footer */
 .logo-wrapper.footer .logo-icon {
   width: 35px;
   height: 35px;
@@ -87,7 +115,7 @@
   font-size: 1.5rem;
 }
 
-/* Small logo variant */
+/* Small Variant */
 .logo-wrapper.small .logo-icon {
   width: 30px;
   height: 30px;
@@ -97,14 +125,41 @@
   font-size: 1.25rem;
 }
 
-/* Responsive */
+/* Mobile Responsive */
 @media (max-width: 768px) {
   .logo-icon {
-    width: 35px;
-    height: 35px;
+    width: 36px;
+    height: 36px;
   }
 
   .logo-primary {
-    font-size: 1.5rem;
+    font-size: 1.55rem;
+  }
+
+  .logo-tagline {
+    font-size: 0.58rem;
+  }
+}
+
+/* iOS Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .logo-wrapper,
+  .logo-icon,
+  .logo-primary,
+  .logo-path {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .logo-dot,
+  .logo-line {
+    animation: none !important;
+  }
+}
+
+/* Dark Theme */
+@media (prefers-color-scheme: dark) {
+  .logo-tagline {
+    color: #94A3B8;
   }
 }

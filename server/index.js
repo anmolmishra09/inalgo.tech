@@ -1,23 +1,21 @@
+
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 
-// Load environment variables
 dotenv.config();
 
-// Initialize express app
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Routes
+// API routes
 const apiRoutes = require('./routes/api');
 app.use('/api', apiRoutes);
 
-// Root endpoint
+// Health check
 app.get('/', (req, res) => {
   res.json({
     message: 'Welcome to Inalgo API',
@@ -36,34 +34,37 @@ app.use((req, res) => {
 
 // Error handler
 app.use((err, req, res, next) => {
-  console.error(err.stack);
+  console.error('Application error:', err);
+
   res.status(err.status || 500).json({
     error: 'Internal Server Error',
-    message: process.env.NODE_ENV === 'development' ? err.message : 'Something went wrong'
+    message:
+      process.env.NODE_ENV === 'development'
+        ? err.message
+        : 'Something went wrong'
   });
 });
 
-// Start server on port 5001 (or from .env)
 const PORT = Number(process.env.PORT) || 5001;
 
-const server = app.listen(PORT, () => {
-  console.log(`🚀 Server is running on port ${PORT}`);
+const server = app.listen(PORT, '127.0.0.1', () => {
+  console.log('================================');
+  console.log('INALGO BACKEND STARTED');
+  console.log(`Server: http://127.0.0.1:${PORT}`);
+  console.log(`API: http://127.0.0.1:${PORT}/api`);
+  console.log('Status: RUNNING');
+  console.log('================================');
 });
 
-// Catch port errors gracefully
 server.on('error', (err) => {
-  if (err.code === 'EADDRINUSE') {
-    console.error(`❌ Port ${PORT} is already in use. Please free the port or change it.`);
-  } else {
-    console.error('❌ Server startup error:', err.message);
-  }
-  process.exit(1);
+  console.error('Server error:', err);
 });
 
-// Clean shutdown when stopping nodemon / terminal
 process.on('SIGINT', () => {
+  console.log('Stopping server...');
+
   server.close(() => {
-    console.log('\nServer closed cleanly.');
+    console.log('Server stopped.');
     process.exit(0);
   });
 });

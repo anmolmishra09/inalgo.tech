@@ -1110,303 +1110,330 @@ function Home() {
 
 
       {/* =====================================================================
-          EXPERTISE
-      ====================================================================== */}
-
-      <section
-        id="expertise"
-        className="expertise-section reveal"
-      >
-
-        <div className="container">
-
-          <div className="section-header text-center">
-
-            <div className="section-tag">
-
-              <span
-                className="status-dot"
-                aria-hidden="true"
-              />
-
-              Core capabilities
-
-            </div>
-
-            <h2 className="section-title">
-              Intelligence at
-              <br />
-              every layer.
-            </h2>
-
-            <p className="section-subtitle">
-              From enterprise LLMs to autonomous
-              multi-agent systems, Inalgo provides
-              the infrastructure required to move
-              AI from experimentation into production.
-            </p>
-
-          </div>
-
-
-          <div className="expertise-grid">
-
-            <article className="expertise-card reveal">
-              <div className="card-glow" />
-
-              <div className="expertise-card-top">
-                <span className="expertise-label">
-                  FOUNDATION
-                </span>
-
-                <span className="expertise-number">
-                  01
-                </span>
-              </div>
-
-              <div
-                className="expertise-icon"
-                aria-hidden="true"
-              >
-                ◇
-              </div>
-
-              <h3>
-                Enterprise LLMs & Fine-Tuning
-              </h3>
-
-              <p>
-                Build domain-aware language systems
-                optimized for enterprise knowledge,
-                workflows, and business requirements.
-              </p>
-
-              <div className="card-arrow">
-                <span>
-                  Explore
-                </span>
-
-                <span aria-hidden="true">
-                  →
-                </span>
-              </div>
-            </article>
-
-
-            <article className="expertise-card reveal">
-              <div className="card-glow" />
-
-              <div className="expertise-card-top">
-                <span className="expertise-label">
-                  ORCHESTRATION
-                </span>
-
-                <span className="expertise-number">
-                  02
-                </span>
-              </div>
-
-              <div
-                className="expertise-icon"
-                aria-hidden="true"
-              >
-                ◎
-              </div>
-
-              <h3>
-                Autonomous Multi-Agent Networks
-              </h3>
-
-              <p>
-                Coordinate specialized AI agents that
-                reason, collaborate, execute tools, and
-                complete complex tasks autonomously.
-              </p>
-
-              <div className="card-arrow">
-                <span>
-                  Explore
-                </span>
-
-                <span aria-hidden="true">
-                  →
-                </span>
-              </div>
-            </article>
-
-
-            <article className="expertise-card reveal">
-              <div className="card-glow" />
-
-              <div className="expertise-card-top">
-                <span className="expertise-label">
-                  MULTIMODAL
-                </span>
-
-                <span className="expertise-number">
-                  03
-                </span>
-              </div>
-
-              <div
-                className="expertise-icon"
-                aria-hidden="true"
-              >
-                ◉
-              </div>
-
-              <h3>
-                Multimodal Avatars & Voice AI
-              </h3>
-
-              <p>
-                Create natural interfaces combining
-                voice, vision, conversational AI, and
-                real-time digital experiences.
-              </p>
-
-              <div className="card-arrow">
-                <span>
-                  Explore
-                </span>
-
-                <span aria-hidden="true">
-                  →
-                </span>
-              </div>
-            </article>
-
-
-            <article className="expertise-card reveal">
-              <div className="card-glow" />
-
-              <div className="expertise-card-top">
-                <span className="expertise-label">
-                  INFRASTRUCTURE
-                </span>
-
-                <span className="expertise-number">
-                  04
-                </span>
-              </div>
-
-              <div
-                className="expertise-icon"
-                aria-hidden="true"
-              >
-                ⬡
-              </div>
-
-              <h3>
-                Enterprise MLOps & RAG Infrastructure
-              </h3>
-
-              <p>
-                Connect enterprise data with reliable
-                retrieval, evaluation, monitoring, and
-                scalable AI deployment infrastructure.
-              </p>
-
-              <div className="card-arrow">
-                <span>
-                  Explore
-                </span>
-
-                <span aria-hidden="true">
-                  →
-                </span>
-              </div>
-            </article>
-
-
-            <article className="expertise-card reveal">
-              <div className="card-glow" />
-
-              <div className="expertise-card-top">
-                <span className="expertise-label">
-                  VISION
-                </span>
-
-                <span className="expertise-number">
-                  05
-                </span>
-              </div>
-
-              <div
-                className="expertise-icon"
-                aria-hidden="true"
-              >
-                ◌
-              </div>
-
-              <h3>
-                Computer Vision Intelligence
-              </h3>
-
-              <p>
-                Transform visual data into structured
-                intelligence using production-grade
-                computer vision systems.
-              </p>
-
-              <div className="card-arrow">
-                <span>
-                  Explore
-                </span>
-
-                <span aria-hidden="true">
-                  →
-                </span>
-              </div>
-            </article>
-
-
-            <article className="expertise-card reveal">
-              <div className="card-glow" />
-
-              <div className="expertise-card-top">
-                <span className="expertise-label">
-                  ANALYTICS
-                </span>
-
-                <span className="expertise-number">
-                  06
-                </span>
-              </div>
-
-              <div
-                className="expertise-icon"
-                aria-hidden="true"
-              >
-                ∿
-              </div>
-
-              <h3>
-                Predictive Neural Analytics
-              </h3>
-
-              <p>
-                Turn operational data into predictive
-                intelligence for forecasting, detection,
-                optimization, and decision support.
-              </p>
-
-              <div className="card-arrow">
-                <span>
-                  Explore
-                </span>
-
-                <span aria-hidden="true">
-                  →
-                </span>
-              </div>
-            </article>
-
-          </div>
-
+    EXPERTISE
+====================================================================== */}
+
+<section id="expertise" className="expertise-section reveal">
+  <div className="container">
+    <div className="section-header text-center">
+      <div className="section-tag">
+        <span className="status-dot" aria-hidden="true" />
+        Core capabilities
+      </div>
+
+      <h2 className="section-title">
+        Intelligence at
+        <br />
+        every layer.
+      </h2>
+
+      <p className="section-subtitle">
+        From enterprise LLMs to autonomous multi-agent systems, Inalgo provides
+        the infrastructure required to move AI from experimentation into
+        production.
+      </p>
+    </div>
+
+    <div className="expertise-grid">
+      {/* 01: Enterprise LLMs & Fine-Tuning (Brain / CPU Neural Architecture) */}
+      <article className="expertise-card reveal">
+        <div className="card-glow" />
+
+        <div className="expertise-card-top">
+          <span className="expertise-label">FOUNDATION</span>
+          <span className="expertise-number">01</span>
         </div>
-      </section>
 
+        <div className="expertise-icon" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" />
+            <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z" />
+            <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4" />
+            <path d="M17.599 6.5a3 3 0 0 0 .399-1.375" />
+            <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5" />
+            <path d="M3.477 10.896a4 4 0 0 1 .585-.396" />
+            <path d="M19.938 10.5a4 4 0 0 1 .585.396" />
+            <path d="M6 18a4 4 0 0 1-1.967-.516" />
+            <path d="M19.967 17.484A4 4 0 0 1 18 18" />
+          </svg>
+        </div>
+
+        <h3>Enterprise LLMs &amp; Fine-Tuning</h3>
+
+        <p>
+          Build domain-aware language systems optimized for enterprise
+          knowledge, workflows, and business requirements.
+        </p>
+
+        <div className="card-arrow">
+          <span>Explore</span>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </div>
+      </article>
+
+      {/* 02: Autonomous Multi-Agent Networks (Connected Network Nodes) */}
+      <article className="expertise-card reveal">
+        <div className="card-glow" />
+
+        <div className="expertise-card-top">
+          <span className="expertise-label">ORCHESTRATION</span>
+          <span className="expertise-number">02</span>
+        </div>
+
+        <div className="expertise-icon" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="12" cy="5" r="2.5" />
+            <circle cx="5" cy="18" r="2.5" />
+            <circle cx="19" cy="18" r="2.5" />
+            <path d="M10.7 7.1 6.3 15.9" />
+            <path d="M13.3 7.1 17.7 15.9" />
+            <path d="M7.5 18h9" />
+          </svg>
+        </div>
+
+        <h3>Autonomous Multi-Agent Networks</h3>
+
+        <p>
+          Coordinate specialized AI agents that reason, collaborate, execute
+          tools, and complete complex tasks autonomously.
+        </p>
+
+        <div className="card-arrow">
+          <span>Explore</span>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </div>
+      </article>
+
+      {/* 03: Multimodal Avatars & Voice AI (Audio Waveform / Voice) */}
+      <article className="expertise-card reveal">
+        <div className="card-glow" />
+
+        <div className="expertise-card-top">
+          <span className="expertise-label">MULTIMODAL</span>
+          <span className="expertise-number">03</span>
+        </div>
+
+        <div className="expertise-icon" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M2 10v3" />
+            <path d="M6 6v11" />
+            <path d="M10 3v18" />
+            <path d="M14 8v7" />
+            <path d="M18 5v13" />
+            <path d="M22 10v3" />
+          </svg>
+        </div>
+
+        <h3>Multimodal Avatars &amp; Voice AI</h3>
+
+        <p>
+          Create natural interfaces combining voice, vision, conversational AI,
+          and real-time digital experiences.
+        </p>
+
+        <div className="card-arrow">
+          <span>Explore</span>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </div>
+      </article>
+
+      {/* 04: Enterprise MLOps & RAG Infrastructure (Stacked Data Layers) */}
+      <article className="expertise-card reveal">
+        <div className="card-glow" />
+
+        <div className="expertise-card-top">
+          <span className="expertise-label">INFRASTRUCTURE</span>
+          <span className="expertise-number">04</span>
+        </div>
+
+        <div className="expertise-icon" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z" />
+            <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" />
+            <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" />
+          </svg>
+        </div>
+
+        <h3>Enterprise MLOps &amp; RAG Infrastructure</h3>
+
+        <p>
+          Connect enterprise data with reliable retrieval, evaluation,
+          monitoring, and scalable AI deployment infrastructure.
+        </p>
+
+        <div className="card-arrow">
+          <span>Explore</span>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </div>
+      </article>
+
+      {/* 05: Computer Vision Intelligence (Optical Viewfinder / Scan Eye) */}
+      <article className="expertise-card reveal">
+        <div className="card-glow" />
+
+        <div className="expertise-card-top">
+          <span className="expertise-label">VISION</span>
+          <span className="expertise-number">05</span>
+        </div>
+
+        <div className="expertise-icon" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M3 7V5a2 2 0 0 1 2-2h2" />
+            <path d="M17 3h2a2 2 0 0 1 2 2v2" />
+            <path d="M21 17v2a2 2 0 0 1-2 2h-2" />
+            <path d="M7 21H5a2 2 0 0 1-2-2v-2" />
+            <circle cx="12" cy="12" r="3" />
+            <path d="M7 12c1.2-2.4 3.1-3.6 5-3.6s3.8 1.2 5 3.6c-1.2 2.4-3.1 3.6-5 3.6s-3.8-1.2-5-3.6Z" />
+          </svg>
+        </div>
+
+        <h3>Computer Vision Intelligence</h3>
+
+        <p>
+          Transform visual data into structured intelligence using
+          production-grade computer vision systems.
+        </p>
+
+        <div className="card-arrow">
+          <span>Explore</span>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </div>
+      </article>
+
+      {/* 06: Predictive Neural Analytics (Neural Activity / Telemetry Pulse) */}
+      <article className="expertise-card reveal">
+        <div className="card-glow" />
+
+        <div className="expertise-card-top">
+          <span className="expertise-label">ANALYTICS</span>
+          <span className="expertise-number">06</span>
+        </div>
+
+        <div className="expertise-icon" aria-hidden="true">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M3 3v18h18" />
+            <path d="m19 9-5 5-4-4-3 3" />
+            <circle cx="19" cy="9" r="1.5" fill="currentColor" />
+          </svg>
+        </div>
+
+        <h3>Predictive Neural Analytics</h3>
+
+        <p>
+          Turn operational data into predictive intelligence for forecasting,
+          detection, optimization, and decision support.
+        </p>
+
+        <div className="card-arrow">
+          <span>Explore</span>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
 
       {/* =====================================================================
           TARGET CLIENTS
@@ -1440,132 +1467,197 @@ function Home() {
         <ImageGallery />
       </section>
 
+{/* =====================================================================
+    PROCESS
+====================================================================== */}
 
-      {/* =====================================================================
-          PROCESS
-      ====================================================================== */}
+<section
+  id="process"
+  className="process-section reveal"
+>
+  <div className="container">
+    <div className="section-header text-center">
+      <div className="section-tag">
+        <span
+          className="status-dot"
+          aria-hidden="true"
+        />
+        Deployment workflow
+      </div>
 
-      <section
-        id="process"
-        className="process-section reveal"
-      >
+      <h2 className="section-title">
+        From opportunity
+        <br />
+        to production.
+      </h2>
 
-        <div className="container">
+      <p className="section-subtitle">
+        A structured path for turning AI ideas
+        into reliable systems that operate at
+        enterprise scale.
+      </p>
+    </div>
 
-          <div className="section-header text-center">
-
-            <div className="section-tag">
-
-              <span
-                className="status-dot"
-                aria-hidden="true"
-              />
-
-              Deployment workflow
-
-            </div>
-
-            <h2 className="section-title">
-              From opportunity
-              <br />
-              to production.
-            </h2>
-
-            <p className="section-subtitle">
-              A structured path for turning AI ideas
-              into reliable systems that operate at
-              enterprise scale.
-            </p>
-
+    <div className="process-timeline">
+      {[
+        {
+          number: "01",
+          title: "Discovery & Opportunity Mapping",
+          description:
+            "Identify high-value business problems, data requirements, automation opportunities, and measurable outcomes.",
+          icon: (
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
+            </svg>
+          ),
+        },
+        {
+          number: "02",
+          title: "Architecture & AI Strategy",
+          description:
+            "Design the model, agent, retrieval, data, integration, and infrastructure architecture.",
+          icon: (
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z" />
+              <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" />
+              <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" />
+            </svg>
+          ),
+        },
+        {
+          number: "03",
+          title: "Prototype & Validation",
+          description:
+            "Build a focused prototype and validate technical feasibility, user experience, and business value.",
+          icon: (
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2" />
+              <path d="M8.5 2h7" />
+              <path d="M7 16h10" />
+            </svg>
+          ),
+        },
+        {
+          number: "04",
+          title: "Production Engineering",
+          description:
+            "Harden the system with APIs, observability, security, evaluation, testing, and scalable infrastructure.",
+          icon: (
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
+              <path d="m9 12 2 2 4-4" />
+            </svg>
+          ),
+        },
+        {
+          number: "05",
+          title: "Deployment & Integration",
+          description:
+            "Connect AI capabilities with existing enterprise applications, workflows, and operational systems.",
+          icon: (
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="5" r="2.5" />
+              <circle cx="5" cy="18" r="2.5" />
+              <circle cx="19" cy="18" r="2.5" />
+              <path d="M10.7 7.1 6.3 15.9" />
+              <path d="M13.3 7.1 17.7 15.9" />
+              <path d="M7.5 18h9" />
+            </svg>
+          ),
+        },
+        {
+          number: "06",
+          title: "Production Telemetry & Scale",
+          description:
+            "Monitor performance, usage, quality, cost, and reliability while continuously improving the system.",
+          icon: (
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" />
+            </svg>
+          ),
+        },
+      ].map(({ number, title, description, icon }, index) => (
+        <article
+          key={number}
+          className="process-step reveal"
+          style={{
+            "--step-delay": `${Math.min(index * 80, 400)}ms`,
+          }}
+        >
+          <div className="process-number" aria-hidden="true">
+            {icon}
+            <span className="process-badge">{number}</span>
           </div>
 
-
-          <div className="process-timeline">
-
-            {[
-              [
-                "01",
-                "Discovery & Opportunity Mapping",
-                "Identify high-value business problems, data requirements, automation opportunities, and measurable outcomes.",
-              ],
-              [
-                "02",
-                "Architecture & AI Strategy",
-                "Design the model, agent, retrieval, data, integration, and infrastructure architecture.",
-              ],
-              [
-                "03",
-                "Prototype & Validation",
-                "Build a focused prototype and validate technical feasibility, user experience, and business value.",
-              ],
-              [
-                "04",
-                "Production Engineering",
-                "Harden the system with APIs, observability, security, evaluation, testing, and scalable infrastructure.",
-              ],
-              [
-                "05",
-                "Deployment & Integration",
-                "Connect AI capabilities with existing enterprise applications, workflows, and operational systems.",
-              ],
-              [
-                "06",
-                "Production Telemetry & Scale",
-                "Monitor performance, usage, quality, cost, and reliability while continuously improving the system.",
-              ],
-            ].map(
-              (
-                [number, title, description],
-                index
-              ) => (
-                <article
-                  key={number}
-                  className="process-step reveal"
-                  style={{
-                    "--step-delay": `${
-                      Math.min(
-                        index * 80,
-                        400
-                      )
-                    }ms`,
-                  }}
-                >
-
-                  <div className="process-number">
-                    {number}
-                  </div>
-
-                  <div className="process-content">
-
-                    <span>
-                      PHASE {number}
-                    </span>
-
-                    <h3>
-                      {title}
-                    </h3>
-
-                    <p>
-                      {description}
-                    </p>
-
-                  </div>
-
-                  <div
-                    className="process-arrow"
-                    aria-hidden="true"
-                  >
-                    →
-                  </div>
-
-                </article>
-              )
-            )}
-
+          <div className="process-content">
+            <span>PHASE {number}</span>
+            <h3>{title}</h3>
+            <p>{description}</p>
           </div>
 
-        </div>
-      </section>
+          <div className="process-arrow" aria-hidden="true">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M5 12h14" />
+              <path d="m12 5 7 7-7 7" />
+            </svg>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
 
 
       {/* =====================================================================
@@ -1737,7 +1829,7 @@ function Home() {
           ACTIVE SECTION STATUS
       ====================================================================== */}
 
-      <span
+      {/* <span
         className="sr-only"
         aria-live="polite"
       >
@@ -1748,7 +1840,7 @@ function Home() {
               section.id === activeSection
           )?.label || "Home"
         }
-      </span>
+      </span> */}
 
     </main>
     </>

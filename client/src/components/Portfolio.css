@@ -1,29 +1,29 @@
 /* ==========================================================================
-   Portfolio / SaaS Showcase Section Styling (Interactive Redesign)
+   Portfolio / SaaS Showcase Section Styling (Refined & Responsive)
    ========================================================================== */
 
 :root {
   --bg-dark: #f8fafc;
-  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-bg: #ffffff;
   --border-color: #e2e8f0;
-  --border-hover: rgba(124, 58, 237, 0.45);
+  --border-hover: #8b5cf6;
   --accent-purple: #7c3aed;
   --accent-purple-dark: #6d28d9;
   --accent-glow: rgba(124, 58, 237, 0.18);
   --text-main: #0f172a;
-  --text-muted: #334155;
+  --text-muted: #475569;
   --badge-bg: rgba(2, 132, 199, 0.08);
   --badge-border: rgba(2, 132, 199, 0.25);
   --badge-text: #0284c7;
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Section Wrapper */
 .portfolio-section {
-  padding: clamp(3.5rem, 7vw, 6rem) 1.5rem;
-
+  padding: clamp(4rem, 8vw, 6.5rem) 1.5rem;
   background: #ffffff;
   color: var(--text-main);
-
   font-family:
     system-ui,
     -apple-system,
@@ -31,27 +31,29 @@
     "Segoe UI",
     Roboto,
     sans-serif;
-
   position: relative;
   overflow: hidden;
 }
-
 
 /* Ambient Radial Mesh Background */
 .portfolio-section::before {
   content: "";
   position: absolute;
-  top: -100px;
+  top: -120px;
   left: 50%;
   transform: translateX(-50%);
-  width: 650px;
-  height: 650px;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 70%);
+  width: 720px;
+  height: 720px;
+  background: radial-gradient(
+    circle,
+    rgba(124, 58, 237, 0.08) 0%,
+    transparent 70%
+  );
   pointer-events: none;
   animation: pulseShowcaseGlow 8s ease-in-out infinite alternate;
 }
 
-.container {
+.portfolio-section .container {
   max-width: 78rem;
   margin: 0 auto;
   position: relative;
@@ -61,9 +63,9 @@
 /* Header & Filter Tabs */
 .portfolio-header {
   text-align: center;
-  max-width: 44rem;
+  max-width: 46rem;
   margin: 0 auto 3.5rem auto;
-  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeUp 0.8s var(--ease) forwards;
 }
 
 .portfolio-pill {
@@ -77,26 +79,27 @@
   border: 1px solid rgba(124, 58, 237, 0.25);
   padding: 0.4rem 0.95rem;
   border-radius: 9999px;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.15rem;
   transition: transform 0.3s ease;
 }
 
 .portfolio-header:hover .portfolio-pill {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
-.section-title {
+.portfolio-header .section-title {
   font-size: clamp(2rem, 4.5vw, 3rem);
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
   margin: 0 0 0.85rem 0;
-  background: linear-gradient(135deg, #0f172a 30%, #4f46e5 70%, #7c3aed 100%);
+  background: linear-gradient(135deg, #0f172a 25%, #4f46e5 65%, #7c3aed 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.section-subtitle {
+.portfolio-header .section-subtitle {
   font-size: 1.05rem;
   color: var(--text-muted);
   line-height: 1.65;
@@ -108,8 +111,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.5rem;
-  background: #ffffff;
+  gap: 0.45rem;
+  background: #f8fafc;
   padding: 0.4rem;
   border-radius: 9999px;
   border: 1px solid var(--border-color);
@@ -124,70 +127,59 @@
   color: var(--text-muted);
   font-size: 0.875rem;
   font-weight: 600;
-  padding: 0.55rem 1.25rem;
+  padding: 0.55rem 1.2rem;
   border-radius: 9999px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s var(--ease);
 }
 
 .tab-btn:hover {
   color: #0f172a;
-  background: rgba(241, 245, 249, 0.8);
+  background: #ffffff;
 }
 
 .tab-btn.active {
-  background: linear-gradient(135deg, var(--accent-purple-dark) 0%, var(--accent-purple) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent-purple-dark) 0%,
+    var(--accent-purple) 100%
+  );
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.32);
 }
 
 /* Portfolio Grid */
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.75rem;
   margin-bottom: 4.5rem;
+  align-items: stretch;
 }
 
-/* Individual Card Design */
+/* Individual Card Design (Clean Left-Aligned Editorial Layout) */
 .portfolio-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: clamp(1rem, 2vw, 1.5rem);
-  padding: clamp(1.25rem, 4vw, 2rem);
-
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
+  background: linear-gradient(165deg, #ffffff 0%, #fafbfc 100%);
+  border: 2px solid var(--border-color);
+  border-radius: 1.4rem;
+  padding: clamp(1.35rem, 3vw, 1.85rem);
   display: flex;
   flex-direction: column;
-  /* Mobile me elements ko vertically aur horizontally balanced rakhne ke liye */
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  gap: 1rem; /* Children ke bich equal spacing ke liye */
-
+  align-items: stretch;
+  text-align: left;
   width: 100%;
-  max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
-
   position: relative;
   overflow: hidden;
-
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
-  cursor: pointer;
-
+  box-shadow: 0 8px 24px -6px rgba(15, 23, 42, 0.05);
   transition:
-    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.38s var(--ease),
     border-color 0.3s ease,
-    box-shadow 0.4s ease;
+    box-shadow 0.38s var(--ease);
 }
 
-/* =========================================
-   TOP ACCENT
-   ========================================= */
-
+/* Top Accent Bar */
 .portfolio-card::before {
   content: "";
   position: absolute;
@@ -195,152 +187,92 @@
   left: 0;
   width: 100%;
   height: 3px;
-
-  background: linear-gradient(
-    90deg,
-    #6d28d9 0%,
-    #a855f7 100%
-  );
-
+  background: linear-gradient(90deg, #6d28d9 0%, #8b5cf6 50%, #06b6d4 100%);
   opacity: 0;
   transition: opacity 0.35s ease;
+}
+
+.portfolio-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-7px);
+  box-shadow:
+    0 22px 42px -12px rgba(124, 58, 237, 0.22),
+    0 0 0 1px rgba(139, 92, 246, 0.12);
 }
 
 .portfolio-card:hover::before {
   opacity: 1;
 }
 
-/* =========================================
-   RESPONSIVE MEDIA QUERY (Phones ke liye)
-   ========================================= */
-@media (max-width: 640px) {
-  .portfolio-card {
-    /* Agar phone me text left-align chahiye ho to text-align: left kar sakte hain */
-    text-align: center;
-    align-items: center;
-    padding: 1.25rem 1rem;
-    margin-inline: auto; /* Card ko screen ke center me rakhne ke liye */
-  }
-
-  /* Card ke andar ke text, images aur buttons full width me auto fit hone ke liye */
-  .portfolio-card > * {
-    max-width: 100%;
-    word-break: break-word; /* Bada text screen se bahar na bhage */
-  }
-}
-
-
-/* =========================================
-   DESKTOP HOVER
-   ========================================= */
-
-.portfolio-card:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px -10px rgba(124, 58, 237, 0.22);
-}
-
-
-/* =========================================
-   CARD HEADER
-   ========================================= */
-
+/* Card Header */
 .portfolio-card-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-
   width: 100%;
   min-width: 0;
-
   gap: 0.75rem;
-  margin-bottom: clamp(0.9rem, 2vw, 1.25rem);
+  margin-bottom: 1.25rem;
 }
 
-
-/* =========================================
-   ICON
-   ========================================= */
-
+/* Real SVG Icon Container */
 .portfolio-icon-wrapper {
-  width: clamp(40px, 5vw, 48px);
-  height: clamp(40px, 5vw, 48px);
-
-  min-width: 40px;
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
   flex: 0 0 auto;
-
-  background: rgba(124, 58, 237, 0.08);
-  border: 1px solid rgba(124, 58, 237, 0.2);
-  border-radius: 0.85rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  background: linear-gradient(135deg, #f5f3ff 0%, #eef2ff 100%);
+  border: 1px solid rgba(124, 58, 237, 0.22);
+  border-radius: 0.95rem;
+  display: grid;
+  place-items: center;
   color: var(--accent-purple);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.08);
+  transition:
+    transform 0.45s var(--spring),
+    background 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease;
+}
 
-  transition: all 0.35s ease;
+.portfolio-icon-wrapper svg {
+  width: 24px;
+  height: 24px;
 }
 
 .portfolio-card:hover .portfolio-icon-wrapper {
-  background: var(--accent-purple);
-  color: #fff;
-  transform: rotate(6deg) scale(1.08);
-  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.3);
+  background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+  color: #ffffff;
+  border-color: transparent;
+  transform: rotate(-6deg) scale(1.08);
+  box-shadow: 0 10px 20px rgba(124, 58, 237, 0.32);
 }
 
-
-/* =========================================
-   BADGES
-   ========================================= */
-
+/* Badges */
 .badge-group {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
   flex-wrap: wrap;
   gap: 0.4rem;
-
   min-width: 0;
-  max-width: 100%;
 }
-
-
-/* =========================================
-   COMMON BADGE
-   ========================================= */
 
 .portfolio-metric,
 .portfolio-status {
-  font-size: clamp(0.65rem, 1.5vw, 0.725rem);
+  font-size: 0.7rem;
   font-weight: 700;
-
-  padding: 0.25rem clamp(0.45rem, 1.5vw, 0.6rem);
-
-  border-radius: 0.4rem;
-
+  padding: 0.28rem 0.6rem;
+  border-radius: 9999px;
   white-space: nowrap;
-
-  transition: transform 0.3s ease;
+  letter-spacing: 0.01em;
 }
-
-
-/* =========================================
-   METRIC
-   ========================================= */
 
 .portfolio-metric {
-  color: #059669;
-  background: rgba(5, 150, 105, 0.08);
-  border: 1px solid rgba(5, 150, 105, 0.2);
+  color: #047857;
+  background: rgba(5, 150, 105, 0.09);
+  border: 1px solid rgba(5, 150, 105, 0.24);
 }
-
-
-/* =========================================
-   STATUS
-   ========================================= */
 
 .portfolio-status {
   color: var(--badge-text);
@@ -348,405 +280,90 @@
   border: 1px solid var(--badge-border);
 }
 
-
-.portfolio-card:hover .portfolio-metric,
-.portfolio-card:hover .portfolio-status {
-  transform: scale(1.05);
+/* Card Body */
+.portfolio-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
 }
-
-
-/* =========================================
-   CARD BODY
-   ========================================= */
 
 .portfolio-category {
-  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+  display: inline-block;
+  font-size: 0.72rem;
   font-weight: 700;
-
   color: var(--accent-purple);
-
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  letter-spacing: 0.07em;
+  margin-bottom: 0.35rem;
 }
-
 
 .portfolio-title {
-  font-size: clamp(1.15rem, 2.5vw, 1.4rem);
-  line-height: 1.25;
-  font-weight: 700;
-
-  margin: 0.3rem 0;
-
+  font-size: 1.32rem;
+  line-height: 1.28;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.35rem 0;
   color: #0f172a;
-
   transition: color 0.3s ease;
-
-  overflow-wrap: anywhere;
-  word-break: break-word;
 }
-
 
 .portfolio-card:hover .portfolio-title {
   color: var(--accent-purple-dark);
 }
 
-
 .portfolio-subtitle-text {
-  font-size: clamp(0.8rem, 1.8vw, 0.875rem);
+  font-size: 0.88rem;
   line-height: 1.45;
-
   color: #334155;
   font-weight: 600;
-
-  margin: 0 0 0.75rem;
-
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  margin: 0 0 0.75rem 0;
 }
-
 
 .portfolio-description {
-  font-size: clamp(0.8rem, 1.8vw, 0.9rem);
-  line-height: 1.6;
-
+  font-size: 0.9rem;
+  line-height: 1.65;
   color: var(--text-muted);
-
-  margin-bottom: clamp(1rem, 2vw, 1.25rem);
-
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  margin: 0 0 1.25rem 0;
 }
 
-
-/* =========================================
-   TECH TAGS
-   ========================================= */
-
+/* Tech Tags */
 .portfolio-tech {
   width: 100%;
-  max-width: 100%;
-
-  margin-bottom: clamp(1rem, 2vw, 1.25rem);
+  margin-bottom: 1.25rem;
 }
 
 .tech-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-
-  width: 100%;
-  max-width: 100%;
+  gap: 0.42rem;
 }
 
-
 .tech-tag {
-  font-size: clamp(0.65rem, 1.5vw, 0.725rem);
+  font-size: 0.72rem;
   line-height: 1.3;
   font-weight: 600;
-
   color: #334155;
   background: #f1f5f9;
   border: 1px solid #e2e8f0;
-
-  padding: 0.25rem clamp(0.45rem, 1.5vw, 0.65rem);
-
-  border-radius: 0.4rem;
-
-  transition: all 0.3s ease;
-
-  max-width: 100%;
-
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  padding: 0.26rem 0.62rem;
+  border-radius: 0.45rem;
+  transition: all 0.25s ease;
 }
 
-
 .portfolio-card:hover .tech-tag {
-  border-color: rgba(124, 58, 237, 0.3);
+  border-color: rgba(124, 58, 237, 0.28);
   background: rgba(124, 58, 237, 0.05);
 }
 
-
-/* =========================================
-   TABLET
-   ========================================= */
-
-@media (max-width: 768px) {
-  .portfolio-card {
-    width: 100%;
-    max-width: 100%;
-    padding: 1.25rem;
-    border-radius: 1.15rem;
-  }
-
-  .portfolio-card:hover {
-    transform: translateY(-4px);
-  }
-
-  .portfolio-card-header {
-    gap: 0.6rem;
-  }
-
-  .portfolio-icon-wrapper {
-    border-radius: 0.7rem;
-  }
-
-  .portfolio-description {
-    line-height: 1.55;
-  }
+/* Footer Area (Pinned to Bottom) */
+.portfolio-footer {
+  margin-top: auto;
+  width: 100%;
 }
-
-
-/* =========================================
-   MOBILE
-   ========================================= */
-
-@media (max-width: 480px) {
-  .portfolio-card {
-    width: 100%;
-    max-width: 100%;
-
-    padding: 1rem;
-    border-radius: 1rem;
-
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /*
-   * Important:
-   * Header ko fixed horizontal space dene ke bajay
-   * flexible rakha gaya hai.
-   */
-  .portfolio-card-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-
-    width: 100%;
-    gap: 0.6rem;
-
-    margin-bottom: 1rem;
-  }
-
-
-  .portfolio-icon-wrapper {
-    width: 42px;
-    height: 42px;
-
-    min-width: 42px;
-
-    font-size: 1.1rem;
-  }
-
-
-  .badge-group {
-    flex: 1 1 auto;
-
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-
-    flex-wrap: wrap;
-
-    gap: 0.3rem;
-
-    min-width: 0;
-  }
-
-
-  .portfolio-metric,
-  .portfolio-status {
-    font-size: 0.625rem;
-
-    padding: 0.22rem 0.4rem;
-
-    max-width: 100%;
-  }
-
-
-  .portfolio-title {
-    font-size: 1.15rem;
-    line-height: 1.3;
-  }
-
-
-  .portfolio-subtitle-text {
-    font-size: 0.8rem;
-    line-height: 1.45;
-  }
-
-
-  .portfolio-description {
-    font-size: 0.8rem;
-    line-height: 1.55;
-
-    margin-bottom: 1rem;
-  }
-
-
-  .portfolio-category {
-    font-size: 0.65rem;
-  }
-
-
-  .tech-tags {
-    gap: 0.35rem;
-  }
-
-
-  .tech-tag {
-    font-size: 0.625rem;
-    padding: 0.22rem 0.45rem;
-  }
-
-
-  .portfolio-card:hover {
-    transform: translateY(-2px);
-  }
-}
-
-
-/* =========================================
-   VERY SMALL PHONES
-   ========================================= */
-
-@media (max-width: 360px) {
-  .portfolio-card {
-    padding: 0.85rem;
-  }
-
-
-  /*
-   * Very small screens par icon + badges
-   * same row mein force nahi honge.
-   */
-  .portfolio-card-header {
-    flex-direction: column;
-    align-items: stretch;
-
-    gap: 0.65rem;
-  }
-
-
-  .badge-group {
-    width: 100%;
-
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-
-
-  .portfolio-icon-wrapper {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-  }
-
-
-  .portfolio-title {
-    font-size: 1.05rem;
-  }
-
-
-  .portfolio-description {
-    font-size: 0.775rem;
-  }
-}
-
-
-/* =========================================
-   TOUCH DEVICES
-   ========================================= */
-
-@media (hover: none) {
-  .portfolio-card:hover {
-    transform: none;
-
-    box-shadow:
-      0 4px 20px -2px rgba(15, 23, 42, 0.04);
-  }
-
-
-  .portfolio-card:hover::before {
-    opacity: 0;
-  }
-
-
-  .portfolio-card:hover .portfolio-icon-wrapper {
-    background: rgba(124, 58, 237, 0.08);
-    color: var(--accent-purple);
-
-    transform: none;
-
-    box-shadow: none;
-  }
-
-
-  .portfolio-card:hover .portfolio-title {
-    color: #0f172a;
-  }
-
-
-  .portfolio-card:hover .tech-tag {
-    border-color: #e2e8f0;
-    background: #f1f5f9;
-  }
-
-
-  .portfolio-card:hover .portfolio-metric,
-  .portfolio-card:hover .portfolio-status {
-    transform: none;
-  }
-}
-
-
-/* =========================================
-   REDUCED MOTION
-   ========================================= */
-
-@media (prefers-reduced-motion: reduce) {
-  .portfolio-card,
-  .portfolio-card::before,
-  .portfolio-icon-wrapper,
-  .portfolio-title,
-  .portfolio-metric,
-  .portfolio-status,
-  .tech-tag {
-    transition: none !important;
-  }
-
-
-  .portfolio-card:hover,
-  .portfolio-card:hover .portfolio-icon-wrapper {
-    transform: none;
-  }
-}
-
-
-/* =========================================
-   EXTRA SAFETY FOR MOBILE CONTAINERS
-   ========================================= */
-
-@media (max-width: 480px) {
-  .portfolio-card,
-  .portfolio-card * {
-    box-sizing: border-box;
-  }
-
-  .portfolio-card img,
-  .portfolio-card svg {
-    max-width: 100%;
-  }
-}
-
 
 /* Collapsible Details Container */
 .interactive-details-container {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.15rem;
   border-top: 1px dashed var(--border-color);
   padding-top: 0.85rem;
 }
@@ -754,9 +371,9 @@
 .details-toggle-btn {
   background: transparent;
   border: none;
-  color: var(--text-muted);
-  font-size: 0.8rem;
-  font-weight: 600;
+  color: #334155;
+  font-size: 0.82rem;
+  font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -772,6 +389,7 @@
 
 .chevron {
   transition: transform 0.3s ease;
+  color: var(--accent-purple);
 }
 
 .chevron.open {
@@ -779,19 +397,20 @@
 }
 
 .portfolio-features {
-  margin-top: 0.85rem;
+  margin-top: 0.8rem;
   background: #f8fafc;
   border: 1px solid #e2e8f0;
   border-radius: 0.85rem;
-  padding: 0.95rem;
+  padding: 0.95rem 1rem;
+  animation: fadeUp 0.25s ease forwards;
 }
 
 .portfolio-features h4 {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: #64748b;
   text-transform: uppercase;
-  margin: 0 0 0.5rem 0;
-  letter-spacing: 0.05em;
+  margin: 0 0 0.6rem 0;
+  letter-spacing: 0.06em;
 }
 
 .portfolio-features ul {
@@ -800,53 +419,62 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 0.5rem;
 }
 
 .portfolio-features li {
-  font-size: 0.825rem;
+  font-size: 0.81rem;
+  line-height: 1.45;
   color: #334155;
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  align-items: flex-start;
+  gap: 0.55rem;
+}
+
+.portfolio-features li svg {
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 /* Action Buttons Grid */
 .portfolio-actions {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 0.75rem;
-  margin-top: auto;
+  gap: 0.65rem;
 }
 
 .portfolio-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.1rem;
+  gap: 0.45rem;
+  padding: 0.68rem 1.05rem;
   font-size: 0.825rem;
   font-weight: 600;
   border-radius: 0.75rem;
   text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s var(--ease);
 }
 
 .portfolio-btn.primary {
   color: #ffffff;
-  background: linear-gradient(135deg, var(--accent-purple-dark) 0%, var(--accent-purple) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent-purple-dark) 0%,
+    var(--accent-purple) 100%
+  );
   border: 1px solid rgba(124, 58, 237, 0.3);
-  box-shadow: 0 4px 14px rgba(109, 40, 217, 0.25);
+  box-shadow: 0 4px 14px rgba(109, 40, 217, 0.22);
 }
 
 .portfolio-btn.primary:hover {
   background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
-  box-shadow: 0 8px 22px rgba(124, 58, 237, 0.4);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.38);
   transform: translateY(-2px);
 }
 
 .portfolio-btn.secondary {
-  color: #334155;
+  color: #1e293b;
   background: #f1f5f9;
   border: 1px solid var(--border-color);
 }
@@ -859,17 +487,17 @@
 
 /* Bottom CTA Banner */
 .portfolio-cta {
-  background: #ffffff;
-  border: 1px solid rgba(124, 58, 237, 0.3);
+  background: linear-gradient(135deg, #ffffff 0%, #f5f3ff 100%);
+  border: 1.5px solid rgba(124, 58, 237, 0.28);
   border-radius: 1.5rem;
-  padding: 2.5rem 2.75rem;
+  padding: 2.4rem 2.75rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
   flex-wrap: wrap;
-  box-shadow: 0 10px 30px -5px rgba(124, 58, 237, 0.12);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 12px 32px -6px rgba(124, 58, 237, 0.12);
+  transition: all 0.35s var(--ease);
 }
 
 .portfolio-cta:hover {
@@ -883,7 +511,7 @@
   font-weight: 800;
   color: #0f172a;
   margin: 0 0 0.35rem 0;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
 }
 
 .cta-content p {
@@ -897,26 +525,30 @@
   align-items: center;
   gap: 0.65rem;
   padding: 0.85rem 1.75rem;
-  background: linear-gradient(135deg, var(--accent-purple-dark) 0%, var(--accent-purple) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent-purple-dark) 0%,
+    var(--accent-purple) 100%
+  );
   color: #ffffff;
   font-weight: 700;
   font-size: 0.9rem;
   border-radius: 9999px;
   text-decoration: none;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.35);
+  transition: all 0.35s var(--ease);
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.32);
 }
 
 .cta-btn:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.5);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.46);
 }
 
 /* Keyframes */
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(25px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
@@ -935,15 +567,65 @@
   }
 }
 
-/* Responsive Overrides */
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
 @media (max-width: 768px) {
-  .portfolio-actions {
+  .portfolio-grid {
     grid-template-columns: 1fr;
+  }
+
+  .portfolio-tabs {
+    border-radius: 1rem;
   }
 
   .portfolio-cta {
     flex-direction: column;
     text-align: center;
     padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-section {
+    padding: 3.25rem 1rem;
+  }
+
+  .portfolio-card {
+    padding: 1.25rem;
+    border-radius: 1.15rem;
+  }
+
+  .portfolio-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-metric,
+  .portfolio-status {
+    font-size: 0.65rem;
+    padding: 0.24rem 0.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .portfolio-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .badge-group {
+    justify-content: flex-start;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-card,
+  .portfolio-card::before,
+  .portfolio-icon-wrapper,
+  .portfolio-btn,
+  .cta-btn {
+    transition: none !important;
   }
 }
